@@ -1,4 +1,4 @@
-# Setup Lab
+# Lab 1: Setup
 
 ## 1. Overview
 
