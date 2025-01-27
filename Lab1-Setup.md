@@ -49,7 +49,18 @@ Document the steps you conducted, reflect on your experience using at least two 
 provide a proof of molecular/periodic system constructed. 
 
 
-### 2.4. Accessing the cluster via Open OnDemand
+### 2.4. Complete the "Intro to CCR course"
+
+**Tasks**:
+
+Pass the course ["Intro to CCR"](https://ublearns.buffalo.edu/d2l/le/discovery/view/course/285151) on UB Learns
+
+**Outcomes**:
+
+Provide the proof of a successful completion of this course to the Instructor. 
+
+
+### 2.5. Accessing the cluster via Open OnDemand
 
 **Tasks**:
 
@@ -61,7 +72,7 @@ The following [link](https://akimovlab.github.io/soft_and_tuts/4.4-UBCCR_OnDeman
 
 **Outcomes**: Provide a proof of you logging into the CCR (snapshot) and running the OnDemand portal tools (snapshots)
 
-### 2.5. Accessing the cluster via MobaXterm
+### 2.6. Accessing the cluster via MobaXterm
 
 **Tasks**:
 Install the [MobaXterm](https://mobaxterm.mobatek.net/) 
@@ -75,7 +86,7 @@ Document the steps of your setup. Include the snapshots of the parameters you us
 logged into CCR via MobaXterm)
 
 
-### 2.6. Using the Linux command line 
+### 2.7. Using the Linux command line 
 
 **Tasks**:
 Learn the basic commands to get around on the Linux system. More details will be given in class. Also, these sources could be useful:
@@ -99,7 +110,7 @@ Document the key commands needed to get around on Linux system with the examples
 the corresponding file systems (snapshots).
 
 
-### 2.7. Working with text editors 
+### 2.8. Working with text editors 
 
 **Tasks**:
 Install and try using the following text editing software: 
@@ -146,7 +157,7 @@ The content of this file should include the following:
 need to create a `.bashrc` file in your home directory on CCR.
 
 
-### 2.8. Working with Jupyter notebooks/JupyterLab
+### 2.9. Working with Jupyter notebooks/JupyterLab
 
 **Tasks**:
 Learn to start Jupyter or JupyterLab job on the CCR OnDemand portal (see the link above). 
@@ -159,7 +170,7 @@ More about Jupyter can be found [here](https://jupyter.org/)
 Document the seteps needed to work with Jupyter (written). Provide a proof of you using Jupyter on the OnDemand system of CCR (snapshots) and using it
 to plot a Python funcion (snapshot)
 
-### 2.9. Submitting jobs on CCR: 
+### 2.10. Submitting jobs on CCR: 
 
 **Tasks**:
 Create a submit file for running a simple “NWChem” job and submit it to be run on a cluster. 
