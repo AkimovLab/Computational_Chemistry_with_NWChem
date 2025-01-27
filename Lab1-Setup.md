@@ -91,7 +91,7 @@ logged into CCR via MobaXterm)
 **Tasks**:
 Learn the basic commands to get around on the Linux system. More details will be given in class. Also, these sources could be useful:
 - [first link](https://docs.alliancecan.ca/wiki/Linux_introduction)
-- [second linl](https://buffalo.app.box.com/s/nqj3neyt2w1dtb3gix6zxqx5gcc9x30n)
+- [second link](https://buffalo.app.box.com/s/nqj3neyt2w1dtb3gix6zxqx5gcc9x30n)
 
 Create a hierarchical file system (nested folders) in your home directory to mimic a file organization of a potential project. As an example, this could be something like this:
 
