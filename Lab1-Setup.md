@@ -164,7 +164,7 @@ Learn to start Jupyter or JupyterLab job on the CCR OnDemand portal (see the lin
 
 Use it to generate a plot of a simple function using Python and Matplotlib as shown below
 
-![image](jupyter-plotting.png)
+![image](jupyter-plotting.png){ width=50% }
 
 More about Jupyter can be found [here](https://jupyter.org/)
 
