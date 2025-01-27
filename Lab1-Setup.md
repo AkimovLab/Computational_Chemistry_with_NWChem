@@ -162,7 +162,9 @@ need to create a `.bashrc` file in your home directory on CCR.
 **Tasks**:
 Learn to start Jupyter or JupyterLab job on the CCR OnDemand portal (see the link above). 
 
-Use it to generate a plot of a simple function (using Python an Matplotlib - an example will be provided in class).
+Use it to generate a plot of a simple function using Python and Matplotlib as shown below
+
+![image](jupyter-plotting.png)
 
 More about Jupyter can be found [here](https://jupyter.org/)
 
