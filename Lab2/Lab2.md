@@ -48,6 +48,15 @@ properties such as molecular orbitals, charge or spin densities.
 
 ### 2.2. Electronic structure calculations, convergence with respect to basis set choice.
 
+**Useful materials**:
+
+- [How to setup Hartree-Fock calculations](https://nwchemgit.github.io/Hartree-Fock-Theory-for-Molecules.html)
+- [How to setup basis sets](https://nwchemgit.github.io/Basis.html#explicit-basis-set-definition)
+- [How to compute properties](https://nwchemgit.github.io/Properties.html)
+
+- [Example files for property calculations](https://github.com/compchem-cybertraining/Tutorials_NWChem/blob/main/2_DFT/properties)
+- [Fxample files for setting up multiplicities](https://github.com/compchem-cybertraining/Tutorials_NWChem/tree/main/2_DFT/multiplicity)
+
 **Tasks**: 
 
 For each molecule, compute using the Hartree-Forck (HF) method:
@@ -134,6 +143,11 @@ For each molecule, fill in the following tables and address the questions listed
 
 
 ### 2.3. Molecular orbitals, charge, and spin density visualization.
+
+**Useful materials**:
+
+- [How to compute properties](https://nwchemgit.github.io/Properties.html)
+
 
 **Tasks**: 
 
