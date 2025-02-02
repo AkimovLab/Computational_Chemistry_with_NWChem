@@ -146,8 +146,10 @@ For each molecule, fill in the following tables and address the questions listed
 
 **Useful materials**:
 
-- [How to compute properties](https://nwchemgit.github.io/Properties.html)
+The example scripts for computing molecular orbitals (and the output files) are included 
+in this directory of the current repository. You can use them as a template. 
 
+- [How to compute properties](https://nwchemgit.github.io/Properties.html)
 
 **Tasks**: 
 
