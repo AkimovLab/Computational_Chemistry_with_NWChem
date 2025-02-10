@@ -1,0 +1,30 @@
+echo
+title "total energy of oxygen, HF/6-31G*"
+
+start o2
+
+geometry
+ O    0.000     0.000     0.000
+ O    0.000     0.000     1.22
+end
+
+basis
+* library 6-31G*
+end
+
+
+start o2-singlet
+scf
+  singlet; rhf
+  vectors  output o2-singlet.movecs
+end
+task scf energy
+
+
+start o2-triplet
+scf
+  triplet; rohf
+  vectors output o2-triplet.movecs
+end
+task scf energy
+
