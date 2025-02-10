@@ -173,7 +173,7 @@ An example is set up for diatomic oxygen molecule in the [O2_example](O2_example
   The `spindens` option for orbital n is $| |\psi_n^{\alpha}|^2 - |\psi_n^{\beta}|^2 |$. In both cases, the `.cube` files contain positive values.
   In this example, we do the plots for the densities of the HOMO (singly-occupied), so in both cases the results are the same and should look like this:
 
-  ![image](homoX.bmp)
+  ![image](O2_example/homoX.bmp)
 
 - `input5.nw` - this is the example similar to `input4.nw` but for HOMO-1 (doubly occupied). So, in this case, the total density will look non-zero
   (as squared orbital in example `input3.nw`), while the spin density shoud be zero reflecting the fact that there is no spin polarization in such an
