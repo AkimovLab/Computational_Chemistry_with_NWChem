@@ -120,7 +120,6 @@ For each molecule, fill in the following tables and address the questions listed
 | 6-31++G |          |           |           |        |         |             |             |          |                  |
 | 6-31++G** |          |           |           |        |         |             |             |          |                  |
 | 6-311++G** |          |           |           |        |         |             |             |          |                  |
-| 6-311G(3df,3pd) |          |           |           |        |         |             |             |          |                  |
 | 6-311++G(3df, 3pd) |          |           |           |        |         |             |             |          |                  |
 
 
@@ -138,7 +137,6 @@ For each molecule, fill in the following tables and address the questions listed
 | 6-31++G |          |           |           |        |         |             |             |          |                  |
 | 6-31++G** |          |           |           |        |         |             |             |          |                  |
 | 6-311++G** |          |           |           |        |         |             |             |          |                  |
-| 6-311G(3df,3pd) |          |           |           |        |         |             |             |          |                  |
 | 6-311++G(3df, 3pd) |          |           |           |        |         |             |             |          |                  |
 
 
@@ -150,6 +148,36 @@ The example scripts for computing molecular orbitals (and the output files) are 
 in this directory of the current repository. You can use them as a template. 
 
 - [How to compute properties](https://nwchemgit.github.io/Properties.html)
+
+**Examples**:
+
+An example is set up for diatomic oxygen molecule in the [O2_example](O2_example) folder.
+
+- `input.nw` shows how to stack two SCF calculations in one input file. In this case, these are singlet and triplet calculations for O2 molecule
+  Pay attention to the names into which the MO vectors are printed - `o2-singlet.movecs` and `o2-triplet.movecs`. For the rest of the examples,
+  we'll use only one of them - the triplet one.
+  
+- `input2.nw` - here, we don't need to re-run any SCF calculations. All the information we need is: a) geometry; b) basis; c) MO vectors.
+  The latter are read from the `o2-triplet.movecs` file produced in the previous step. This example demonstrates production of
+  the total and spin density for the HOMO orbital using the `view` option. In this case, both figures are the same and look like this:
+  ![image](O2_example/homo-total.bmp)
+  
+- `input3.nw` - same as before, but plotting HOMO-1. For both `total` and `spindens` options with the `view` we get the same results as before.
+  Of course, the orbital itself is different:
+
+  ![image](O2_example/homo-m-one-total.bmp)
+  In both examples, we plot the orbital isodensity surfaces (so in this case total or spindens doesn't really matter here)
+  
+- `input4.nw` - now, we are plotting charge densities (as opposed to orbitals themselves) corresponding some orbitals. This is requested
+  by the `density` option instead of `view`. The `total` density for orbital n  is actually $|\psi_n^{\alpha}|^2 + |\psi_n^{\beta}|^2$.
+  The `spindens` option for orbital n is $| |\psi_n^{\alpha}|^2 - |\psi_n^{\beta}|^2 |$. In both cases, the `.cube` files contain positive values.
+  In this example, we do the plots for the densities of the HOMO (singly-occupied), so in both cases the results are the same and should look like this:
+
+  ![image](homoX.bmp)
+
+- `input5.nw` - this is the example similar to `input4.nw` but for HOMO-1 (doubly occupied). So, in this case, the total density will look non-zero
+  (as squared orbital in example `input3.nw`), while the spin density shoud be zero reflecting the fact that there is no spin polarization in such an
+  orbital. 
 
 **Tasks**: 
 
