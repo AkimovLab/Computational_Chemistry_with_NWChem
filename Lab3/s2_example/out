@@ -1,0 +1,1912 @@
+ argument  1 = input.nw
+  NWChem w/ OpenMP: maximum threads =    1
+ 
+
+
+============================== echo of input deck ==============================
+ echo
+ title "total energy of s2-dimer LDA/30Ry with PSPW method"
+ start s2-pspw-energy
+ geometry
+ S 0.0 0.0 0.0
+ S 0.0 0.0 1.88
+ end
+ nwpw
+   simulation_cell
+     SC 20.0
+   end
+   cutoff 15.0
+   mult 3
+   xc PBEsol-Grimme3
+   lmbfgs
+   Mulliken
+   dos
+
+   dplot
+     vectors s2-pspw-energy.movecs
+     LimitXYZ
+       0.0 20.0 30
+       0.0 20.0 30
+       0.0 20.0 30
+     orbital 6  orb6.cube
+   end
+ end
+
+task pspw energy
+task PSPW PSPW_DPLOT
+
+================================================================================
+
+
+                                         
+                                         
+ 
+ 
+             Northwest Computational Chemistry Package (NWChem) 7.2.1
+             --------------------------------------------------------
+ 
+ 
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+ 
+                              Copyright (c) 1994-2022
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+ 
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+ 
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = cpn-f13-36.core.ccr.buffalo.edu
+    program         = nwchem
+    date            = Thu Feb  8 14:49:48 2024
+
+    compiled        = Wed_Jan_24_00:21:18_2024
+    source          = /projects/academic/cyberwksp21/SOFTWARE_NEW_ENV/nwchem_intel
+    nwchem branch   = 7.2.1
+    nwchem revision = v7.2.0-beta1-1000-g270de2eadb
+    ga revision     = 5.8.0
+    use scalapack   = T
+    input           = input.nw
+    prefix          = s2-pspw-energy.
+    data base       = ./s2-pspw-energy.db
+    status          = startup
+    nproc           =        3
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =     26214396 doubles =      200.0 Mbytes
+    stack    =     26214401 doubles =      200.0 Mbytes
+    global   =     52428800 doubles =      400.0 Mbytes (distinct from heap & stack)
+    total    =    104857597 doubles =      800.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+ 
+  0 permanent = .
+  0 scratch   = .
+ 
+ 
+ 
+ 
+                                NWChem Input Module
+                                -------------------
+ 
+ 
+                total energy of s2-dimer LDA/30Ry with PSPW method
+                --------------------------------------------------
+
+ Scaling coordinates for geometry "geometry" by  1.889725989
+ (inverse scale =  0.529177249)
+
+ ORDER OF PRIMARY AXIS IS BEING SET TO 4
+ D4H symmetry detected
+
+          ------
+          auto-z
+          ------
+  no constraints, skipping   0.000000000000000E+000
+  no constraints, skipping   0.000000000000000E+000
+ 
+ 
+                             Geometry "geometry" -> ""
+                             -------------------------
+ 
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+ 
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 S                   16.0000     0.00000000     0.00000000    -0.94000000
+    2 S                   16.0000     0.00000000     0.00000000     0.94000000
+ 
+      Atomic Mass 
+      ----------- 
+ 
+      S                 31.972070
+ 
+
+ Effective nuclear repulsion energy (a.u.)      72.0581785872
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000     0.0000000000
+ 
+      Symmetry information
+      --------------------
+ 
+ Group name             D4h       
+ Group number             28
+ Group order              16
+ No. of unique centers     1
+ 
+      Symmetry unique atoms
+ 
+     1
+ 
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+ 
+      Type          Name      I     J     K     L     M      Value
+      ----------- --------  ----- ----- ----- ----- ----- ----------
+    1 Stretch                  1     2                       1.88000
+ 
+ 
+            XYZ format geometry
+            -------------------
+     2
+ geometry
+ S                     0.00000000     0.00000000    -0.94000000
+ S                     0.00000000     0.00000000     0.94000000
+ 
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 S                |   1 S                |     3.55268  |     1.88000
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:          1
+ ==============================================================================
+
+
+
+          ****************************************************
+          *                                                  *
+          *               NWPW PSPW Calculation              *
+          *                                                  *
+          * [ (Grassmann/Stiefel manifold implementation)  ] *
+          *                                                  *
+          *      [ NorthWest Chemistry implementation ]      *
+          *                                                  *
+          *            version #5.10   06/12/02              *
+          *                                                  *
+          *    This code was developed by Eric J. Bylaska,   *
+          *    and was based upon algorithms and code        *
+          *    developed by the group of Prof. John H. Weare *
+          *                                                  *
+          ****************************************************
+     >>>  JOB STARTED       AT Thu Feb  8 14:49:49 2024  <<<
+          ================ input data ========================
+  library name resolved from: compiled reference
+  NWCHEM_NWPW_LIBRARY set to: <
+ /projects/academic/cyberwksp21/SOFTWARE_NEW_ENV/nwchem_intel/src/nwpw/libraryps
+ />
+ Generating 1d pseudopotential for S   
+ 
+ Generated formatted_filename: ./S.vpp
+ random planewave guess, initial psi:
+ s2-pspw-energy.movecs                             
+ -   spin, nalpha, nbeta:                     2                     7
+                     5
+
+ input psi filename:./s2-pspw-energy.movecs
+
+ Warning - K.S. orbitals are not orthonormal. Applying Gram-Schmidt orthonormalization.
+         - exact norm=0.120000E+02 norm=0.790749E+01 corrected norm=0.120000E+02 (error=0.409251E+01)
+
+
+ number of processors used:         3
+ processor grid           :   3 x   1
+ parallel mapping         :2d-hilbert
+ parallel mapping         :  balanced
+ number of threads        :         1
+ parallel io              :       off
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBEsol (White and Bird) parameterization
+      dispersion correction= Grimme3
+
+ elements involved in the cluster:
+      1: S   valence charge:  6.0000  lmax=  2
+             comment    : Hamann pseudopotential
+             pseudpotential type            :   0
+             highest angular component      :   2
+             local potential used           :   2
+             number of non-local projections:   4
+             cutoff =   0.843   0.955   0.955
+ 
+
+ total charge:   0.000
+
+ atomic composition:
+     S   :    2
+
+ number of electrons: spin up=     7 (   7 per task)  down=     5 (   5 per task) (Fourier space)
+ number of orbitals : spin up=     7 (   7 per task)  down=     5 (   5 per task) (Fourier space)
+
+ supercell:
+      cell_name:  cell_default                                      
+      lattice:    a1=<  20.000   0.000   0.000 >
+                  a2=<   0.000  20.000   0.000 >
+                  a3=<   0.000   0.000  20.000 >
+      reciprocal: b1=<   0.314   0.000   0.000 >
+                  b2=<   0.000   0.314   0.000 >
+                  b3=<   0.000   0.000   0.314 >
+      lattice:    a=      20.000 b=     20.000 c=      20.000
+                  alpha=  90.000 beta=  90.000 gamma=  90.000
+                  omega=      8000.0
+
+      density cutoff= 15.000  fft= 36x 36x 36(    11060 waves     3686 per task)
+      wavefnc cutoff=  7.500  fft= 36x 36x 36(     3905 waves     1301 per task)
+      Ewald summation: cut radius=    6.37  and  1
+                       Madelung Wigner-Seitz=    1.76011888 (alpha=    2.83729748 rs=12.40700982)
+
+ technical parameters:
+      time step=      5.80     fictitious mass=  400000.0
+      tolerance=0.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      1000 (   10 inner    100 outer )
+
+
+
+
+
+== Energy Calculation ==
+
+
+          ============ Grassmann lmbfgs iteration ============
+     >>>  ITERATION STARTED AT Thu Feb  8 14:49:50 2024  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+     -  15 steepest descent iterations performed
+      10   -0.1997661156E+02   -0.94138E-01    0.10002E+01
+     -  10 steepest descent iterations performed
+      20   -0.2034751925E+02   -0.52765E-02    0.15691E-01
+      30   -0.2035664505E+02   -0.76153E-04    0.18232E-03
+      40   -0.2035677996E+02   -0.12579E-05    0.12737E-05
+      50   -0.2035678221E+02   -0.63944E-07    0.40108E-07
+  *** tolerance ok. iteration terminated
+     >>>  ITERATION ENDED   AT Thu Feb  8 14:49:52 2024  <<<
+
+
+==  Summary Of Results  ==
+ 
+ number of electrons: spin up=    7.00000  down=    5.00000 (real space)
+
+ total     energy    :  -0.2035678221E+02 (   -0.10178E+02/ion)
+ total orbital energy:  -0.4882355735E+01 (   -0.40686E+00/electron)
+ hartree   energy    :   0.1683278378E+02 (    0.14027E+01/electron)
+ exc-corr  energy    :  -0.4339280194E+01 (   -0.36161E+00/electron)
+ ion-ion   energy    :   0.4347470065E-01 (    0.21737E-01/ion)
+
+ kinetic (planewave) :   0.7428572104E+01 (    0.61905E+00/electron)
+ V_local (planewave) :  -0.4509818116E+02 (   -0.37582E+01/electron)
+ V_nl    (planewave) :   0.4775891273E+01 (    0.39799E+00/electron)
+ V_Coul  (planewave) :   0.3366556757E+02 (    0.28055E+01/electron)
+ V_xc.   (planewave) :  -0.5654205514E+01 (   -0.47118E+00/electron)
+ Virial Coefficient  :  -0.1657240135E+01
+
+ Dispersion energy   :  -0.4271596655E-04
+
+ orbital energies:
+    -0.2002678E+00 (  -5.450eV)
+    -0.2002682E+00 (  -5.450eV)
+    -0.3300422E+00 (  -8.981eV)    -0.2955891E+00 (  -8.043eV)
+    -0.3300423E+00 (  -8.981eV)    -0.2955897E+00 (  -8.043eV)
+    -0.3538639E+00 (  -9.629eV)    -0.3321316E+00 (  -9.038eV)
+    -0.5499416E+00 ( -14.965eV)    -0.5081643E+00 ( -13.828eV)
+    -0.7544934E+00 ( -20.531eV)    -0.7319615E+00 ( -19.918eV)
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_dos_alpha
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_dos_beta
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_fdos_alpha
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_fdos_beta
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+ Total PSPW energy     :  -0.2035678221E+02
+
+
+=== Spin Contamination ===
+ 
+ <Sexact^2> =    2.00000000000000     
+ <S^2>      =    2.00453076783931     
+ 
+
+
+== Center of Charge ==
+
+spin up     (    0.0000,   -0.0000,    0.0000 )
+spin down   (   -0.0000,    0.0000,   -0.0000 )
+     total  (    0.0000,    0.0000,    0.0000 )
+ionic       (    0.0000,    0.0000,   -0.0000 )
+
+
+== Molecular Dipole wrt Center of Mass ==
+
+mu   =  (   -0.0001,   -0.0000,   -0.0001 ) au
+|mu| =     0.0001 au,       0.0003 Debye
+  library name resolved from: compiled reference
+  NWCHEM_NWPW_LIBRARY set to: <
+ /projects/academic/cyberwksp21/SOFTWARE_NEW_ENV/nwchem_intel/src/nwpw/libraryps
+ />
+ 
+ Generated formatted atomic orbitals, filename: ./S.aorb
+ 
+== S.psp1   expansion coefficients ==
+
+ATOM       S            P            D            F
+S  :   0.28134E+00  0.66030E+00
+ 
+ 
+ 
+ 
+ 
+ *************************************************************
+ **                                                         **
+ **                  PSPW Mulliken analysis                 **
+ **                                                         **
+ ** Population analysis algorithm devloped by Ryoichi Kawai **
+ **                                                         **
+ **                   Thu Feb  8 14:49                      **
+ **                                                         **
+ *************************************************************
+
+
+== XYZ OUTPUT ==
+
+ 
+                     2
+ 
+S             0.000000      0.000000     -0.940000
+S             0.000000      0.000000      0.940000
+
+
+== Atomic Orbital Expansion ==
+
+ S    nodamping
+ 
+ 
+ =====================================================
+ | POPULATION ANALYSIS OF FILLED MOLECULAR ORBITALS  |
+ =====================================================
+
+
+== Using pseudoatomic orbital expansion          ==
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   1***  SPIN=UP      SUM= 0.75075E+00 E=-0.20027E+00 (  -5.450eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00001
+                            px         pz         py
+ 1   S      1    0.50003   -0.69679    0.00012   -0.12048
+                            s
+ 2   S      0    0.00000    0.00003
+                            px         pz         py
+ 2   S      1    0.49997    0.69674    0.00009    0.12049
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   2***  SPIN=UP      SUM= 0.75076E+00 E=-0.20027E+00 (  -5.450eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00001
+                            px         pz         py
+ 1   S      1    0.50001   -0.12050    0.00001    0.69677
+                            s
+ 2   S      0    0.00000    0.00000
+                            px         pz         py
+ 2   S      1    0.49999    0.12048   -0.00001   -0.69676
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   3***  SPIN=UP      SUM= 0.12279E+01 E=-0.33004E+00 (  -8.981eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00001
+                            px         pz         py
+ 1   S      1    0.49999    0.44783    0.00000    0.54722
+                            s
+ 2   S      0    0.00000    0.00001
+                            px         pz         py
+ 2   S      1    0.50001    0.44784    0.00001    0.54722
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   4***  SPIN=UP      SUM= 0.12279E+01 E=-0.33004E+00 (  -8.981eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00000
+                            px         pz         py
+ 1   S      1    0.49998   -0.54720   -0.00000    0.44783
+                            s
+ 2   S      0    0.00000   -0.00001
+                            px         pz         py
+ 2   S      1    0.50002   -0.54723    0.00002    0.44784
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   5***  SPIN=UP      SUM= 0.98088E+00 E=-0.35386E+00 (  -9.629eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.04272    0.20669
+                            px         pz         py
+ 1   S      1    0.45727    0.00001    0.67622    0.00002
+                            s
+ 2   S      0    0.04272    0.20668
+                            px         pz         py
+ 2   S      1    0.45729   -0.00003   -0.67623    0.00001
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0854    0.9146    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   6***  SPIN=UP      SUM= 0.10305E+01 E=-0.54994E+00 ( -14.965eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.35787    0.59822
+                            px         pz         py
+ 1   S      1    0.14213    0.00000    0.37700    0.00000
+                            s
+ 2   S      0    0.35786   -0.59821
+                            px         pz         py
+ 2   S      1    0.14214    0.00001    0.37701    0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7157    0.2843    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   7***  SPIN=UP      SUM= 0.15360E+01 E=-0.75449E+00 ( -20.531eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.37827   -0.61503
+                            px         pz         py
+ 1   S      1    0.12173    0.00000    0.34890   -0.00000
+                            s
+ 2   S      0    0.37828   -0.61504
+                            px         pz         py
+ 2   S      1    0.12172    0.00000   -0.34889   -0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7565    0.2435    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   8***  SPIN=DOWN    SUM= 0.12226E+01 E=-0.29559E+00 (  -8.043eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00000
+                            px         pz         py
+ 1   S      1    0.49999    0.17933   -0.00001   -0.68398
+                            s
+ 2   S      0    0.00000   -0.00000
+                            px         pz         py
+ 2   S      1    0.50001    0.17911    0.00001   -0.68405
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   9***  SPIN=DOWN    SUM= 0.12226E+01 E=-0.29559E+00 (  -8.043eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000    0.00000
+                            px         pz         py
+ 1   S      1    0.50003   -0.68402    0.00007   -0.17929
+                            s
+ 2   S      0    0.00000    0.00001
+                            px         pz         py
+ 2   S      1    0.49997   -0.68402   -0.00004   -0.17914
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=  10***  SPIN=DOWN    SUM= 0.96447E+00 E=-0.33213E+00 (  -9.038eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.05595    0.23655
+                            px         pz         py
+ 1   S      1    0.44404    0.00000    0.66636   -0.00001
+                            s
+ 2   S      0    0.05595    0.23654
+                            px         pz         py
+ 2   S      1    0.44405    0.00011   -0.66637    0.00001
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.1119    0.8881    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=  11***  SPIN=DOWN    SUM= 0.10397E+01 E=-0.50816E+00 ( -13.828eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.35329    0.59438
+                            px         pz         py
+ 1   S      1    0.14671   -0.00001    0.38303   -0.00001
+                            s
+ 2   S      0    0.35328   -0.59438
+                            px         pz         py
+ 2   S      1    0.14671    0.00001    0.38303    0.00001
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7066    0.2934    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=  12***  SPIN=DOWN    SUM= 0.15503E+01 E=-0.73196E+00 ( -19.918eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.36610    0.60506
+                            px         pz         py
+ 1   S      1    0.13390   -0.00001   -0.36592    0.00000
+                            s
+ 2   S      0    0.36611    0.60507
+                            px         pz         py
+ 2   S      1    0.13389   -0.00001    0.36592   -0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7322    0.2678    0.0000    0.0000
+ 
+ 
+ ========================================
+ |   POPULATION ANALYSIS ON EACH ATOM   |
+ ========================================
+ 
+ 
+NO  ATOM  SPIN    TOTAL       s          p          d          f
+ 1   S      UP      3.50000    0.77886    2.72114
+ 1   S      DOWN    2.50002    0.77535    1.72467
+ 2   S      UP      3.50000    0.77885    2.72114
+ 2   S      DOWN    2.49998    0.77534    1.72464
+
+
+
+=== TOTAL ANGULAR MOMENTUM POPULATION ===
+
+ SPIN       s           p           d           f
+  UP       22.25%      77.75%       0.00%       0.00% 
+  DOWN     31.01%      68.99%       0.00%       0.00% 
+ TOTAL     25.90%      74.10%       0.00%       0.00% 
+ into mulliken DOS
+
+
+
+=== PROJECTED DENSITY OF STATES ===
+
+  All atoms were used to determine weights
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_alpha_s
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_dos_alpha_s
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_beta_s
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_dos_beta_s
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_alpha_p
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_dos_alpha_p
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_beta_p
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_dos_beta_p
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_alpha_all
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_dos_alpha_all
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_beta_all
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_dos_beta_all
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8545:   -0.1003), npoints=  500
+ 
+ *************************************************************
+ **                                                         **
+ **          PSPW Atomic Point Charge (APC) Analysis        **
+ **                                                         **
+ **   Point charge analysis based on paper by P.E. Blochl   **
+ **         (J. Chem. Phys. vol 103, page 7422, 1995)       **
+ **                                                         **
+ *************************************************************
+ 
+ pspw_APC data structure
+ -----------------------
+ nga, ngs:                     3                     6
+ Gc      :   2.50000000000000     
+ APC gamma:                     1  0.600000000000000     
+ APC gamma:                     2  0.900000000000000     
+ APC gamma:                     3   1.35000000000000     
+ 
+ charge analysis on each atom
+ ----------------------------
+
+    no  atom        Qelc        Qion      Qtotal
+    --  ----     -------     -------     -------
+     1  S         -6.000       6.000       0.000
+     2  S         -6.000       6.000      -0.000
+     Total Q     -12.000      12.000       0.000
+ 
+ 
+ gaussian coefficients of model density
+ --------------------------------------
+
+    no  atom     g=0.000     g=0.600     g=0.900     g=1.350
+    --  ----     -------     -------     -------     -------
+     1  S          6.000      -6.159      14.046     -13.887
+     2  S          6.000      -6.159      14.047     -13.887
+
+
+=== Electric Field at Atoms ===
+
+      1 S    Atomic Electric Field =(   -0.00002   -0.00000   -0.05360 )
+                    (ion)          =(   -0.00000   -0.00000   -0.46316 )
+                    (electronic)   =(   -0.00002   -0.00000    0.40955 )
+      2 S    Atomic Electric Field =(   -0.00002   -0.00000    0.05361 )
+                    (ion)          =(    0.00000    0.00000    0.46316 )
+                    (electronic)   =(   -0.00002   -0.00000   -0.40955 )
+ 
+ *************************************************************
+ **                                                         **
+ **          PSPW Atomic Point Charge (APC) Analysis        **
+ **                                                         **
+ **   Point charge analysis based on paper by P.E. Blochl   **
+ **         (J. Chem. Phys. vol 103, page 7422, 1995)       **
+ **                                                         **
+ *************************************************************
+ 
+ pspw_APC data structure
+ -----------------------
+ nga, ngs:                     3                     6
+ Gc      :   2.50000000000000     
+ APC gamma:                     1  0.600000000000000     
+ APC gamma:                     2  0.900000000000000     
+ APC gamma:                     3   1.35000000000000     
+ 
+ charge analysis on each atom
+ ----------------------------
+
+    no  atom        Qelc        Qion      Qtotal
+    --  ----     -------     -------     -------
+     1  S         -6.000       6.000       0.000
+     2  S         -6.000       6.000      -0.000
+     Total Q     -12.000      12.000       0.000
+ 
+ 
+ gaussian coefficients of model density
+ --------------------------------------
+
+    no  atom     g=0.000     g=0.600     g=0.900     g=1.350
+    --  ----     -------     -------     -------     -------
+     1  S          6.000      -6.159      14.046     -13.887
+     2  S          6.000      -6.159      14.047     -13.887
+
+ output psi filename:./s2-pspw-energy.movecs
+
+
+== Timing ==
+
+cputime in seconds
+  prologue    :   0.793868E+00
+  main loop   :   0.204849E+01
+  epilogue    :   0.595145E+00
+  total       :   0.343750E+01
+  cputime/step:   0.158797E-01       (     129 evalulations,      47 linesearches)
+
+
+Time spent doing                        total          step       percent
+  total time                 :   0.343885E+01  0.266577E-01       100.0 %
+  i/o time                   :   0.772126E+00  0.598548E-02        22.5 %
+  FFTs                       :   0.500298E+00  0.387828E-02        14.5 %
+  dot products               :   0.242206E-01  0.187757E-03         0.7 %
+  geodesic                   :   0.358182E-01  0.277660E-03         1.0 %
+  ffm_dgemm                  :   0.767550E-02  0.595000E-04         0.2 %
+  fmf_dgemm                  :   0.108594E-01  0.841812E-04         0.3 %
+  mmm_dgemm                  :   0.144978E-02  0.112386E-04         0.0 %
+  m_diagonalize              :   0.166972E-02  0.129436E-04         0.0 %
+  exchange correlation       :   0.106247E+01  0.823623E-02        30.9 %
+  local pseudopotentials     :   0.431277E-04  0.334323E-06         0.0 %
+  non-local pseudopotentials :   0.145928E-01  0.113122E-03         0.4 %
+  hartree potentials         :   0.216606E-02  0.167911E-04         0.1 %
+  ion-ion interaction        :   0.353716E-03  0.274199E-05         0.0 %
+  structure factors          :   0.117251E-01  0.908924E-04         0.3 %
+  phase factors              :   0.426290E-05  0.330457E-07         0.0 %
+  masking and packing        :   0.932169E-01  0.722611E-03         2.7 %
+  queue fft                  :   0.572613E+00  0.443886E-02        16.7 %
+  queue fft (serial)         :   0.301740E+00  0.233907E-02         8.8 %
+  queue fft (message passing):   0.259115E+00  0.200864E-02         7.5 %
+  non-local psp FFM          :   0.100049E-01  0.775570E-04         0.3 %
+  non-local psp FMF          :   0.213922E-02  0.165831E-04         0.1 %
+  non-local psp FFM A        :   0.132633E-02  0.102816E-04         0.0 %
+  non-local psp FFM B        :   0.473895E-02  0.367360E-04         0.1 %
+ 
+     >>>  JOB COMPLETED     AT Thu Feb  8 14:49:52 2024  <<<
+          ****************************************************
+          *                                                  *
+          *               NWPW PSPW Calculation              *
+          *                                                  *
+          * [ (Grassmann/Stiefel manifold implementation)  ] *
+          *                                                  *
+          *      [ NorthWest Chemistry implementation ]      *
+          *                                                  *
+          *            version #5.10   06/12/02              *
+          *                                                  *
+          *    This code was developed by Eric J. Bylaska,   *
+          *    and was based upon algorithms and code        *
+          *    developed by the group of Prof. John H. Weare *
+          *                                                  *
+          ****************************************************
+     >>>  JOB STARTED       AT Thu Feb  8 14:49:53 2024  <<<
+          ================ input data ========================
+ pseudopotential is not correctly formatted:
+ S.vpp                                             
+ 
+ Generated formatted_filename: ./S.vpp
+ Error reading psi - bad grid
+ nfft :                    36                    36                    36
+ ngrid:                    50                    50                    50
+ Error reading psi - bad grid
+ nfft :                    36                    36                    36
+ ngrid:                    50                    50                    50
+ Error reading psi - bad grid
+ 
+ Grid is being converted:
+ ------------------------
+ 
+ To turn off automatic grid conversion:
+ 
+ set nwpw:psi_nogrid .false.
+ 
+ old_filename: s2-pspw-energy.movecs                             
+ new_filename: s2-pspw-energy.movecs                             
+ converting  :  36x 36x 36 -->  50x 50x 50
+converting .... psi:    1 spin: 1
+converting .... psi:    2 spin: 1
+converting .... psi:    3 spin: 1
+converting .... psi:    4 spin: 1
+converting .... psi:    5 spin: 1
+converting .... psi:    6 spin: 1
+converting .... psi:    7 spin: 1
+converting .... psi:    1 spin: 2
+converting .... psi:    2 spin: 2
+converting .... psi:    3 spin: 2
+converting .... psi:    4 spin: 2
+converting .... psi:    5 spin: 2
+
+ input psi filename:./s2-pspw-energy.movecs
+
+ number of processors used:         3
+ processor grid           :   3 x   1
+ parallel mapping         :2d-hilbert
+ parallel mapping         :  balanced
+ number of threads        :         1
+ parallel io              :       off
+
+ options:
+      boundary conditions  = periodic    (version3)
+      electron spin        = unrestricted
+      exchange-correlation = PBEsol (White and Bird) parameterization
+      dispersion correction= Grimme3
+
+ elements involved in the cluster:
+      1: S   valence charge:  6.0000  lmax=  2
+             comment    : Hamann pseudopotential
+             pseudpotential type            :   0
+             highest angular component      :   2
+             local potential used           :   2
+             number of non-local projections:   4
+             cutoff =   0.843   0.955   0.955
+ 
+
+ total charge:   0.000
+
+ atomic composition:
+     S   :    2
+
+ number of electrons: spin up=     7 (   7 per task)  down=     5 (   5 per task) (Fourier space)
+ number of orbitals : spin up=     7 (   7 per task)  down=     5 (   5 per task) (Fourier space)
+
+ supercell:
+      cell_name:  cell_default                                      
+      lattice:    a1=<  20.000   0.000   0.000 >
+                  a2=<   0.000  20.000   0.000 >
+                  a3=<   0.000   0.000  20.000 >
+      reciprocal: b1=<   0.314   0.000   0.000 >
+                  b2=<   0.000   0.314   0.000 >
+                  b3=<   0.000   0.000   0.314 >
+      lattice:    a=      20.000 b=     20.000 c=      20.000
+                  alpha=  90.000 beta=  90.000 gamma=  90.000
+                  omega=      8000.0
+
+      density cutoff= 30.000  fft= 50x 50x 50(    31335 waves    10445 per task)
+      wavefnc cutoff= 15.000  fft= 50x 50x 50(    11060 waves     3686 per task)
+      Ewald summation: cut radius=    6.37  and  1
+                       Madelung Wigner-Seitz=    1.76011888 (alpha=    2.83729748 rs=12.40700982)
+
+ technical parameters:
+      time step=      5.80     fictitious mass=  400000.0
+      tolerance=0.100E-06 (energy)   0.100E-06 (density)
+      maximum iterations =      1000 (   10 inner    100 outer )
+
+
+
+
+
+== Energy Calculation ==
+
+
+          ============ Grassmann lmbfgs iteration ============
+     >>>  ITERATION STARTED AT Thu Feb  8 14:49:53 2024  <<<
+    iter.           Energy         DeltaE       DeltaRho 
+    ------------------------------------------------------
+      10   -0.2043459376E+02   -0.48835E-05    0.24315E-02
+      20   -0.2043459938E+02   -0.95105E-07    0.42987E-07
+  *** tolerance ok. iteration terminated
+     >>>  ITERATION ENDED   AT Thu Feb  8 14:49:54 2024  <<<
+
+
+==  Summary Of Results  ==
+ 
+ number of electrons: spin up=    7.00000  down=    5.00000 (real space)
+
+ total     energy    :  -0.2043459938E+02 (   -0.10217E+02/ion)
+ total orbital energy:  -0.4903220694E+01 (   -0.40860E+00/electron)
+ hartree   energy    :   0.1689478240E+02 (    0.14079E+01/electron)
+ exc-corr  energy    :  -0.4357689192E+01 (   -0.36314E+00/electron)
+ ion-ion   energy    :   0.4347470065E-01 (    0.21737E-01/ion)
+
+ kinetic (planewave) :   0.7583421630E+01 (    0.63195E+00/electron)
+ V_local (planewave) :  -0.4521414384E+02 (   -0.37678E+01/electron)
+ V_nl    (planewave) :   0.4615597636E+01 (    0.38463E+00/electron)
+ V_Coul  (planewave) :   0.3378956479E+02 (    0.28158E+01/electron)
+ V_xc.   (planewave) :  -0.5677660918E+01 (   -0.47314E+00/electron)
+ Virial Coefficient  :  -0.1646571025E+01
+
+ Dispersion energy   :  -0.4271596655E-04
+
+ orbital energies:
+    -0.1988392E+00 (  -5.411eV)
+    -0.1988392E+00 (  -5.411eV)
+    -0.3273936E+00 (  -8.909eV)    -0.2931468E+00 (  -7.977eV)
+    -0.3273937E+00 (  -8.909eV)    -0.2931469E+00 (  -7.977eV)
+    -0.3534988E+00 (  -9.619eV)    -0.3317139E+00 (  -9.026eV)
+    -0.5606924E+00 ( -15.257eV)    -0.5182748E+00 ( -14.103eV)
+    -0.7612782E+00 ( -20.716eV)    -0.7390032E+00 ( -20.109eV)
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_dos_alpha
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_dos_beta
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_fdos_alpha
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.smear_fdos_beta
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+ Total PSPW energy     :  -0.2043459938E+02
+
+
+=== Spin Contamination ===
+ 
+ <Sexact^2> =    2.00000000000000     
+ <S^2>      =    2.00495687794842     
+ 
+
+
+== Center of Charge ==
+
+spin up     (    0.0000,   -0.0000,    0.0000 )
+spin down   (    0.0000,    0.0000,   -0.0000 )
+     total  (    0.0000,    0.0000,    0.0000 )
+ionic       (    0.0000,    0.0000,   -0.0000 )
+
+
+== Molecular Dipole wrt Center of Mass ==
+
+mu   =  (   -0.0000,   -0.0000,   -0.0000 ) au
+|mu| =     0.0000 au,       0.0001 Debye
+ atomic orbitals are not correctly formatted:
+ S.aorb                                            
+ 
+ Generated formatted atomic orbitals, filename: ./S.aorb
+ 
+ Generated formatted atomic orbitals, filename: ./S.aorb
+ 
+ 
+ 
+ *************************************************************
+ **                                                         **
+ **                  PSPW Mulliken analysis                 **
+ **                                                         **
+ ** Population analysis algorithm devloped by Ryoichi Kawai **
+ **                                                         **
+ **                   Thu Feb  8 14:49                      **
+ **                                                         **
+ *************************************************************
+
+
+== XYZ OUTPUT ==
+
+ 
+                     2
+ 
+S             0.000000      0.000000     -0.940000
+S             0.000000      0.000000      0.940000
+
+
+== Atomic Orbital Expansion ==
+
+ S    nodamping
+ 
+ 
+ =====================================================
+ | POPULATION ANALYSIS OF FILLED MOLECULAR ORBITALS  |
+ =====================================================
+
+
+== Using pseudoatomic orbital expansion          ==
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   1***  SPIN=UP      SUM= 0.74988E+00 E=-0.19884E+00 (  -5.411eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000    0.00000
+                            px         pz         py
+ 1   S      1    0.50001    0.63721   -0.00004    0.30655
+                            s
+ 2   S      0    0.00000   -0.00001
+                            px         pz         py
+ 2   S      1    0.49999   -0.63720   -0.00003   -0.30655
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   2***  SPIN=UP      SUM= 0.74988E+00 E=-0.19884E+00 (  -5.411eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00000
+                            px         pz         py
+ 1   S      1    0.50000   -0.30656    0.00001    0.63720
+                            s
+ 2   S      0    0.00000    0.00000
+                            px         pz         py
+ 2   S      1    0.50000    0.30655    0.00001   -0.63720
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   3***  SPIN=UP      SUM= 0.12275E+01 E=-0.32739E+00 (  -8.909eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00000
+                            px         pz         py
+ 1   S      1    0.50000    0.44910   -0.00000    0.54618
+                            s
+ 2   S      0    0.00000    0.00000
+                            px         pz         py
+ 2   S      1    0.50000    0.44910    0.00000    0.54618
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   4***  SPIN=UP      SUM= 0.12275E+01 E=-0.32739E+00 (  -8.909eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00000
+                            px         pz         py
+ 1   S      1    0.49999    0.54617   -0.00000   -0.44910
+                            s
+ 2   S      0    0.00000    0.00000
+                            px         pz         py
+ 2   S      1    0.50001    0.54618    0.00000   -0.44910
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   5***  SPIN=UP      SUM= 0.98798E+00 E=-0.35350E+00 (  -9.619eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.03826    0.19561
+                            px         pz         py
+ 1   S      1    0.46174    0.00001    0.67951    0.00000
+                            s
+ 2   S      0    0.03826    0.19561
+                            px         pz         py
+ 2   S      1    0.46174   -0.00000   -0.67951    0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0765    0.9235    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   6***  SPIN=UP      SUM= 0.10267E+01 E=-0.56069E+00 ( -15.257eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.36007   -0.60006
+                            px         pz         py
+ 1   S      1    0.13993   -0.00000   -0.37407   -0.00000
+                            s
+ 2   S      0    0.36007    0.60006
+                            px         pz         py
+ 2   S      1    0.13993   -0.00000   -0.37407   -0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7201    0.2799    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   7***  SPIN=UP      SUM= 0.15255E+01 E=-0.76128E+00 ( -20.716eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.38320   -0.61903
+                            px         pz         py
+ 1   S      1    0.11680    0.00000    0.34176   -0.00000
+                            s
+ 2   S      0    0.38320   -0.61903
+                            px         pz         py
+ 2   S      1    0.11680    0.00000   -0.34176    0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7664    0.2336    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   8***  SPIN=DOWN    SUM= 0.12211E+01 E=-0.29315E+00 (  -7.977eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00000
+                            px         pz         py
+ 1   S      1    0.50000    0.27374   -0.00000   -0.65197
+                            s
+ 2   S      0    0.00000   -0.00000
+                            px         pz         py
+ 2   S      1    0.50000    0.27366    0.00000   -0.65201
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=   9***  SPIN=DOWN    SUM= 0.12211E+01 E=-0.29315E+00 (  -7.977eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.00000   -0.00000
+                            px         pz         py
+ 1   S      1    0.50001    0.65198   -0.00002    0.27373
+                            s
+ 2   S      0    0.00000   -0.00000
+                            px         pz         py
+ 2   S      1    0.49999    0.65199    0.00001    0.27367
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.0000    1.0000    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=  10***  SPIN=DOWN    SUM= 0.97083E+00 E=-0.33171E+00 (  -9.026eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.05126    0.22640
+                            px         pz         py
+ 1   S      1    0.44874   -0.00000    0.66988   -0.00000
+                            s
+ 2   S      0    0.05126    0.22640
+                            px         pz         py
+ 2   S      1    0.44874    0.00003   -0.66988    0.00001
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.1025    0.8975    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=  11***  SPIN=DOWN    SUM= 0.10358E+01 E=-0.51827E+00 ( -14.103eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.35572    0.59642
+                            px         pz         py
+ 1   S      1    0.14428   -0.00000    0.37985   -0.00000
+                            s
+ 2   S      0    0.35572   -0.59642
+                            px         pz         py
+ 2   S      1    0.14428    0.00000    0.37985    0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7114    0.2886    0.0000    0.0000
+
+
+------------------------------------------------------------------------------
+
+
+*** ORBITAL=  12***  SPIN=DOWN    SUM= 0.15404E+01 E=-0.73900E+00 ( -20.109eV)
+
+NO  ATOM  L  POPULATION
+                            s
+ 1   S      0    0.37079    0.60893
+                            px         pz         py
+ 1   S      1    0.12921   -0.00000   -0.35946   -0.00000
+                            s
+ 2   S      0    0.37079    0.60893
+                            px         pz         py
+ 2   S      1    0.12921   -0.00000    0.35946   -0.00000
+
+
+=== DISTRIBUTION ===
+
+     1(S   )   0.5000     2(S   )   0.5000
+
+
+== ANGULAR MOMENTUM POPULATIONS ===
+
+      s         p         d         f
+    0.7416    0.2584    0.0000    0.0000
+ 
+ 
+ ========================================
+ |   POPULATION ANALYSIS ON EACH ATOM   |
+ ========================================
+ 
+ 
+NO  ATOM  SPIN    TOTAL       s          p          d          f
+ 1   S      UP      3.50000    0.78154    2.71847
+ 1   S      DOWN    2.50001    0.77777    1.72224
+ 2   S      UP      3.50000    0.78153    2.71846
+ 2   S      DOWN    2.49999    0.77777    1.72223
+
+
+
+=== TOTAL ANGULAR MOMENTUM POPULATION ===
+
+ SPIN       s           p           d           f
+  UP       22.33%      77.67%       0.00%       0.00% 
+  DOWN     31.11%      68.89%       0.00%       0.00% 
+ TOTAL     25.99%      74.01%       0.00%       0.00% 
+ into mulliken DOS
+
+
+
+=== PROJECTED DENSITY OF STATES ===
+
+  All atoms were used to determine weights
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_alpha_s
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ add to filename:./s2-pspw-energy.mulliken_dos_alpha_s
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_beta_s
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ add to filename:./s2-pspw-energy.mulliken_dos_beta_s
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_alpha_p
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ add to filename:./s2-pspw-energy.mulliken_dos_alpha_p
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_beta_p
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ add to filename:./s2-pspw-energy.mulliken_dos_beta_p
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_alpha_all
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ add to filename:./s2-pspw-energy.mulliken_dos_alpha_all
+ sign=    1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_fdos_beta_all
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+
+
+== DOS generation ==
+
+ filename:./s2-pspw-energy.mulliken_dos_beta_all
+ sign=   -1.00, alpha=  0.0018, (emin:emax)= (   -0.8613:   -0.0988), npoints=  500
+ 
+ *************************************************************
+ **                                                         **
+ **          PSPW Atomic Point Charge (APC) Analysis        **
+ **                                                         **
+ **   Point charge analysis based on paper by P.E. Blochl   **
+ **         (J. Chem. Phys. vol 103, page 7422, 1995)       **
+ **                                                         **
+ *************************************************************
+ 
+ pspw_APC data structure
+ -----------------------
+ nga, ngs:                     3                     6
+ Gc      :   2.50000000000000     
+ APC gamma:                     1  0.600000000000000     
+ APC gamma:                     2  0.900000000000000     
+ APC gamma:                     3   1.35000000000000     
+ 
+ charge analysis on each atom
+ ----------------------------
+
+    no  atom        Qelc        Qion      Qtotal
+    --  ----     -------     -------     -------
+     1  S         -6.000       6.000      -0.000
+     2  S         -6.000       6.000       0.000
+     Total Q     -12.000      12.000       0.000
+ 
+ 
+ gaussian coefficients of model density
+ --------------------------------------
+
+    no  atom     g=0.000     g=0.600     g=0.900     g=1.350
+    --  ----     -------     -------     -------     -------
+     1  S          6.000      -6.022      13.771     -13.749
+     2  S          6.000      -6.022      13.771     -13.749
+
+
+=== Electric Field at Atoms ===
+
+      1 S    Atomic Electric Field =(   -0.00000   -0.00000   -0.03606 )
+                    (ion)          =(   -0.00000   -0.00000   -0.46316 )
+                    (electronic)   =(   -0.00000   -0.00000    0.42710 )
+      2 S    Atomic Electric Field =(   -0.00001   -0.00000    0.03606 )
+                    (ion)          =(    0.00000    0.00000    0.46316 )
+                    (electronic)   =(   -0.00001   -0.00000   -0.42710 )
+ 
+ *************************************************************
+ **                                                         **
+ **          PSPW Atomic Point Charge (APC) Analysis        **
+ **                                                         **
+ **   Point charge analysis based on paper by P.E. Blochl   **
+ **         (J. Chem. Phys. vol 103, page 7422, 1995)       **
+ **                                                         **
+ *************************************************************
+ 
+ pspw_APC data structure
+ -----------------------
+ nga, ngs:                     3                     6
+ Gc      :   2.50000000000000     
+ APC gamma:                     1  0.600000000000000     
+ APC gamma:                     2  0.900000000000000     
+ APC gamma:                     3   1.35000000000000     
+ 
+ charge analysis on each atom
+ ----------------------------
+
+    no  atom        Qelc        Qion      Qtotal
+    --  ----     -------     -------     -------
+     1  S         -6.000       6.000      -0.000
+     2  S         -6.000       6.000       0.000
+     Total Q     -12.000      12.000       0.000
+ 
+ 
+ gaussian coefficients of model density
+ --------------------------------------
+
+    no  atom     g=0.000     g=0.600     g=0.900     g=1.350
+    --  ----     -------     -------     -------     -------
+     1  S          6.000      -6.022      13.771     -13.749
+     2  S          6.000      -6.022      13.771     -13.749
+
+ output psi filename:./s2-pspw-energy.movecs
+
+
+== Timing ==
+
+cputime in seconds
+  prologue    :   0.592438E+00
+  main loop   :   0.140757E+01
+  epilogue    :   0.751086E+00
+  total       :   0.275109E+01
+  cputime/step:   0.370413E-01       (      38 evalulations,      17 linesearches)
+
+
+Time spent doing                        total          step       percent
+  total time                 :   0.275154E+01  0.724091E-01       100.0 %
+  i/o time                   :   0.423829E+00  0.111534E-01        15.4 %
+  FFTs                       :   0.326227E+00  0.858493E-02        11.9 %
+  dot products               :   0.165193E-01  0.434719E-03         0.6 %
+  geodesic                   :   0.253059E-01  0.665945E-03         0.9 %
+  ffm_dgemm                  :   0.498867E-02  0.131281E-03         0.2 %
+  fmf_dgemm                  :   0.146792E-01  0.386294E-03         0.5 %
+  mmm_dgemm                  :   0.664445E-03  0.174854E-04         0.0 %
+  m_diagonalize              :   0.730189E-03  0.192155E-04         0.0 %
+  exchange correlation       :   0.785120E+00  0.206611E-01        28.5 %
+  local pseudopotentials     :   0.993980E-04  0.261574E-05         0.0 %
+  non-local pseudopotentials :   0.113454E-01  0.298563E-03         0.4 %
+  hartree potentials         :   0.234934E-02  0.618248E-04         0.1 %
+  ion-ion interaction        :   0.380949E-03  0.100250E-04         0.0 %
+  structure factors          :   0.287489E-01  0.756550E-03         1.0 %
+  phase factors              :   0.501424E-05  0.131954E-06         0.0 %
+  masking and packing        :   0.593965E-01  0.156307E-02         2.2 %
+  queue fft                  :   0.413512E+00  0.108819E-01        15.0 %
+  queue fft (serial)         :   0.209113E+00  0.550297E-02         7.6 %
+  queue fft (message passing):   0.191865E+00  0.504907E-02         7.0 %
+  non-local psp FFM          :   0.730662E-02  0.192280E-03         0.3 %
+  non-local psp FMF          :   0.224456E-02  0.590674E-04         0.1 %
+  non-local psp FFM A        :   0.145021E-02  0.381635E-04         0.1 %
+  non-local psp FFM B        :   0.369271E-02  0.971766E-04         0.1 %
+ 
+     >>>  JOB COMPLETED     AT Thu Feb  8 14:49:55 2024  <<<
+
+ Task  times  cpu:        6.3s     wall:        6.3s
+ 
+ 
+                                NWChem Input Module
+                                -------------------
+ 
+ 
+ >>>> PSPW Parallel Module - pspw_dplot <<<<
+          ****************************************************
+          *                                                  *
+          *                   pspw DPLOT                     *
+          *                                                  *
+          *    [ Generates density and orbital grids  ]      *
+          *                                                  *
+          *     [ NorthWest Chemistry implementation ]       *
+          *                                                  *
+          *            version #1.00   08/22/01              *
+          *                                                  *
+          ****************************************************
+ 
+     >>>  JOB STARTED       AT Thu Feb  8 14:49:55 2024  <<<
+          ============ PSPW DPLOT input data =================
+
+ input psi filename:./s2-pspw-energy.movecs
+
+ number of processors used:  3
+ parallel mapping         :2d hilbert
+ parallel mapping         :  balanced
+
+ options:
+      boundary conditions   = periodic    (version3)
+
+ number of electrons: spin up=  7  spin down=  5 ( Fourier space)
+
+ ncell              =  0 0 0
+
+ position tolerance = 0.100000E-02
+
+           origin=<   0.000   0.000   0.000 >
+
+ supercell:
+      lattice: a1=<  20.000   0.000   0.000 >
+               a2=<   0.000  20.000   0.000 >
+               a3=<   0.000   0.000  20.000 >
+               b1=<   0.314   0.000   0.000 >
+               b2=<   0.000   0.314   0.000 >
+               b3=<   0.000   0.000   0.314 >
+      volume :     8000.0
+      density cutoff= 30.000  fft= 50x 50x 50(    31335 waves    10445 per task)
+      wavefnc cutoff= 15.000  fft= 50x 50x 50(    11060 waves     3686 per task)
+ 
+ 
+    writing orbital                      6  to filename: orb6.cube
+ 
+         3d-Grid Generation
+         origin=<   0.000   0.000   0.000 >
+         x-axis=<   1.000   0.000   0.000 >   xmin,xmax=   0.000  20.000 nx= 30
+         y-axis=<   0.000   1.000   0.000 >   ymin,ymax=   0.000  20.000 ny= 30
+         z-axis=<   0.000   0.000   1.000 >   zmin,zmax=   0.000  20.000 nz= 30
+ 
+ 
+ 
+ -----------------
+ cputime in seconds
+ total       :    5.46125725144520     
+ 
+     >>>  JOB COMPLETED     AT Thu Feb  8 14:50:01 2024  <<<
+
+ Task  times  cpu:        5.5s     wall:        5.5s
+ 
+ 
+                                NWChem Input Module
+                                -------------------
+ 
+ 
+ Summary of allocated global arrays
+-----------------------------------
+  No active global arrays
+
+
+MA_summarize_allocated_blocks: starting scan ...
+MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
+MA usage statistics:
+
+	allocation statistics:
+					      heap	     stack
+					      ----	     -----
+	current number of blocks	         0	         0
+	maximum number of blocks	       310	        21
+	current total bytes		         0	         0
+	maximum total bytes		  36597808	   9057384
+	maximum total K-bytes		     36598	      9058
+	maximum total M-bytes		        37	        10
+ 
+ 
+                                     CITATION
+                                     --------
+                Please cite the following reference when publishing
+                           results obtained with NWChem:
+ 
+          E. Apra, E. J. Bylaska, W. A. de Jong, N. Govind, K. Kowalski,
+       T. P. Straatsma, M. Valiev, H. J. J. van Dam, Y. Alexeev, J. Anchell,
+       V. Anisimov, F. W. Aquino, R. Atta-Fynn, J. Autschbach, N. P. Bauman,
+     J. C. Becca, D. E. Bernholdt, K. Bhaskaran-Nair, S. Bogatko, P. Borowski,
+         J. Boschen, J. Brabec, A. Bruner, E. Cauet, Y. Chen, G. N. Chuev,
+      C. J. Cramer, J. Daily, M. J. O. Deegan, T. H. Dunning Jr., M. Dupuis,
+   K. G. Dyall, G. I. Fann, S. A. Fischer, A. Fonari, H. Fruchtl, L. Gagliardi,
+      J. Garza, N. Gawande, S. Ghosh, K. Glaesemann, A. W. Gotz, J. Hammond,
+       V. Helms, E. D. Hermes, K. Hirao, S. Hirata, M. Jacquelin, L. Jensen,
+   B. G. Johnson, H. Jonsson, R. A. Kendall, M. Klemm, R. Kobayashi, V. Konkov,
+      S. Krishnamoorthy, M. Krishnan, Z. Lin, R. D. Lins, R. J. Littlefield,
+      A. J. Logsdail, K. Lopata, W. Ma, A. V. Marenich, J. Martin del Campo,
+   D. Mejia-Rodriguez, J. E. Moore, J. M. Mullin, T. Nakajima, D. R. Nascimento,
+    J. A. Nichols, P. J. Nichols, J. Nieplocha, A. Otero-de-la-Roza, B. Palmer,
+    A. Panyala, T. Pirojsirikul, B. Peng, R. Peverati, J. Pittner, L. Pollack,
+   R. M. Richard, P. Sadayappan, G. C. Schatz, W. A. Shelton, D. W. Silverstein,
+   D. M. A. Smith, T. A. Soares, D. Song, M. Swart, H. L. Taylor, G. S. Thomas,
+            V. Tipparaju, D. G. Truhlar, K. Tsemekhman, T. Van Voorhis,
+      A. Vazquez-Mayagoitia, P. Verma, O. Villa, A. Vishnu, K. D. Vogiatzis,
+        D. Wang, J. H. Weare, M. J. Williamson, T. L. Windus, K. Wolinski,
+        A. T. Wong, Q. Wu, C. Yang, Q. Yu, M. Zacharias, Z. Zhang, Y. Zhao,
+                                and R. J. Harrison
+                        "NWChem: Past, present, and future
+                         J. Chem. Phys. 152, 184102 (2020)
+                               doi:10.1063/5.0004997
+ 
+                                      AUTHORS
+                                      -------
+  E. Apra, E. J. Bylaska, N. Govind, K. Kowalski, M. Valiev, D. Mejia-Rodriguez,
+       A. Kunitsa, N. P. Bauman, A. Panyala, W. A. de Jong, T. P. Straatsma,
+   H. J. J. van Dam, D. Wang, T. L. Windus, J. Hammond, J. Autschbach, A. Woods,
+    K. Bhaskaran-Nair, J. Brabec, K. Lopata, S. A. Fischer, S. Krishnamoorthy,
+     M. Jacquelin, W. Ma, M. Klemm, O. Villa, Y. Chen, V. Anisimov, F. Aquino,
+     S. Hirata, M. T. Hackler, E. Hermes, L. Jensen, J. E. Moore, J. C. Becca,
+      V. Konjkov, T. Risthaus, M. Malagoli, A. Marenich, A. Otero-de-la-Roza,
+        J. Mullin, P. Nichols, R. Peverati, J. Pittner, Y. Zhao, P.-D. Fan,
+        A. Fonari, M. J. Williamson, R. J. Harrison, J. R. Rehr, M. Dupuis,
+     D. Silverstein, D. M. A. Smith, J. Nieplocha, V. Tipparaju, M. Krishnan,
+     B. E. Van Kuiken, A. Vazquez-Mayagoitia, M. Swart, Q. Wu, T. Van Voorhis,
+     A. A. Auer, M. Nooijen, L. D. Crosby, E. Brown, G. Cisneros, G. I. Fann,
+   H. Fruchtl, J. Garza, K. Hirao, R. A. Kendall, J. A. Nichols, K. Tsemekhman,
+    K. Wolinski, J. Anchell, D. E. Bernholdt, P. Borowski, T. Clark, D. Clerc,
+   H. Dachsel, M. J. O. Deegan, K. Dyall, D. Elwood, E. Glendening, M. Gutowski,
+   A. C. Hess, J. Jaffe, B. G. Johnson, J. Ju, R. Kobayashi, R. Kutteh, Z. Lin,
+   R. Littlefield, X. Long, B. Meng, T. Nakajima, S. Niu, L. Pollack, M. Rosing,
+   K. Glaesemann, G. Sandrone, M. Stave, H. Taylor, G. Thomas, J. H. van Lenthe,
+                               A. T. Wong, Z. Zhang.
+
+ Total times  cpu:       14.6s     wall:       14.6s

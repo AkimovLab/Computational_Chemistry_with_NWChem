@@ -1,0 +1,16 @@
+#!/bin/bash
+###SBATCH --partition=general-compute  --qos=general-compute
+###SBATCH --clusters=ub-hpc
+#SBATCH --partition=valhalla  --qos=valhalla
+#SBATCH --clusters=faculty
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=4
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:10:00
+#SMATCH --mem=10000
+###SBATCH -C CPU-E5-2650v4
+###SBATCH -C CPU-Gold-6130     # <--- Use this type of CPU to get no error or warning messages
+
+module use /projects/academic/cyberwksp21/MODULES
+module load nwchem/intel/7.2.2 # <--- Compiled with intel compilers
+mpirun -np 4 nwchem input.nw > out

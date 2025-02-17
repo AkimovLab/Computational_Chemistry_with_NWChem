@@ -1,0 +1,31 @@
+ echo  
+ title "total energy of s2-dimer LDA/30Ry with PSPW method"  
+ start s2-pspw-energy  
+ geometry  
+ S 0.0 0.0 0.0  
+ S 0.0 0.0 1.88  
+ end  
+ nwpw  
+   simulation_cell  
+     SC 20.0  
+   end  
+   cutoff 15.0  
+   mult 3 
+   xc PBEsol-Grimme3 
+   lmbfgs  
+   Mulliken
+   dos
+
+   dplot
+     vectors s2-pspw-energy.movecs
+     LimitXYZ
+       0.0 20.0 30
+       0.0 20.0 30
+       0.0 20.0 30
+     orbital 6  orb6.cube
+   end
+ end  
+
+task pspw energy
+task PSPW PSPW_DPLOT
+
