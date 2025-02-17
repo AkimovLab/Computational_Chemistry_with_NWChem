@@ -253,6 +253,8 @@ task PSPW PSPW_DPLOT
 The example in Figure 2 also demonstrates how to request the inclusion of virtual (unoccupied) orbitals in the calculations. 
 This is important in order for one to see the band gap. Without unoccupied orbitals, one would end up with only the occupied bands and will not see the gap.
 
+Also, check out [this S2 example](s2_example) In particular, you can use the visualization/plotting Jupyter notebook (also shown as a PDF file) for plotting the pDOS.
+
 **Tasks**:
 
 - Visualize HOMO and LUMO of NaCl solid and show them as panels of a figure in your report.
