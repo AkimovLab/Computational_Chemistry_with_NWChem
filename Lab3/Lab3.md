@@ -117,7 +117,7 @@ Document your results in Table 2.
 
 - Repeate the same convergence with respect to k-points study for gold. Change the geometry and crystal structure taken from [here](https://rruff.geo.arizona.edu/AMS/CIF_text_files/13362_cif.txt):
 
-"""
+```
 geometry center noautosym noautoz print
   Au 0.0 0.0 0.0
   Au 0.0 0.5 0.5
@@ -131,7 +131,7 @@ geometry center noautosym noautoz print
    beta  90.0
    gamma 90.0
  end
-
+```
 
 **Outcomes**:
 
