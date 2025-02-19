@@ -233,6 +233,47 @@ system crystal
      ewald_ncut 8 #The default value of 1 needs to be increased  
    Mulliken
    dos
+ end
+
+task band energy
+task PSPW PSPW_DPLOT
+```
+**Figure 2.** Example input for single point calculations of NaCl solid, plus pDOS calculations. 
+
+
+> Warning: for the orbital calculations, you'd need to use the `pspw` program, not the `band` one
+> It is the program for the Gamma-point calculations only, so you don't need any Mokhorst-Pack info.
+> The script will look like this
+
+```
+echo
+ title "NaCl"
+ start NaCl-pspw-energy
+geometry center noautosym noautoz print
+  Na 0.0 0.0 0.0
+  Na 0.0 0.5 0.5
+  Na 0.5 0.0 0.5
+  Na 0.5 0.5 0.0  
+  Cl 0.5 0.5 0.5
+  Cl 0.5 0.0 0.0
+  Cl 0.0 0.5 0.0
+  Cl 0.0 0.0 0.5
+system crystal
+   lat_a 5.64
+   lat_b 5.64
+   lat_c 5.64
+   alpha 90.0
+   beta  90.0
+   gamma 90.0
+ end
+ end
+ nwpw
+   virtual 8             # include 8 virtual states
+   cutoff 15.0
+   mult 1
+   xc PBEsol-Grimme3
+   Mulliken
+   dos
 
    dplot
      vectors NaCl-pspw-energy.movecs
@@ -244,11 +285,10 @@ system crystal
    end
  end
 
-task band energy
+task PSPW energy
 task PSPW PSPW_DPLOT
 ```
-**Figure 2.** Example input for single point calculations of NaCl solid, plus pDOS calculations and the orbital visualization options. 
-
+**Figure 3.** Example input for single point calculations of NaCl solid, plus the orbital visualization options. 
 
 The example in Figure 2 also demonstrates how to request the inclusion of virtual (unoccupied) orbitals in the calculations. 
 This is important in order for one to see the band gap. Without unoccupied orbitals, one would end up with only the occupied bands and will not see the gap.
