@@ -293,6 +293,12 @@ task PSPW PSPW_DPLOT
 The example in Figure 2 also demonstrates how to request the inclusion of virtual (unoccupied) orbitals in the calculations. 
 This is important in order for one to see the band gap. Without unoccupied orbitals, one would end up with only the occupied bands and will not see the gap.
 
+**How to plot DOS and what's written in the files?**
+
+We first read the one of generated DOS files (containing all the projections - on s and p componentes, for both alpha and beta electrons, for all atoms) using numpy:
+
+![image](dos-tut-1.png)
+
 Also, check out [this S2 example](s2_example) In particular, you can use the visualization/plotting Jupyter notebook (also shown as a PDF file) for plotting the pDOS.
 
 **Tasks**:
