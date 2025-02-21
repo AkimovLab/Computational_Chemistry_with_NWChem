@@ -301,8 +301,9 @@ We first read the one of generated DOS files (containing all the projections - o
 
 The first column `tot_dos[:, 0]` is the energy axis, the second - `tot_dos[:, 1]` is the actual density of states we are interested, and the last one
 `tot_dos[:, 2]` - is the integrated density of states up to certain energy $\int_{-\infty}^{E} DOS(E) dE$. Note, that the integral of DOS over the entire energy
-range should add up to the number of electrons. In this case, we get 8:
-
+range should add up to the total number of states. In this case, we get 8. In the plot below, the integrated DOS (orange) is scaled up by a factor of 50 for better visibility -
+one can see the "jumps" in its value when the plot passes the peaks on the DOS plot (blue).
+ 
 <img src="dos-tut-2.png" width="80%"/>
 
 Also, check out [this S2 example](s2_example) In particular, you can use the visualization/plotting Jupyter notebook (also shown as a PDF file) for plotting the pDOS.
