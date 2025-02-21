@@ -306,17 +306,34 @@ one can see the "jumps" in its value when the plot passes the peaks on the DOS p
  
 <img src="dos-tut-2.png" width="80%"/>
 
-Also, check out [this S2 example](s2_example) In particular, you can use the visualization/plotting Jupyter notebook (also shown as a PDF file) for plotting the pDOS.
+Let's read the virtual and occupied (filled) orbitals separately and look at the numbers:
+
+<img src="dos-tut-3.png" width="80%"/>
+
+We can see that there are 16 (doubly-occupied) filled levels (which agrees with our expectations that HOMO for this system is the 
+orbitals with index 16) and 8 (also doubly-occupied) virtual levels.
+
+Note: For some reason, the file `*_dos_both_all` contains only the virtual levels (a bug??).
+
+We can now plot the DOS for occupied and virtual levels in different colors:
+
+<img src="dos-tut-4.png" width="80%"/>
+
+Finally, we can resolve both virtual and filled levels according to the "s" or "p" projections - this tells us the dominant character of orbitals
+at the corresponding energy levels:
+
+<img src="dos-tut-5.png" width="80%"/>
+
 
 **Tasks**:
 
 - Visualize HOMO and LUMO of NaCl solid and show them as panels of a figure in your report.
   The .cube files produced can be visualized as in Lab 2. For this Lab, note that the periodicity will need to be included when visualizing orbitals and the system using VMD. 
-- Using the Python script provided (Jupyter notebook), plot the total DOS, orbital- and atom- resolved pDOS. Show them as panels of a figure in your report.
+- Using the above example Python script (snippets), plot the total DOS, orbital-resolved pDOS. Show them as panels of a figure in your report.
   You may need to adapt the provided code a little bit in order to accomplish this task. What can you tell about the composition of the frontier bands (orbitals) based on the pDOS analysis?
   What kind of "AO"s compose these "MO"s? On what atoms are they localized? Do your conclusions match what you see in the orbital visualization?
 - Repeat your pDOS calculations but now using a larger grid of k-points, say 6x6x6. Is the pDOS sensitive to the choice of the k-point number?
 - Use the example [input provided on the NWChem website](https://nwchemgit.github.io/Plane-Wave-Density-Functional-Theory.html#using-band-to-calculate-the-band-structures-of-diamond)
-  in this section ![image](dos-with-band.png) to compute the pDOS of diamond.
-- Compute total DOS of diamond for two k-points grids – 1x1x1 and say 6x6x6 (note – example uses 9x9x9). Is DOS of diamond more sensitive to the choice of the k-points grid than it is in the NaCl case? 
+  in this section ![image](dos-with-band.png) to compute the pDOS of gold.
+- Compute total DOS of gold for two k-points grids – 1x1x1 and say 6x6x6 (note – example uses 9x9x9). Is DOS ofgold more sensitive to the choice of the k-points grid than it is in the NaCl case? 
 
