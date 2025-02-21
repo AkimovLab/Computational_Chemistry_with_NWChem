@@ -297,7 +297,7 @@ This is important in order for one to see the band gap. Without unoccupied orbit
 
 We first read the one of generated DOS files (containing all the projections - on s and p componentes, for both alpha and beta electrons, for all atoms) using numpy:
 
-![image](dos-tut-1.png)
+<img src="dos-tut-1.png" width="50%"/>
 
 Also, check out [this S2 example](s2_example) In particular, you can use the visualization/plotting Jupyter notebook (also shown as a PDF file) for plotting the pDOS.
 
