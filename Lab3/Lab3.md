@@ -297,7 +297,13 @@ This is important in order for one to see the band gap. Without unoccupied orbit
 
 We first read the one of generated DOS files (containing all the projections - on s and p componentes, for both alpha and beta electrons, for all atoms) using numpy:
 
-<img src="dos-tut-1.png" width="50%"/>
+<img src="dos-tut-1.png" width="80%"/>
+
+The first column `tot_dos[:, 0]` is the energy axis, the second - `tot_dos[:, 1]` is the actual density of states we are interested, and the last one
+`tot_dos[:, 2]` - is the integrated density of states up to certain energy $\int_{-\infty}^{E} DOS(E) dE$. Note, that the integral of DOS over the entire energy
+range should add up to the number of electrons. In this case, we get 8:
+
+<img src="dos-tut-2.png" width="80%"/>
 
 Also, check out [this S2 example](s2_example) In particular, you can use the visualization/plotting Jupyter notebook (also shown as a PDF file) for plotting the pDOS.
 
