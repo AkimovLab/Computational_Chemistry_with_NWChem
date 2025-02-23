@@ -1,0 +1,63 @@
+echo
+
+title "PES scan with DFT"
+
+start H2
+
+#============= Define the basis ================
+basis
+ * library 6-311++G**
+end
+
+#============= Define the method ===============
+# as singlet
+dft
+ xc b3lyp
+ dft
+ mult 1
+ iterations 100
+end
+
+
+#============ Now do the geometry scan ===========
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  1.0;
+ end
+end
+task dft energy
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  2.0;
+ end
+end
+task dft energy
+
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  5.0;
+ end
+end
+task dft energy
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  10.0;
+ end
+end
+task dft energy
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  50.0;
+ end
+end
+task dft energy
+

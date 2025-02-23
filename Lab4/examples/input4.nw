@@ -1,0 +1,70 @@
+echo
+
+title "demonstrate the use of multiplicity"
+
+start H2
+
+#============= Define the basis ================
+basis
+ * library 6-311++G**
+end
+
+#============= Define the method ===============
+# as singlet
+scf
+ uhf
+ singlet
+end
+
+mp2
+  freeze atomic
+end
+
+
+#============ Now do the geometry scan ===========
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  1.0;
+ end
+end
+task scf energy
+task mp2 energy
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  2.0;
+ end
+end
+task scf energy
+task mp2 energy
+
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  5.0;
+ end
+end
+task scf energy
+task mp2 energy
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  10.0;
+ end
+end
+task scf energy
+task mp2 energy
+
+
+geometry units angstrom
+ zmatrix
+ H1 ;  H2  H1  50.0;
+ end
+end
+task scf energy
+task mp2 energy
+
