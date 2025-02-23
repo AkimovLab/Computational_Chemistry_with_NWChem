@@ -16,6 +16,7 @@ In principle, one can combine DFT methods with MP2 or CCSD, within the so-called
 from the very beginning not to worry about the possible sources of error due to the basis set size effects. Remember that for the $H_2$ molecule, we should be looking for a singlet wavefunction and for the $H_2^+$ - for a doublet. 
 
 
+<img src="Slide1.png" width="80%"/>
 
 **Figure 1.** Example input file for H2 PES scan at the B3LYP/6-311++G** level of theory.  The DFT calculations are conducted only for 2 internuclear distances in this example: R=1.0 Å and R=2.0 Å. 
 
