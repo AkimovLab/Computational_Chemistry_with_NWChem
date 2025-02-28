@@ -40,15 +40,15 @@ Just to reiterate, for a diatomic molecule (N = 2), there will be `3*N-5 =1` non
 
 As in this Lab, we will be using **several methods**: xTB (semiempirical), HF, B3LYP (DFT), MP2 and CCSD. 
 We will use a sufficiently large basis set (although not exhaustive still), 6-311++G**, and hope it can still yield reasonable results. We will apply these methods 
-to compute the structures and frequencies of two small molecules: LiF and LiF-LiF (Figure 2). Our reference for these systems will be the work of Grein[1] who conducted such 
+to compute the structures and frequencies of two small molecules: LiF and LiF-LiF (Figure 2a). Our reference for these systems will be the work of Grein[1] who conducted such 
 calculations for a number of such complexes. Let's see if we could get something close to what this author obtained for these systems.  
 
 
 <img src="Slide2.PNG" width="80%"/>
-**Figure 2.** Structure of the LiF-LiF complex from work of Grein.
+**Figure 2.** (a) Structure of the LiF-LiF complex from work of Grein; (b) Example input file for geometry optimization and frequencies calculation of LiF molecule using HF/6-311++G** method. 
 
 
-The computational setup for the systems could be something like in Figure 3. Note the following additions: 
+The computational setup for the systems could be something like in Figure 2b. Note the following additions: 
 
 1. in the “scf” section, we request higher accuracy of the convergence `thresh 1e-8` so that we can compute more accurate forces;
 2. the “driver” section controls the process of optimization: the option `tight` here controls the degree of convergence 
@@ -63,11 +63,6 @@ It is important to get more closely to the true energy minimum so that we don’
 5. we use the `task scf optimize` and `task scf frequencies` to first search for the optimal geometry and then compute the normal modes at the final geometry. The order of these operations matters a lot! 
 
 
-<img src="Slide3.PNG" width="80%"/>
-**Figure 3.** Example input file for geometry optimization and frequencies calculation of LiF molecule using HF/6-311++G** method. 
-
-
-
 ## 3. Methodology and Tools
 
 The following references may be useful for this lab:
@@ -80,15 +75,15 @@ The following references may be useful for this lab:
 * [MP2](https://nwchemgit.github.io/MP2.html)
 * [CCSD](https://nwchemgit.github.io/CCSD.html)
   
-Specifically, some examples of setting up MP2 and CCSD calculations (these are only snippets, not the complete examples of the input scripts) are shown in Figure 4
+Specifically, some examples of setting up MP2 and CCSD calculations (these are only snippets, not the complete examples of the input scripts) are shown in Figure 3
+
+<img src="Slide3.PNG" width="80%"/>
+**Figure 3.** The snippets requesting (a) MP2 and (b) CCSD calculations.
+
+Once your frequency calculations are complete, look for the corresponding frequency values in the output (e.g. Figure 4).
 
 <img src="Slide4.PNG" width="80%"/>
-**Figure 4.** The snippets requesting (a) MP2 and (b) CCSD calculations.
-
-Once your frequency calculations are complete, look for the corresponding frequency values in the output (e.g. Figure 5).
-
-<img src="Slide5.PNG" width="80%"/>
-**Figure 5.** An example of the frequency output. The “Eigenvalue” is the actual value of the frequency. Note there are 5 trivial modes for the diatomic molecule, which can be excluded. 
+**Figure 4.** An example of the frequency output. The “Eigenvalue” is the actual value of the frequency. Note there are 5 trivial modes for the diatomic molecule, which can be excluded. 
 
 
 ## 4. Results and Discussions
