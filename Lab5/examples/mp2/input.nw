@@ -1,0 +1,51 @@
+echo
+
+title "optimization of LiF"
+
+start LiF
+
+#============= Define the basis ================
+basis
+ * library 6-311++G**
+end
+
+#============= Define the method ===============
+# as singlet
+scf
+ rhf
+ singlet
+ thresh 1e-8
+end
+
+driver
+ tight
+ xyz
+end
+
+freq
+ animate 
+end
+
+mp2
+ freeze core
+ tight
+end
+
+
+#============ Now do the geometry scan ===========
+
+geometry units angstrom
+Li        0.0000000000      0.0000000000      0.00066850000
+F        0.0000000000      0.0000000000       1.50066850000
+symmetry c1
+end
+
+
+
+
+task mp2 optimize
+task mp2 frequencies
+
+
+
+
