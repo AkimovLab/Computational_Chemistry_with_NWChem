@@ -1,0 +1,3820 @@
+ argument  1 = input.nw
+  NWChem w/ OpenMP: maximum threads =    1
+
+
+
+============================== echo of input deck ==============================
+echo
+
+title "optimization of LiF"
+
+start LiF
+
+#============= Define the basis ================
+basis
+ * library 6-311++G**
+end
+
+#============= Define the method ===============
+# as singlet
+scf
+ rhf
+ singlet
+ thresh 1e-8
+end
+
+driver
+ tight
+ xyz
+end
+
+freq
+ animate
+end
+
+
+#============ Now do the geometry scan ===========
+
+geometry units angstrom
+Li        0.0000000000      0.0000000000      0.00066850000
+F        0.0000000000      0.0000000000       1.50066850000
+symmetry c1
+end
+
+
+
+
+task scf optimize
+task scf frequencies
+
+
+
+
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 7.2.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2022
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = cpn-f13-36.core.ccr.buffalo.edu
+    program         = nwchem
+    date            = Sun Mar  3 17:18:09 2024
+
+    compiled        = Wed_Jan_17_15:19:23_2024
+    source          = /projects/academic/cyberwksp21/SOFTWARE_NEW_ENV/nwchem
+    nwchem branch   = 7.2.1
+    nwchem revision = v7.2.0-beta1-968-g8bfd0073a6
+    ga revision     = 5.8.0
+    use scalapack   = T
+    input           = input.nw
+    prefix          = LiF.
+    data base       = ./LiF.db
+    status          = startup
+    nproc           =        3
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =     26214394 doubles =      200.0 Mbytes
+    stack    =     26214399 doubles =      200.0 Mbytes
+    global   =     52428800 doubles =      400.0 Mbytes (distinct from heap & stack)
+    total    =    104857593 doubles =      800.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = .
+  0 scratch   = .
+
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+                                optimization of LiF
+                                -------------------
+
+
+ Summary of "ao basis" -> "" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ *                         6-311++G**                 on all atoms 
+
+
+
+ Scaling coordinates for geometry "geometry" by  1.889725989
+ (inverse scale =  0.529177249)
+
+ Turning off AUTOSYM since
+ SYMMETRY directive was detected!
+
+
+          ------
+          auto-z
+          ------
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Li                   3.0000     0.00000000     0.00000000    -1.12500000
+    2 F                    9.0000     0.00000000     0.00000000     0.37500000
+
+      Atomic Mass 
+      ----------- 
+
+      Li                 7.016000
+      F                 18.998400
+
+
+ Effective nuclear repulsion energy (a.u.)       9.5251904820
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000    -0.0000000000
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value
+      ----------- --------  ----- ----- ----- ----- ----- ----------
+    1 Stretch                  1     2                       1.50000
+
+
+            XYZ format geometry
+            -------------------
+     2
+ geometry
+ Li                    0.00000000     0.00000000    -1.12500000
+ F                     0.00000000     0.00000000     0.37500000
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 F                |   1 Li               |     2.83459  |     1.50000
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:          1
+ ==============================================================================
+
+
+
+
+
+                           NWChem Geometry Optimization
+                           ----------------------------
+
+
+
+
+                                optimization of LiF
+
+
+  no constraints, skipping    0.0000000000000000     
+ maximum gradient threshold         (gmax) =   0.000015
+ rms gradient threshold             (grms) =   0.000010
+ maximum cartesian step threshold   (xmax) =   0.000060
+ rms cartesian step threshold       (xrms) =   0.000040
+ fixed trust radius                (trust) =   0.300000
+ maximum step size to saddle      (sadstp) =   0.100000
+ energy precision                  (eprec) =   1.0D-07
+ maximum number of steps          (nptopt) =   40
+ initial hessian option           (inhess) =    0
+ line search option               (linopt) =    1
+ hessian update option            (modupd) =    1
+ saddle point option              (modsad) =    0
+ initial eigen-mode to follow     (moddir) =    0
+ initial variable to follow       (vardir) =    0
+ follow first negative mode     (firstneg) =    T
+ apply conjugacy                    (opcg) =    F
+ source of zmatrix                         =   autoz   
+
+
+          -------------------
+          Energy Minimization
+          -------------------
+
+
+ Names of Z-matrix variables 
+    1         
+
+ Variables with the same non-blank name are constrained to be equal
+
+
+ Using diagonal initial Hessian 
+ Scaling for Hessian diagonals: bonds = 1.00  angles = 0.25  torsions = 0.10
+
+          --------
+          Step   0
+          --------
+
+
+                         Geometry "geometry" -> "geometry"
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Li                   3.0000     0.00000000     0.00000000    -1.12500000
+    2 F                    9.0000     0.00000000     0.00000000     0.37500000
+
+      Atomic Mass 
+      ----------- 
+
+      Li                 7.016000
+      F                 18.998400
+
+
+ Effective nuclear repulsion energy (a.u.)       9.5251904820
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000    -0.0000000000
+
+                      Basis "ao basis" -> "ao basis" (cartesian)
+                      -----
+  Li (Lithium)
+  ------------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  9.00460000E+02  0.002287
+  1 S  1.34433000E+02  0.017635
+  1 S  3.04365000E+01  0.087343
+  1 S  8.62639000E+00  0.280977
+  1 S  2.48332000E+00  0.658741
+  1 S  3.03179000E-01  0.118712
+
+  2 S  4.86890000E+00  0.093329
+  2 S  8.56924000E-01  0.943045
+  2 S  2.43227000E-01 -0.002798
+
+  3 P  4.86890000E+00  0.032766
+  3 P  8.56924000E-01  0.159792
+  3 P  2.43227000E-01  0.885667
+
+  4 S  6.35070000E-02  1.000000
+
+  5 P  6.35070000E-02  1.000000
+
+  6 S  2.43683000E-02  1.000000
+
+  7 P  2.43683000E-02  1.000000
+
+  8 S  7.40000000E-03  1.000000
+
+  9 P  7.40000000E-03  1.000000
+
+ 10 D  2.00000000E-01  1.000000
+
+  F (Fluorine)
+  ------------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  1.14271000E+04  0.001801
+  1 S  1.72235000E+03  0.013742
+  1 S  3.95746000E+02  0.068133
+  1 S  1.15139000E+02  0.233325
+  1 S  3.36026000E+01  0.589086
+  1 S  4.91901000E+00  0.299505
+
+  2 S  5.54441000E+01  0.114536
+  2 S  1.26323000E+01  0.920512
+  2 S  3.71756000E+00 -0.003378
+
+  3 P  5.54441000E+01  0.035461
+  3 P  1.26323000E+01  0.237451
+  3 P  3.71756000E+00  0.820458
+
+  4 S  1.16545000E+00  1.000000
+
+  5 P  1.16545000E+00  1.000000
+
+  6 S  3.21892000E-01  1.000000
+
+  7 P  3.21892000E-01  1.000000
+
+  8 S  1.07600000E-01  1.000000
+
+  9 P  1.07600000E-01  1.000000
+
+ 10 D  1.75000000E+00  1.000000
+
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = atomic
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       0.5s
+
+
+      Superposition of Atomic Density Guess
+      -------------------------------------
+
+ Sum of atomic energies:        -106.83987887
+
+      Non-variational initial energy
+      ------------------------------
+
+ Total energy =    -106.582245
+ 1-e energy   =    -167.231797
+ 2-e energy   =      51.124361
+ HOMO         =      -0.678172
+ LUMO         =      -0.058967
+
+
+ Starting SCF solution at       0.5s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.8999855494  1.27D+00  4.66D-01      0.6
+                 2     -106.9717288785  1.83D-01  6.90D-02      0.6
+                 3     -106.9733213887  1.13D-02  3.89D-03      0.6
+                 4     -106.9733363675  5.09D-05  1.75D-05      0.7
+                 5     -106.9733363678  1.06D-09  3.11D-10      0.7
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.973336367804
+      One-electron energy =   -170.165218483024
+      Two-electron energy =     53.666691633226
+ Nuclear repulsion energy =      9.525190481995
+
+        Time for solution =      0.2s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1171
+    2   -2.4344
+    3   -1.3878
+    4   -0.5082
+    5   -0.4842
+    6   -0.4842
+    7   -0.0093
+    8    0.0156
+    9    0.0156
+   10    0.0212
+   11    0.0282
+   12    0.0635
+   13    0.0635
+   14    0.0921
+   15    0.1423
+   16    0.1793
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.434443D+00
+              MO Center=  3.0D-18,  6.8D-18, -1.1D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615044  1 Li s                  2      0.425093  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.387761D+00
+              MO Center= -3.3D-17,  3.4D-17,  3.3D-01, r^2= 3.8D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.610081  2 F  s                 33      0.532251  2 F  s          
+    25     -0.210038  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-5.081962D-01
+              MO Center=  8.3D-17, -1.2D-16,  3.9D-01, r^2= 5.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.447786  2 F  pz                36      0.403424  2 F  pz         
+    28      0.296058  2 F  pz                 6     -0.166783  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.841866D-01
+              MO Center= -5.2D-16, -5.8D-16,  3.4D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31      0.435260  2 F  py                35      0.404410  2 F  py         
+    27      0.288138  2 F  py         
+
+ Vector    6  Occ=2.000000D+00  E=-4.841866D-01
+              MO Center=  3.1D-16,  2.2D-16,  3.4D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.435260  2 F  px                34      0.404410  2 F  px         
+    26      0.288138  2 F  px         
+
+ Vector    7  Occ=0.000000D+00  E=-9.293175D-03
+              MO Center= -2.0D-15,  7.6D-15, -3.3D+00, r^2= 1.6D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.610347  1 Li s                 17     -0.273656  1 Li pz         
+    10      0.223312  1 Li s                 13     -0.212916  1 Li pz         
+     9     -0.153215  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.563344D-02
+              MO Center=  2.1D-13,  1.2D-13, -1.1D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      0.966132  1 Li px                16      0.576192  1 Li py         
+    11     -0.212354  1 Li px         
+
+ Vector    9  Occ=0.000000D+00  E= 1.563344D-02
+              MO Center= -3.4D-13,  5.6D-13, -1.1D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16      0.966132  1 Li py                15     -0.576192  1 Li px         
+    12     -0.212354  1 Li py         
+
+ Vector   10  Occ=0.000000D+00  E= 2.117558D-02
+              MO Center=  6.8D-13, -1.0D-12, -3.3D+00, r^2= 4.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    17      1.109173  1 Li pz                10      0.968865  1 Li s          
+    13     -0.626788  1 Li pz                14     -0.592346  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.818200D-02
+              MO Center= -5.7D-13,  3.1D-13,  1.7D+00, r^2= 3.9D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.571991  1 Li s                 14     -1.489862  1 Li s          
+     6     -0.729732  1 Li s                 17     -0.526535  1 Li pz         
+     9     -0.377561  1 Li pz                37      0.322443  2 F  s          
+
+ Vector   12  Occ=0.000000D+00  E= 6.346850D-02
+              MO Center= -1.3D-14,  1.0D-14, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.245832  1 Li px                12     -0.781064  1 Li py         
+    15     -0.681055  1 Li px                16      0.426982  1 Li py         
+    38     -0.157553  2 F  px         
+
+ Vector   13  Occ=0.000000D+00  E= 6.346850D-02
+              MO Center=  1.4D-14,  2.3D-14, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12      1.245832  1 Li py                11      0.781064  1 Li px         
+    16     -0.681055  1 Li py                15     -0.426982  1 Li px         
+    39     -0.157553  2 F  py         
+
+ Vector   14  Occ=0.000000D+00  E= 9.207954D-02
+              MO Center=  1.4D-15, -4.7D-15,  2.4D-01, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.789864  1 Li pz                10      1.152524  1 Li s          
+    17     -0.717535  1 Li pz                 9     -0.692964  1 Li pz         
+     6     -0.662326  1 Li s                 40     -0.377482  2 F  pz         
+    14     -0.363642  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.423317D-01
+              MO Center=  1.6D-14, -4.9D-16, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      2.799701  1 Li s                 10     -2.807072  1 Li s          
+    14      0.901132  1 Li s                  9     -0.715476  1 Li pz         
+    13      0.627533  1 Li pz                40      0.264799  2 F  pz         
+     2     -0.243750  1 Li s                 17     -0.208032  1 Li pz         
+    18     -0.152867  1 Li dxx               21     -0.152867  1 Li dyy        
+
+ Vector   16  Occ=0.000000D+00  E= 1.792790D-01
+              MO Center= -3.0D-16, -8.0D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.805600  1 Li py                12     -1.546450  1 Li py         
+    16      0.483618  1 Li py                39     -0.355706  2 F  py         
+
+ Vector   17  Occ=0.000000D+00  E= 1.792790D-01
+              MO Center= -7.2D-15,  4.1D-16, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.805600  1 Li px                11     -1.546450  1 Li px         
+    15      0.483618  1 Li px                38     -0.355706  2 F  px         
+
+ Vector   18  Occ=0.000000D+00  E= 2.188045D-01
+              MO Center=  2.2D-15,  3.1D-15, -5.6D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.498170  1 Li s                 37     -3.452274  2 F  s          
+     9      3.249708  1 Li pz                10     -1.718136  1 Li s          
+    13     -1.568406  1 Li pz                40      0.995865  2 F  pz         
+    17      0.398973  1 Li pz                14      0.383312  1 Li s          
+    33      0.225313  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.109654D-01
+              MO Center=  4.7D-15,  1.6D-15,  4.3D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39      1.497356  2 F  py                38      0.816889  2 F  px         
+     8     -0.575008  1 Li py                35     -0.571532  2 F  py         
+     7     -0.313698  1 Li px                34     -0.311801  2 F  px         
+
+ Vector   20  Occ=0.000000D+00  E= 4.109654D-01
+              MO Center=  1.9D-15, -1.9D-16,  4.3D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.497356  2 F  px                39     -0.816889  2 F  py         
+     7     -0.575008  1 Li px                34     -0.571532  2 F  px         
+     8      0.313698  1 Li py                35      0.311801  2 F  py         
+
+ Vector   21  Occ=0.000000D+00  E= 4.173481D-01
+              MO Center= -5.2D-15, -5.4D-15,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    40      1.414141  2 F  pz                37      1.205855  2 F  s          
+    10     -0.932142  1 Li s                  6      0.745058  1 Li s          
+    33     -0.612040  2 F  s                 36     -0.581035  2 F  pz         
+    13     -0.535550  1 Li pz                14      0.174607  1 Li s          
+    23     -0.159951  1 Li dzz        
+
+ Vector   22  Occ=0.000000D+00  E= 5.818831D-01
+              MO Center=  2.2D-15, -2.6D-15, -1.1D+00, r^2= 2.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    19      1.730074  1 Li dxy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.05583228
+
+ moments of inertia (a.u.)
+ ------------------
+          41.169252676051           0.000000000000           0.000000000000
+           0.000000000000          41.169252676051           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.33   1.20  0.79  0.16  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.67   1.08  0.92  1.14  1.07  2.41  0.98  2.01 -0.09  0.18 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000     12.000000
+
+     1   1 0 0      0.000000      0.000000      0.000000
+     1   0 1 0      0.000000      0.000000      0.000000
+     1   0 0 1     -2.481199      0.000000     -0.000000
+
+     2   2 0 0     -5.215969      0.000000      0.000000
+     2   1 1 0      0.000000      0.000000      0.000000
+     2   1 0 1     -0.000000      0.000000      0.000000
+     2   0 2 0     -5.215969      0.000000      0.000000
+     2   0 1 1     -0.000000      0.000000      0.000000
+     2   0 0 2     -0.946167      0.000000     18.078513
+
+
+ Parallel integral file used       6 records with       0 large values
+
+                              NWChem Gradients Module
+                              -----------------------
+
+
+                                optimization of LiF
+
+
+  wavefunction    =   RHF     
+
+
+
+                         RHF ENERGY GRADIENTS
+
+    atom               coordinates                        gradient
+                 x          y          z           x          y          z
+   1 Li      0.000000   0.000000  -2.125942   -0.000000  -0.000000   0.029053
+   2 F       0.000000   0.000000   0.708647    0.000000   0.000000  -0.029053
+
+                 ----------------------------------------
+                 |  Time  |  1-e(secs)   |  2-e(secs)   |
+                 ----------------------------------------
+                 |  CPU   |       0.00   |       0.15   |
+                 ----------------------------------------
+                 |  WALL  |       0.00   |       0.15   |
+                 ----------------------------------------
+  no constraints, skipping    0.0000000000000000     
+
+@ Step       Energy      Delta E   Gmax     Grms     Xrms     Xmax   Walltime
+@ ---- ---------------- -------- -------- -------- -------- -------- --------
+@    0    -106.97333637  0.0D+00  0.02905  0.02905  0.00000  0.00000      0.9
+                                                                    
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value     Gradient
+      ----------- --------  ----- ----- ----- ----- ----- ---------- ----------
+    1 Stretch                  1     2                       1.50000   -0.02905
+
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       1.0s
+
+
+ Loading old vectors from job with title :
+
+optimization of LiF
+
+
+ Starting SCF solution at       1.0s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.9743503672  2.41D-02  8.40D-03      1.1
+                 2     -106.9743906972  4.79D-04  1.67D-04      1.1
+                 3     -106.9743907382  1.30D-07  4.60D-08      1.2
+                 4     -106.9743907382  2.60D-10  7.88D-11      1.2
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.974390738233
+      One-electron energy =   -169.893752530929
+      Two-electron energy =     53.540293700229
+ Nuclear repulsion energy =      9.379068092467
+
+        Time for solution =      0.1s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1159
+    2   -2.4374
+    3   -1.3850
+    4   -0.5053
+    5   -0.4815
+    6   -0.4815
+    7   -0.0098
+    8    0.0156
+    9    0.0156
+   10    0.0209
+   11    0.0282
+   12    0.0630
+   13    0.0630
+   14    0.0921
+   15    0.1418
+   16    0.1782
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.437401D+00
+              MO Center=  3.7D-18, -8.9D-19, -1.1D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615381  1 Li s                  2      0.425407  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.384955D+00
+              MO Center= -2.2D-17,  2.3D-17,  3.5D-01, r^2= 3.8D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.610402  2 F  s                 33      0.531543  2 F  s          
+    25     -0.210059  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-5.053387D-01
+              MO Center=  4.2D-17, -2.0D-18,  4.0D-01, r^2= 5.4D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.446471  2 F  pz                36      0.404333  2 F  pz         
+    28      0.295456  2 F  pz                 6     -0.165731  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.814924D-01
+              MO Center=  2.5D-17,  1.7D-16,  3.5D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31      0.438551  2 F  py                35      0.407788  2 F  py         
+    27      0.290479  2 F  py         
+
+ Vector    6  Occ=2.000000D+00  E=-4.814924D-01
+              MO Center=  1.8D-16, -5.7D-17,  3.5D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.438551  2 F  px                34      0.407788  2 F  px         
+    26      0.290479  2 F  px         
+
+ Vector    7  Occ=0.000000D+00  E=-9.843805D-03
+              MO Center= -1.3D-15, -8.9D-16, -3.3D+00, r^2= 1.6D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.597446  1 Li s                 17     -0.267738  1 Li pz         
+    10      0.236441  1 Li s                 13     -0.215939  1 Li pz         
+     9     -0.157344  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.558134D-02
+              MO Center=  2.9D-13, -2.5D-13, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      0.849063  1 Li px                16     -0.735179  1 Li py         
+    11     -0.184653  1 Li px                12      0.159886  1 Li py         
+
+ Vector    9  Occ=0.000000D+00  E= 1.558134D-02
+              MO Center=  4.9D-13,  5.7D-13, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16      0.849063  1 Li py                15      0.735179  1 Li px         
+    12     -0.184653  1 Li py                11     -0.159886  1 Li px         
+
+ Vector   10  Occ=0.000000D+00  E= 2.090111D-02
+              MO Center= -1.0D-12, -8.6D-13, -3.5D+00, r^2= 4.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    17      1.090864  1 Li pz                10      1.016326  1 Li s          
+    14     -0.649855  1 Li s                 13     -0.617541  1 Li pz         
+     6     -0.154292  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.822048D-02
+              MO Center=  2.1D-13,  5.4D-13,  1.9D+00, r^2= 3.9D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.523890  1 Li s                 14     -1.467654  1 Li s          
+     6     -0.709408  1 Li s                 17     -0.566889  1 Li pz         
+     9     -0.378444  1 Li pz                37      0.317140  2 F  s          
+    13      0.176767  1 Li pz         
+
+ Vector   12  Occ=0.000000D+00  E= 6.300505D-02
+              MO Center=  1.6D-14,  1.6D-14, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.048109  1 Li px                12      1.023420  1 Li py         
+    15     -0.575722  1 Li px                16     -0.562161  1 Li py         
+
+ Vector   13  Occ=0.000000D+00  E= 6.300505D-02
+              MO Center= -6.7D-15,  7.1D-15, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12     -1.048109  1 Li py                11      1.023420  1 Li px         
+    16      0.575722  1 Li py                15     -0.562161  1 Li px         
+
+ Vector   14  Occ=0.000000D+00  E= 9.208846D-02
+              MO Center=  2.6D-15, -1.3D-14,  1.9D-01, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.793797  1 Li pz                10      1.124040  1 Li s          
+    17     -0.718344  1 Li pz                 9     -0.690871  1 Li pz         
+     6     -0.623822  1 Li s                 40     -0.372216  2 F  pz         
+    14     -0.353063  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.418159D-01
+              MO Center= -2.3D-14, -1.1D-14, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10     -2.796946  1 Li s                  6      2.735879  1 Li s          
+    14      0.902458  1 Li s                  9     -0.744912  1 Li pz         
+    13      0.630210  1 Li pz                40      0.247981  2 F  pz         
+     2     -0.245218  1 Li s                 17     -0.206933  1 Li pz         
+    18     -0.151724  1 Li dxx               21     -0.151724  1 Li dyy        
+
+ Vector   16  Occ=0.000000D+00  E= 1.781734D-01
+              MO Center=  9.3D-15, -1.0D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.780794  1 Li px                11     -1.539658  1 Li px         
+    15      0.482741  1 Li px                38     -0.338993  2 F  px         
+     8     -0.201881  1 Li py                12      0.174545  1 Li py         
+
+ Vector   17  Occ=0.000000D+00  E= 1.781734D-01
+              MO Center=  7.9D-16,  7.1D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.780794  1 Li py                12     -1.539658  1 Li py         
+    16      0.482741  1 Li py                39     -0.338993  2 F  py         
+     7      0.201881  1 Li px                11     -0.174545  1 Li px         
+
+ Vector   18  Occ=0.000000D+00  E= 2.186416D-01
+              MO Center=  2.9D-15, -2.7D-15, -5.7D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.467950  1 Li s                 37     -3.404451  2 F  s          
+     9      3.241297  1 Li pz                10     -1.726204  1 Li s          
+    13     -1.572207  1 Li pz                40      1.022554  2 F  pz         
+    17      0.399909  1 Li pz                14      0.387259  1 Li s          
+    33      0.225108  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.108966D-01
+              MO Center= -4.9D-16,  1.2D-15,  4.4D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39      1.691386  2 F  py                35     -0.651700  2 F  py         
+     8     -0.643111  1 Li py         
+
+ Vector   20  Occ=0.000000D+00  E= 4.108966D-01
+              MO Center= -2.3D-14,  5.9D-15,  4.4D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.691386  2 F  px                34     -0.651700  2 F  px         
+     7     -0.643111  1 Li px         
+
+ Vector   21  Occ=0.000000D+00  E= 4.178134D-01
+              MO Center=  2.3D-14,  3.3D-16,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    40      1.384474  2 F  pz                37      1.248912  2 F  s          
+    10     -0.920817  1 Li s                  6      0.716855  1 Li s          
+    33     -0.638818  2 F  s                 36     -0.571494  2 F  pz         
+    13     -0.534722  1 Li pz                14      0.170751  1 Li s          
+    23     -0.155549  1 Li dzz        
+
+ Vector   22  Occ=0.000000D+00  E= 5.806147D-01
+              MO Center= -2.2D-15,  1.4D-14, -1.1D+00, r^2= 2.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    18      0.865338  1 Li dxx               21     -0.865338  1 Li dyy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.04566167
+
+ moments of inertia (a.u.)
+ ------------------
+          42.462048737630           0.000000000000           0.000000000000
+           0.000000000000          42.462048737630           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.32   1.20  0.79  0.15  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.68   1.08  0.92  1.14  1.07  2.41  0.97  2.01 -0.09  0.18 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000     12.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -2.523040      0.000000      0.132486
+
+     2   2 0 0     -5.224395      0.000000      0.000000
+     2   1 1 0      0.000000      0.000000      0.000000
+     2   1 0 1      0.000000      0.000000      0.000000
+     2   0 2 0     -5.224395      0.000000      0.000000
+     2   0 1 1      0.000000      0.000000      0.000000
+     2   0 0 2     -0.880087      0.000000     18.647677
+
+
+ Parallel integral file used       6 records with       0 large values
+
+ Line search: 
+     step= 1.00 grad=-1.3D-03 hess= 2.3D-04 energy=   -106.974391 mode=downhill
+ new step= 2.81                   predicted energy=   -106.975136
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+
+          --------
+          Step   1
+          --------
+
+
+                         Geometry "geometry" -> "geometry"
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Li                   3.0000     0.00000000     0.00000000    -1.15778067
+    2 F                    9.0000     0.00000000     0.00000000     0.40778067
+
+      Atomic Mass 
+      ----------- 
+
+      Li                 7.016000
+      F                 18.998400
+
+
+ Effective nuclear repulsion energy (a.u.)       9.1263020434
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000     0.3716789456
+
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       1.3s
+
+
+ Loading old vectors from job with title :
+
+optimization of LiF
+
+
+ Starting SCF solution at       1.3s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.9751359270  4.07D-02  1.39D-02      1.4
+                 2     -106.9752529770  8.46D-04  2.78D-04      1.4
+                 3     -106.9752531014  6.95D-07  2.10D-07      1.4
+                 4     -106.9752531014  4.24D-10  1.54D-10      1.4
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.975253101388
+      One-electron energy =   -169.423051549622
+      Two-electron energy =     53.321496404882
+ Nuclear repulsion energy =      9.126302043353
+
+        Time for solution =      0.1s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1136
+    2   -2.4430
+    3   -1.3799
+    4   -0.5001
+    5   -0.4768
+    6   -0.4768
+    7   -0.0109
+    8    0.0155
+    9    0.0155
+   10    0.0204
+   11    0.0283
+   12    0.0622
+   13    0.0622
+   14    0.0921
+   15    0.1408
+   16    0.1762
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.442960D+00
+              MO Center=  3.5D-18, -5.6D-19, -1.2D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615881  1 Li s                  2      0.425956  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.379896D+00
+              MO Center= -2.2D-17,  2.5D-17,  3.7D-01, r^2= 3.7D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.611004  2 F  s                 33      0.530162  2 F  s          
+    25     -0.210103  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-5.000667D-01
+              MO Center=  2.6D-17,  5.1D-18,  4.1D-01, r^2= 5.4D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.444299  2 F  pz                36      0.405645  2 F  pz         
+    28      0.294430  2 F  pz                 6     -0.163712  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.767738D-01
+              MO Center=  1.7D-16, -4.5D-17,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.436403  2 F  px                34      0.406251  2 F  px         
+    26      0.289317  2 F  px         
+
+ Vector    6  Occ=2.000000D+00  E=-4.767738D-01
+              MO Center=  3.4D-17,  1.4D-16,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31      0.436403  2 F  py                35      0.406251  2 F  py         
+    27      0.289317  2 F  py         
+
+ Vector    7  Occ=0.000000D+00  E=-1.085537D-02
+              MO Center=  2.8D-16, -2.6D-15, -3.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.574487  1 Li s                 10      0.259200  1 Li s          
+    17     -0.257125  1 Li pz                13     -0.221026  1 Li pz         
+     9     -0.164710  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.548333D-02
+              MO Center= -1.1D-12,  2.2D-12, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16      0.990572  1 Li py                15     -0.522128  1 Li px         
+    12     -0.211124  1 Li py         
+
+ Vector    9  Occ=0.000000D+00  E= 1.548333D-02
+              MO Center=  6.5D-14,  3.4D-14, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      0.990572  1 Li px                16      0.522128  1 Li py         
+    11     -0.211124  1 Li px         
+
+ Vector   10  Occ=0.000000D+00  E= 2.037184D-02
+              MO Center=  7.3D-13, -1.9D-12, -3.8D+00, r^2= 4.1D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.084847  1 Li s                 17      1.059263  1 Li pz         
+    14     -0.739271  1 Li s                 13     -0.599551  1 Li pz         
+     6     -0.178580  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.834160D-02
+              MO Center=  3.5D-13, -3.3D-13,  2.1D+00, r^2= 3.8D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.442482  1 Li s                 14     -1.427927  1 Li s          
+     6     -0.672582  1 Li s                 17     -0.629033  1 Li pz         
+     9     -0.377825  1 Li pz                37      0.305520  2 F  s          
+    13      0.220358  1 Li pz         
+
+ Vector   12  Occ=0.000000D+00  E= 6.215532D-02
+              MO Center= -1.2D-14,  4.3D-16, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.453112  1 Li px                15     -0.805347  1 Li px         
+    38     -0.188743  2 F  px         
+
+ Vector   13  Occ=0.000000D+00  E= 6.215532D-02
+              MO Center=  7.8D-17, -1.4D-17, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12      1.453112  1 Li py                16     -0.805347  1 Li py         
+    39     -0.188743  2 F  py         
+
+ Vector   14  Occ=0.000000D+00  E= 9.206896D-02
+              MO Center=  1.1D-14, -3.9D-15,  9.9D-02, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.800241  1 Li pz                10      1.070437  1 Li s          
+    17     -0.719748  1 Li pz                 9     -0.685950  1 Li pz         
+     6     -0.552257  1 Li s                 40     -0.361786  2 F  pz         
+    14     -0.333296  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.408203D-01
+              MO Center= -1.7D-15,  1.7D-14, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10     -2.779538  1 Li s                  6      2.623283  1 Li s          
+    14      0.904967  1 Li s                  9     -0.799808  1 Li pz         
+    13      0.635404  1 Li pz                 2     -0.247358  1 Li s          
+    40      0.214873  2 F  pz                17     -0.204831  1 Li pz         
+
+ Vector   16  Occ=0.000000D+00  E= 1.761893D-01
+              MO Center= -2.4D-14,  8.6D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.573838  1 Li px                11     -1.383617  1 Li px         
+     8      0.807038  1 Li py                12     -0.709496  1 Li py         
+    15      0.435789  1 Li px                38     -0.281037  2 F  px         
+    16      0.223466  1 Li py         
+
+ Vector   17  Occ=0.000000D+00  E= 1.761893D-01
+              MO Center= -2.2D-15, -3.7D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.573838  1 Li py                12     -1.383617  1 Li py         
+     7     -0.807038  1 Li px                11      0.709496  1 Li px         
+    16      0.435789  1 Li py                39     -0.281037  2 F  py         
+    15     -0.223466  1 Li px         
+
+ Vector   18  Occ=0.000000D+00  E= 2.184796D-01
+              MO Center= -7.8D-16,  2.1D-16, -6.0D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.403340  1 Li s                 37     -3.306160  2 F  s          
+     9      3.219488  1 Li pz                10     -1.738736  1 Li s          
+    13     -1.578001  1 Li pz                40      1.064862  2 F  pz         
+    17      0.401539  1 Li pz                14      0.394107  1 Li s          
+    33      0.225058  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.108033D-01
+              MO Center= -2.6D-15, -5.7D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39      1.549553  2 F  py                38      0.619767  2 F  px         
+    35     -0.606843  2 F  py                 8     -0.578793  1 Li py         
+    34     -0.242716  2 F  px                 7     -0.231497  1 Li px         
+
+ Vector   20  Occ=0.000000D+00  E= 4.108033D-01
+              MO Center=  1.2D-14, -3.3D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.549553  2 F  px                39     -0.619767  2 F  py         
+    34     -0.606843  2 F  px                 7     -0.578793  1 Li px         
+    35      0.242716  2 F  py                 8      0.231497  1 Li py         
+
+ Vector   21  Occ=0.000000D+00  E= 4.185786D-01
+              MO Center= -8.9D-15,  1.0D-14,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    40      1.332781  2 F  pz                37      1.321048  2 F  s          
+    10     -0.900451  1 Li s                 33     -0.684119  2 F  s          
+     6      0.668223  1 Li s                 36     -0.554455  2 F  pz         
+    13     -0.532226  1 Li pz                14      0.163772  1 Li s          
+
+ Vector   22  Occ=0.000000D+00  E= 5.782642D-01
+              MO Center=  2.5D-14, -8.0D-15, -1.2D+00, r^2= 2.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    18      0.865652  1 Li dxx               21     -0.865652  1 Li dyy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.02729933
+
+ moments of inertia (a.u.)
+ ------------------
+          44.846715972938           0.000000000000           0.000000000000
+           0.000000000000          44.846715972938           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.31   1.20  0.79  0.14  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.69   1.08  0.92  1.14  1.07  2.40  0.97  2.02 -0.08  0.19 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000     12.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -2.598721      0.000000      0.371679
+
+     2   2 0 0     -5.238998      0.000000      0.000000
+     2   1 1 0     -0.000000      0.000000      0.000000
+     2   1 0 1      0.000000      0.000000      0.000000
+     2   0 2 0     -5.238998      0.000000      0.000000
+     2   0 1 1      0.000000      0.000000      0.000000
+     2   0 0 2     -0.761065      0.000000     19.704897
+
+
+ Parallel integral file used       6 records with       0 large values
+
+                              NWChem Gradients Module
+                              -----------------------
+
+
+                                optimization of LiF
+
+
+  wavefunction    =   RHF     
+
+
+
+                         RHF ENERGY GRADIENTS
+
+    atom               coordinates                        gradient
+                 x          y          z           x          y          z
+   1 Li      0.000000   0.000000  -2.187888    0.000000  -0.000000   0.003289
+   2 F       0.000000   0.000000   0.770594   -0.000000   0.000000  -0.003289
+
+                 ----------------------------------------
+                 |  Time  |  1-e(secs)   |  2-e(secs)   |
+                 ----------------------------------------
+                 |  CPU   |       0.00   |       0.15   |
+                 ----------------------------------------
+                 |  WALL  |       0.00   |       0.15   |
+                 ----------------------------------------
+  no constraints, skipping    0.0000000000000000     
+
+  Step       Energy      Delta E   Gmax     Grms     Xrms     Xmax   Walltime
+  ---- ---------------- -------- -------- -------- -------- -------- --------
+@    1    -106.97525310 -1.9D-03  0.00329  0.00329  0.03576  0.06195      1.6
+                                                                    
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value     Gradient
+      ----------- --------  ----- ----- ----- ----- ----- ---------- ----------
+    1 Stretch                  1     2                       1.56556   -0.00329
+
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       1.7s
+
+
+ Loading old vectors from job with title :
+
+optimization of LiF
+
+
+ Starting SCF solution at       1.7s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.9752792477  7.69D-03  2.63D-03      1.8
+                 2     -106.9752834642  3.43D-05  1.07D-05      1.8
+                 3     -106.9752834643  4.23D-10  1.78D-10      1.9
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.975283464297
+      One-electron energy =   -169.332525186063
+      Two-electron energy =     53.279473090259
+ Nuclear repulsion energy =      9.077768631506
+
+        Time for solution =      0.1s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1131
+    2   -2.4441
+    3   -1.3789
+    4   -0.4990
+    5   -0.4759
+    6   -0.4759
+    7   -0.0111
+    8    0.0155
+    9    0.0155
+   10    0.0203
+   11    0.0284
+   12    0.0620
+   13    0.0620
+   14    0.0921
+   15    0.1406
+   16    0.1758
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.444090D+00
+              MO Center=  3.7D-18, -4.0D-19, -1.2D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615967  1 Li s                  2      0.426061  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.378896D+00
+              MO Center= -2.2D-17,  2.5D-17,  3.8D-01, r^2= 3.7D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.611126  2 F  s                 33      0.529878  2 F  s          
+    25     -0.210112  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-4.990075D-01
+              MO Center=  3.4D-17,  9.1D-18,  4.2D-01, r^2= 5.5D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.443897  2 F  pz                36      0.405859  2 F  pz         
+    28      0.294235  2 F  pz                 6     -0.163291  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.758584D-01
+              MO Center=  6.4D-18,  1.6D-16,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31      0.438005  2 F  py                35      0.407818  2 F  py         
+    27      0.290427  2 F  py         
+
+ Vector    6  Occ=2.000000D+00  E=-4.758584D-01
+              MO Center=  2.0D-16, -6.5D-17,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.438005  2 F  px                34      0.407818  2 F  px         
+    26      0.290427  2 F  px         
+
+ Vector    7  Occ=0.000000D+00  E=-1.105868D-02
+              MO Center= -4.8D-16, -9.7D-17, -3.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.569987  1 Li s                 10      0.263567  1 Li s          
+    17     -0.255032  1 Li pz                13     -0.221980  1 Li pz         
+     9     -0.166154  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.546327D-02
+              MO Center= -1.6D-12, -2.4D-13, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      1.106354  1 Li px                11     -0.234820  1 Li px         
+    16      0.168187  1 Li py         
+
+ Vector    9  Occ=0.000000D+00  E= 1.546327D-02
+              MO Center=  3.2D-13, -2.1D-12, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16      1.106354  1 Li py                12     -0.234820  1 Li py         
+    15     -0.168187  1 Li px         
+
+ Vector   10  Occ=0.000000D+00  E= 2.026276D-02
+              MO Center=  1.3D-12,  2.4D-12, -3.9D+00, r^2= 4.1D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.096105  1 Li s                 17      1.053313  1 Li pz         
+    14     -0.754982  1 Li s                 13     -0.595878  1 Li pz         
+     6     -0.182359  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.837240D-02
+              MO Center= -2.6D-14, -8.4D-15,  2.1D+00, r^2= 3.8D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.427267  1 Li s                 14     -1.420263  1 Li s          
+     6     -0.665321  1 Li s                 17     -0.639862  1 Li pz         
+     9     -0.377407  1 Li pz                37      0.302950  2 F  s          
+    13      0.227994  1 Li pz         
+
+ Vector   12  Occ=0.000000D+00  E= 6.198490D-02
+              MO Center=  1.9D-15,  8.6D-16, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.385775  1 Li px                15     -0.769421  1 Li px         
+    12      0.436540  1 Li py                16     -0.242379  1 Li py         
+    38     -0.180523  2 F  px         
+
+ Vector   13  Occ=0.000000D+00  E= 6.198490D-02
+              MO Center= -2.9D-15,  1.0D-14, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12      1.385775  1 Li py                16     -0.769421  1 Li py         
+    11     -0.436540  1 Li px                15      0.242379  1 Li px         
+    39     -0.180523  2 F  py         
+
+ Vector   14  Occ=0.000000D+00  E= 9.205962D-02
+              MO Center=  1.1D-14, -1.5D-14,  8.0D-02, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.801404  1 Li pz                10      1.059498  1 Li s          
+    17     -0.720014  1 Li pz                 9     -0.684785  1 Li pz         
+     6     -0.537780  1 Li s                 40     -0.359572  2 F  pz         
+    14     -0.329281  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.406126D-01
+              MO Center=  1.5D-15,  3.9D-15, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10     -2.776279  1 Li s                  6      2.601560  1 Li s          
+    14      0.905492  1 Li s                  9     -0.810808  1 Li pz         
+    13      0.636439  1 Li pz                 2     -0.247698  1 Li s          
+    40      0.207959  2 F  pz                17     -0.204388  1 Li pz         
+
+ Vector   16  Occ=0.000000D+00  E= 1.757977D-01
+              MO Center=  3.4D-15,  3.1D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.455734  1 Li py                12     -1.283961  1 Li py         
+     7     -0.996667  1 Li px                11      0.879063  1 Li px         
+    16      0.404758  1 Li py                15     -0.277117  1 Li px         
+    39     -0.256589  2 F  py                38      0.175673  2 F  px         
+
+ Vector   17  Occ=0.000000D+00  E= 1.757977D-01
+              MO Center=  2.6D-15,  1.4D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.455734  1 Li px                11     -1.283961  1 Li px         
+     8      0.996667  1 Li py                12     -0.879063  1 Li py         
+    15      0.404758  1 Li px                16      0.277117  1 Li py         
+    38     -0.256589  2 F  px                39     -0.175673  2 F  py         
+
+ Vector   18  Occ=0.000000D+00  E= 2.184674D-01
+              MO Center=  6.4D-16,  2.4D-15, -6.1D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.388954  1 Li s                 37     -3.284810  2 F  s          
+     9      3.214092  1 Li pz                10     -1.740861  1 Li s          
+    13     -1.578966  1 Li pz                40      1.072281  2 F  pz         
+    17      0.401852  1 Li pz                14      0.395404  1 Li s          
+    33      0.225054  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.107893D-01
+              MO Center=  1.6D-14,  4.1D-14,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39      1.533599  2 F  py                38      0.646626  2 F  px         
+    35     -0.602471  2 F  py                 8     -0.570821  1 Li py         
+    34     -0.254025  2 F  px                 7     -0.240681  1 Li px         
+
+ Vector   20  Occ=0.000000D+00  E= 4.107893D-01
+              MO Center=  1.3D-14, -6.5D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.533599  2 F  px                39     -0.646626  2 F  py         
+    34     -0.602471  2 F  px                 7     -0.570821  1 Li px         
+    35      0.254025  2 F  py                 8      0.240681  1 Li py         
+
+ Vector   21  Occ=0.000000D+00  E= 4.187193D-01
+              MO Center= -3.1D-14, -3.4D-14,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37      1.334564  2 F  s                 40      1.322789  2 F  pz         
+    10     -0.896415  1 Li s                 33     -0.692660  2 F  s          
+     6      0.658887  1 Li s                 36     -0.551105  2 F  pz         
+    13     -0.531578  1 Li pz                14      0.162384  1 Li s          
+
+ Vector   22  Occ=0.000000D+00  E= 5.777892D-01
+              MO Center= -1.5D-15, -6.5D-15, -1.2D+00, r^2= 2.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    18      0.865167  1 Li dxx               21     -0.865167  1 Li dyy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.02365657
+
+ moments of inertia (a.u.)
+ ------------------
+          45.327535130081           0.000000000000           0.000000000000
+           0.000000000000          45.327535130081           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.31   1.20  0.79  0.14  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.69   1.08  0.92  1.14  1.07  2.40  0.97  2.02 -0.08  0.20 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0      0.000000      0.000000     12.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -2.613757      0.000000      0.419131
+
+     2   2 0 0     -5.241806      0.000000      0.000000
+     2   1 1 0     -0.000000      0.000000      0.000000
+     2   1 0 1      0.000000      0.000000      0.000000
+     2   0 2 0     -5.241806      0.000000      0.000000
+     2   0 1 1      0.000000      0.000000      0.000000
+     2   0 0 2     -0.737477      0.000000     19.919165
+
+
+ Parallel integral file used       6 records with       0 large values
+
+ Line search: 
+     step= 1.00 grad=-5.2D-05 hess= 2.2D-05 energy=   -106.975283 mode=downhill
+ new step= 1.20                   predicted energy=   -106.975284
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+
+          --------
+          Step   2
+          --------
+
+
+                         Geometry "geometry" -> "geometry"
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Li                   3.0000     0.00000000     0.00000000    -1.16280599
+    2 F                    9.0000     0.00000000     0.00000000     0.41280599
+
+      Atomic Mass 
+      ----------- 
+
+      Li                 7.016000
+      F                 18.998400
+
+
+ Effective nuclear repulsion energy (a.u.)       9.0680865180
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000     0.4286577519
+
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       2.0s
+
+
+ Loading old vectors from job with title :
+
+optimization of LiF
+
+
+ Starting SCF solution at       2.0s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.9752842587  1.53D-03  5.23D-04      2.1
+                 2     -106.9752844257  1.13D-06  4.17D-07      2.1
+                 3     -106.9752844257  6.25D-10  2.55D-10      2.1
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.975284425686
+      One-electron energy =   -169.314460439889
+      Two-electron energy =     53.271089496159
+ Nuclear repulsion energy =      9.068086518044
+
+        Time for solution =      0.1s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1130
+    2   -2.4443
+    3   -1.3787
+    4   -0.4988
+    5   -0.4757
+    6   -0.4757
+    7   -0.0111
+    8    0.0155
+    9    0.0155
+   10    0.0202
+   11    0.0284
+   12    0.0620
+   13    0.0620
+   14    0.0921
+   15    0.1406
+   16    0.1757
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.444317D+00
+              MO Center=  3.7D-18, -3.7D-19, -1.2D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615983  1 Li s                  2      0.426082  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.378695D+00
+              MO Center= -2.2D-17,  2.5D-17,  3.8D-01, r^2= 3.7D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.611151  2 F  s                 33      0.529820  2 F  s          
+    25     -0.210114  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-4.987944D-01
+              MO Center=  3.3D-17,  1.0D-17,  4.2D-01, r^2= 5.5D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.443817  2 F  pz                36      0.405901  2 F  pz         
+    28      0.294196  2 F  pz                 6     -0.163206  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.756754D-01
+              MO Center=  1.7D-17,  1.5D-16,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31      0.441007  2 F  py                35      0.410627  2 F  py         
+    27      0.292426  2 F  py         
+
+ Vector    6  Occ=2.000000D+00  E=-4.756754D-01
+              MO Center=  1.9D-16, -5.8D-17,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.441007  2 F  px                34      0.410627  2 F  px         
+    26      0.292426  2 F  px         
+
+ Vector    7  Occ=0.000000D+00  E=-1.109961D-02
+              MO Center= -6.9D-16, -5.2D-16, -3.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.569085  1 Li s                 10      0.264438  1 Li s          
+    17     -0.254613  1 Li pz                13     -0.222169  1 Li pz         
+     9     -0.166443  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.545922D-02
+              MO Center=  5.3D-13,  8.5D-13, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16      0.948986  1 Li py                15      0.592808  1 Li px         
+    12     -0.201249  1 Li py         
+
+ Vector    9  Occ=0.000000D+00  E= 1.545922D-02
+              MO Center= -7.1D-13,  4.4D-13, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      0.948986  1 Li px                16     -0.592808  1 Li py         
+    11     -0.201249  1 Li px         
+
+ Vector   10  Occ=0.000000D+00  E= 2.024073D-02
+              MO Center=  1.4D-13, -1.2D-12, -3.9D+00, r^2= 4.1D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.098281  1 Li s                 17      1.052132  1 Li pz         
+    14     -0.758061  1 Li s                 13     -0.595138  1 Li pz         
+     6     -0.183081  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.837883D-02
+              MO Center=  3.9D-14, -8.1D-14,  2.2D+00, r^2= 3.8D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.424251  1 Li s                 14     -1.418736  1 Li s          
+     6     -0.663866  1 Li s                 17     -0.641981  1 Li pz         
+     9     -0.377313  1 Li pz                37      0.302425  2 F  s          
+    13      0.229489  1 Li pz         
+
+ Vector   12  Occ=0.000000D+00  E= 6.195061D-02
+              MO Center=  1.2D-15, -1.7D-15, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12      1.200047  1 Li py                11     -0.818333  1 Li px         
+    16     -0.666543  1 Li py                15      0.454527  1 Li px         
+    39     -0.156418  2 F  py         
+
+ Vector   13  Occ=0.000000D+00  E= 6.195061D-02
+              MO Center=  4.1D-15,  2.6D-15, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.200047  1 Li px                12      0.818333  1 Li py         
+    15     -0.666543  1 Li px                16     -0.454527  1 Li py         
+    38     -0.156418  2 F  px         
+
+ Vector   14  Occ=0.000000D+00  E= 9.205752D-02
+              MO Center= -6.1D-15,  1.8D-15,  7.6D-02, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.801632  1 Li pz                10      1.057290  1 Li s          
+    17     -0.720066  1 Li pz                 9     -0.684543  1 Li pz         
+     6     -0.534863  1 Li s                 40     -0.359121  2 F  pz         
+    14     -0.328471  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.405705D-01
+              MO Center=  1.2D-14, -4.1D-15, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10     -2.775634  1 Li s                  6      2.597229  1 Li s          
+    14      0.905599  1 Li s                  9     -0.813016  1 Li pz         
+    13      0.636645  1 Li pz                 2     -0.247763  1 Li s          
+    40      0.206559  2 F  pz                17     -0.204297  1 Li pz         
+
+ Vector   16  Occ=0.000000D+00  E= 1.757192D-01
+              MO Center= -9.3D-15, -3.2D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.684342  1 Li px                11     -1.486562  1 Li px         
+     8      0.521885  1 Li py                15      0.468708  1 Li px         
+    12     -0.460604  1 Li py                38     -0.296105  2 F  px         
+
+ Vector   17  Occ=0.000000D+00  E= 1.757192D-01
+              MO Center= -2.6D-15,  8.0D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.684342  1 Li py                12     -1.486562  1 Li py         
+     7     -0.521885  1 Li px                16      0.468708  1 Li py         
+    11      0.460604  1 Li px                39     -0.296105  2 F  py         
+
+ Vector   18  Occ=0.000000D+00  E= 2.184658D-01
+              MO Center=  1.2D-15,  2.5D-15, -6.1D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.386003  1 Li s                 37     -3.280450  2 F  s          
+     9      3.212965  1 Li pz                10     -1.741272  1 Li s          
+    13     -1.579152  1 Li pz                40      1.073730  2 F  pz         
+    17      0.401914  1 Li pz                14      0.395661  1 Li s          
+    33      0.225052  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.107866D-01
+              MO Center=  1.0D-14,  3.0D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.556351  2 F  px                34     -0.611789  2 F  px         
+    39      0.587189  2 F  py                 7     -0.578881  1 Li px         
+    35     -0.230819  2 F  py                 8     -0.218403  1 Li py         
+
+ Vector   20  Occ=0.000000D+00  E= 4.107866D-01
+              MO Center= -2.6D-15,  7.0D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39      1.556351  2 F  py                35     -0.611789  2 F  py         
+    38     -0.587189  2 F  px                 8     -0.578881  1 Li py         
+    34      0.230819  2 F  px                 7      0.218403  1 Li px         
+
+ Vector   21  Occ=0.000000D+00  E= 4.187471D-01
+              MO Center= -6.9D-15, -1.1D-14,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37      1.337248  2 F  s                 40      1.320793  2 F  pz         
+    10     -0.895604  1 Li s                 33     -0.694358  2 F  s          
+     6      0.657024  1 Li s                 36     -0.550434  2 F  pz         
+    13     -0.531442  1 Li pz                14      0.162105  1 Li s          
+
+ Vector   22  Occ=0.000000D+00  E= 5.776025D-01
+              MO Center=  4.8D-15, -1.2D-15, -6.8D-01, r^2= 6.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37     -5.416273  2 F  s                  6      5.199875  1 Li s          
+     9      3.099659  1 Li pz                40      2.226336  2 F  pz         
+    10     -1.213060  1 Li s                 13     -0.992419  1 Li pz         
+    33      0.977080  2 F  s                 23      0.565265  1 Li dzz        
+    18     -0.476647  1 Li dxx               21     -0.476647  1 Li dyy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.02292520
+
+ moments of inertia (a.u.)
+ ------------------
+          45.424380397023           0.000000000000           0.000000000000
+           0.000000000000          45.424380397023           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.31   1.20  0.79  0.14  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.69   1.08  0.92  1.14  1.07  2.40  0.97  2.02 -0.08  0.20 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000     12.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -2.616777      0.000000      0.428658
+
+     2   2 0 0     -5.242366      0.000000      0.000000
+     2   1 1 0     -0.000000      0.000000      0.000000
+     2   1 0 1      0.000000      0.000000      0.000000
+     2   0 2 0     -5.242366      0.000000      0.000000
+     2   0 1 1      0.000000      0.000000      0.000000
+     2   0 0 2     -0.732742      0.000000     19.962365
+
+
+ Parallel integral file used       6 records with       0 large values
+
+                              NWChem Gradients Module
+                              -----------------------
+
+
+                                optimization of LiF
+
+
+  wavefunction    =   RHF     
+
+
+
+                         RHF ENERGY GRADIENTS
+
+    atom               coordinates                        gradient
+                 x          y          z           x          y          z
+   1 Li      0.000000   0.000000  -2.197385    0.000000  -0.000000   0.000037
+   2 F       0.000000   0.000000   0.780090   -0.000000   0.000000  -0.000037
+
+                 ----------------------------------------
+                 |  Time  |  1-e(secs)   |  2-e(secs)   |
+                 ----------------------------------------
+                 |  CPU   |       0.00   |       0.15   |
+                 ----------------------------------------
+                 |  WALL  |       0.00   |       0.15   |
+                 ----------------------------------------
+  no constraints, skipping    0.0000000000000000     
+
+  Step       Energy      Delta E   Gmax     Grms     Xrms     Xmax   Walltime
+  ---- ---------------- -------- -------- -------- -------- -------- --------
+@    2    -106.97528443 -3.1D-05  0.00004  0.00004  0.00548  0.00950      2.3
+                                                                    
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value     Gradient
+      ----------- --------  ----- ----- ----- ----- ----- ---------- ----------
+    1 Stretch                  1     2                       1.57561   -0.00004
+
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       2.4s
+
+
+ Loading old vectors from job with title :
+
+optimization of LiF
+
+
+ Starting SCF solution at       2.4s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.9752844290  1.04D-04  3.55D-05      2.5
+                 2     -106.9752844298  2.19D-09  5.84D-10      2.5
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.975284429780
+      One-electron energy =   -169.313232886035
+      Two-electron energy =     53.270519831758
+ Nuclear repulsion energy =      9.067428624497
+
+        Time for solution =      0.1s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1130
+    2   -2.4443
+    3   -1.3787
+    4   -0.4988
+    5   -0.4757
+    6   -0.4757
+    7   -0.0111
+    8    0.0155
+    9    0.0155
+   10    0.0202
+   11    0.0284
+   12    0.0619
+   13    0.0619
+   14    0.0921
+   15    0.1406
+   16    0.1757
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.444333D+00
+              MO Center=  3.7D-18, -3.7D-19, -1.2D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615984  1 Li s                  2      0.426083  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.378682D+00
+              MO Center= -2.2D-17,  2.5D-17,  3.8D-01, r^2= 3.7D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.611152  2 F  s                 33      0.529816  2 F  s          
+    25     -0.210114  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-4.987799D-01
+              MO Center=  3.4D-17,  1.0D-17,  4.2D-01, r^2= 5.5D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.443812  2 F  pz                36      0.405903  2 F  pz         
+    28      0.294194  2 F  pz                 6     -0.163200  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.756630D-01
+              MO Center=  1.8D-16, -1.5D-17,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.348776  2 F  px                34      0.324751  2 F  px         
+    31     -0.269929  2 F  py                35     -0.251335  2 F  py         
+    26      0.231270  2 F  px                27     -0.178987  2 F  py         
+
+ Vector    6  Occ=2.000000D+00  E=-4.756630D-01
+              MO Center=  3.2D-17,  1.1D-16,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31      0.348776  2 F  py                35      0.324751  2 F  py         
+    30      0.269929  2 F  px                34      0.251335  2 F  px         
+    27      0.231270  2 F  py                26      0.178987  2 F  px         
+
+ Vector    7  Occ=0.000000D+00  E=-1.110239D-02
+              MO Center= -7.0D-16, -4.9D-16, -3.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.569024  1 Li s                 10      0.264497  1 Li s          
+    17     -0.254584  1 Li pz                13     -0.222182  1 Li pz         
+     9     -0.166462  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.545895D-02
+              MO Center= -1.8D-13,  1.7D-12, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16      1.112193  1 Li py                12     -0.235846  1 Li py         
+
+ Vector    9  Occ=0.000000D+00  E= 1.545895D-02
+              MO Center= -4.8D-14, -5.2D-15, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      1.112193  1 Li px                11     -0.235846  1 Li px         
+
+ Vector   10  Occ=0.000000D+00  E= 2.023923D-02
+              MO Center=  1.2D-13, -2.3D-12, -3.9D+00, r^2= 4.1D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.098428  1 Li s                 17      1.052052  1 Li pz         
+    14     -0.758270  1 Li s                 13     -0.595088  1 Li pz         
+     6     -0.183129  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.837927D-02
+              MO Center=  1.0D-13,  6.7D-13,  2.2D+00, r^2= 3.8D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.424046  1 Li s                 14     -1.418632  1 Li s          
+     6     -0.663767  1 Li s                 17     -0.642125  1 Li pz         
+     9     -0.377306  1 Li pz                37      0.302389  2 F  s          
+    13      0.229590  1 Li pz         
+
+ Vector   12  Occ=0.000000D+00  E= 6.194827D-02
+              MO Center= -3.3D-15, -1.4D-14, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12      1.414426  1 Li py                16     -0.785635  1 Li py         
+    11      0.330305  1 Li px                15     -0.183466  1 Li px         
+    39     -0.184368  2 F  py         
+
+ Vector   13  Occ=0.000000D+00  E= 6.194827D-02
+              MO Center=  1.2D-14, -2.6D-15, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.414426  1 Li px                15     -0.785635  1 Li px         
+    12     -0.330305  1 Li py                16      0.183466  1 Li py         
+    38     -0.184368  2 F  px         
+
+ Vector   14  Occ=0.000000D+00  E= 9.205738D-02
+              MO Center= -4.1D-15,  6.4D-15,  7.6D-02, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.801648  1 Li pz                10      1.057140  1 Li s          
+    17     -0.720070  1 Li pz                 9     -0.684526  1 Li pz         
+     6     -0.534665  1 Li s                 40     -0.359090  2 F  pz         
+    14     -0.328416  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.405676D-01
+              MO Center=  1.1D-14, -2.0D-14, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10     -2.775590  1 Li s                  6      2.596935  1 Li s          
+    14      0.905606  1 Li s                  9     -0.813167  1 Li pz         
+    13      0.636659  1 Li pz                 2     -0.247767  1 Li s          
+    40      0.206464  2 F  pz                17     -0.204291  1 Li pz         
+
+ Vector   16  Occ=0.000000D+00  E= 1.757138D-01
+              MO Center=  4.2D-17, -8.3D-16, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.760038  1 Li py                12     -1.553438  1 Li py         
+    16      0.489800  1 Li py                39     -0.309357  2 F  py         
+
+ Vector   17  Occ=0.000000D+00  E= 1.757138D-01
+              MO Center=  1.2D-15,  5.1D-17, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.760038  1 Li px                11     -1.553438  1 Li px         
+    15      0.489800  1 Li px                38     -0.309357  2 F  px         
+
+ Vector   18  Occ=0.000000D+00  E= 2.184657D-01
+              MO Center= -8.1D-16, -1.5D-16, -6.1D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.385802  1 Li s                 37     -3.280152  2 F  s          
+     9      3.212887  1 Li pz                10     -1.741299  1 Li s          
+    13     -1.579165  1 Li pz                40      1.073828  2 F  pz         
+    17      0.401919  1 Li pz                14      0.395679  1 Li s          
+    33      0.225052  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.107865D-01
+              MO Center= -7.4D-15,  7.7D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39     -1.198528  2 F  py                38      1.153406  2 F  px         
+    35      0.471152  2 F  py                34     -0.453414  2 F  px         
+     8      0.445768  1 Li py                 7     -0.428986  1 Li px         
+
+ Vector   20  Occ=0.000000D+00  E= 4.107865D-01
+              MO Center=  1.5D-14,  1.5D-14,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.198528  2 F  px                39      1.153406  2 F  py         
+    34     -0.471152  2 F  px                35     -0.453414  2 F  py         
+     7     -0.445768  1 Li px                 8     -0.428986  1 Li py         
+
+ Vector   21  Occ=0.000000D+00  E= 4.187490D-01
+              MO Center= -7.5D-15, -2.2D-14,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37      1.337430  2 F  s                 40      1.320658  2 F  pz         
+    10     -0.895549  1 Li s                 33     -0.694473  2 F  s          
+     6      0.656897  1 Li s                 36     -0.550389  2 F  pz         
+    13     -0.531432  1 Li pz                14      0.162086  1 Li s          
+
+ Vector   22  Occ=0.000000D+00  E= 5.775844D-01
+              MO Center=  1.4D-15, -7.1D-15, -6.8D-01, r^2= 6.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37     -5.414701  2 F  s                  6      5.197019  1 Li s          
+     9      3.099810  1 Li pz                40      2.225881  2 F  pz         
+    10     -1.211955  1 Li s                 13     -0.992659  1 Li pz         
+    33      0.976452  2 F  s                 23      0.566011  1 Li dzz        
+    18     -0.476378  1 Li dxx               21     -0.476378  1 Li dyy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.02287545
+
+ moments of inertia (a.u.)
+ ------------------
+          45.430972230743           0.000000000000           0.000000000000
+           0.000000000000          45.430972230743           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.31   1.20  0.79  0.14  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.69   1.08  0.92  1.14  1.07  2.40  0.97  2.02 -0.08  0.20 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000     12.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -2.616982      0.000000      0.429306
+
+     2   2 0 0     -5.242404      0.000000      0.000000
+     2   1 1 0     -0.000000      0.000000      0.000000
+     2   1 0 1      0.000000      0.000000      0.000000
+     2   0 2 0     -5.242404      0.000000      0.000000
+     2   0 1 1      0.000000      0.000000      0.000000
+     2   0 0 2     -0.732420      0.000000     19.965306
+
+
+ Parallel integral file used       6 records with       0 large values
+
+ Line search: 
+     step= 1.00 grad=-8.0D-09 hess= 3.9D-09 energy=   -106.975284 mode=accept  
+ new step= 1.00                   predicted energy=   -106.975284
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+
+          --------
+          Step   3
+          --------
+
+
+                         Geometry "geometry" -> "geometry"
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Li                   3.0000     0.00000000     0.00000000    -1.16286315
+    2 F                    9.0000     0.00000000     0.00000000     0.41286315
+
+      Atomic Mass 
+      ----------- 
+
+      Li                 7.016000
+      F                 18.998400
+
+
+ Effective nuclear repulsion energy (a.u.)       9.0674286245
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000     0.4293058501
+
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+  The SCF is already converged 
+
+         Total SCF energy =   -106.975284429780
+
+                              NWChem Gradients Module
+                              -----------------------
+
+
+                                optimization of LiF
+
+
+  wavefunction    =   RHF     
+
+
+
+                         RHF ENERGY GRADIENTS
+
+    atom               coordinates                        gradient
+                 x          y          z           x          y          z
+   1 Li      0.000000   0.000000  -2.197493    0.000000  -0.000000   0.000001
+   2 F       0.000000   0.000000   0.780198   -0.000000   0.000000  -0.000001
+
+                 ----------------------------------------
+                 |  Time  |  1-e(secs)   |  2-e(secs)   |
+                 ----------------------------------------
+                 |  CPU   |       0.00   |       0.15   |
+                 ----------------------------------------
+                 |  WALL  |       0.00   |       0.15   |
+                 ----------------------------------------
+  no constraints, skipping    0.0000000000000000     
+
+  Step       Energy      Delta E   Gmax     Grms     Xrms     Xmax   Walltime
+  ---- ---------------- -------- -------- -------- -------- -------- --------
+@    3    -106.97528443 -4.1D-09  0.00000  0.00000  0.00006  0.00011      2.8
+                                     ok       ok                    
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value     Gradient
+      ----------- --------  ----- ----- ----- ----- ----- ---------- ----------
+    1 Stretch                  1     2                       1.57573   -0.00000
+
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       2.9s
+
+
+ Loading old vectors from job with title :
+
+optimization of LiF
+
+
+ Starting SCF solution at       2.9s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.9752844298  2.66D-06  9.11D-07      3.0
+                 2     -106.9752844298  3.30D-10  1.40D-10      3.0
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.975284429792
+      One-electron energy =   -169.313201375250
+      Two-electron energy =     53.270505210209
+ Nuclear repulsion energy =      9.067411735248
+
+        Time for solution =      0.1s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1130
+    2   -2.4443
+    3   -1.3787
+    4   -0.4988
+    5   -0.4757
+    6   -0.4757
+    7   -0.0111
+    8    0.0155
+    9    0.0155
+   10    0.0202
+   11    0.0284
+   12    0.0619
+   13    0.0619
+   14    0.0921
+   15    0.1406
+   16    0.1757
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.444333D+00
+              MO Center=  3.7D-18, -3.7D-19, -1.2D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615984  1 Li s                  2      0.426083  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.378681D+00
+              MO Center= -2.2D-17,  2.5D-17,  3.8D-01, r^2= 3.7D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.611152  2 F  s                 33      0.529816  2 F  s          
+    25     -0.210114  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-4.987795D-01
+              MO Center=  3.4D-17,  1.0D-17,  4.2D-01, r^2= 5.5D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.443812  2 F  pz                36      0.405903  2 F  pz         
+    28      0.294194  2 F  pz                 6     -0.163200  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.756627D-01
+              MO Center=  5.9D-17,  7.7D-17,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.323121  2 F  px                31      0.300165  2 F  py         
+    34      0.300863  2 F  px                35      0.279489  2 F  py         
+    26      0.214258  2 F  px                27      0.199036  2 F  py         
+
+ Vector    6  Occ=2.000000D+00  E=-4.756627D-01
+              MO Center=  1.5D-16,  1.9D-17,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31     -0.323121  2 F  py                30      0.300165  2 F  px         
+    35     -0.300863  2 F  py                34      0.279489  2 F  px         
+    27     -0.214258  2 F  py                26      0.199036  2 F  px         
+
+ Vector    7  Occ=0.000000D+00  E=-1.110246D-02
+              MO Center= -7.0D-16, -4.8D-16, -3.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.569023  1 Li s                 10      0.264498  1 Li s          
+    17     -0.254584  1 Li pz                13     -0.222182  1 Li pz         
+     9     -0.166463  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.545894D-02
+              MO Center=  1.4D-12,  1.0D-12, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      0.890120  1 Li px                16      0.677982  1 Li py         
+    11     -0.188754  1 Li px         
+
+ Vector    9  Occ=0.000000D+00  E= 1.545894D-02
+              MO Center= -1.9D-13,  2.5D-13, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16      0.890120  1 Li py                15     -0.677982  1 Li px         
+    12     -0.188754  1 Li py         
+
+ Vector   10  Occ=0.000000D+00  E= 2.023919D-02
+              MO Center= -1.3D-12, -1.8D-12, -3.9D+00, r^2= 4.1D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.098432  1 Li s                 17      1.052050  1 Li pz         
+    14     -0.758275  1 Li s                 13     -0.595086  1 Li pz         
+     6     -0.183131  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.837928D-02
+              MO Center=  9.9D-14,  5.0D-13,  2.2D+00, r^2= 3.8D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.424041  1 Li s                 14     -1.418630  1 Li s          
+     6     -0.663765  1 Li s                 17     -0.642128  1 Li pz         
+     9     -0.377306  1 Li pz                37      0.302388  2 F  s          
+    13      0.229592  1 Li pz         
+
+ Vector   12  Occ=0.000000D+00  E= 6.194821D-02
+              MO Center=  1.3D-15, -6.0D-16, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.339079  1 Li px                15     -0.743784  1 Li px         
+    12     -0.562643  1 Li py                16      0.312517  1 Li py         
+    38     -0.174547  2 F  px         
+
+ Vector   13  Occ=0.000000D+00  E= 6.194821D-02
+              MO Center=  3.8D-15,  9.3D-15, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12      1.339079  1 Li py                16     -0.743784  1 Li py         
+    11      0.562643  1 Li px                15     -0.312517  1 Li px         
+    39     -0.174547  2 F  py         
+
+ Vector   14  Occ=0.000000D+00  E= 9.205737D-02
+              MO Center= -2.4D-15, -5.3D-15,  7.6D-02, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.801648  1 Li pz                10      1.057136  1 Li s          
+    17     -0.720070  1 Li pz                 9     -0.684526  1 Li pz         
+     6     -0.534660  1 Li s                 40     -0.359089  2 F  pz         
+    14     -0.328414  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.405675D-01
+              MO Center= -8.0D-15, -5.5D-15, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10     -2.775589  1 Li s                  6      2.596927  1 Li s          
+    14      0.905607  1 Li s                  9     -0.813170  1 Li pz         
+    13      0.636660  1 Li pz                 2     -0.247767  1 Li s          
+    40      0.206461  2 F  pz                17     -0.204291  1 Li pz         
+
+ Vector   16  Occ=0.000000D+00  E= 1.757137D-01
+              MO Center= -2.8D-15, -9.3D-16, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.520995  1 Li py                12     -1.342457  1 Li py         
+     7      0.892035  1 Li px                11     -0.787326  1 Li px         
+    16      0.423278  1 Li py                39     -0.267340  2 F  py         
+    15      0.248244  1 Li px                38     -0.156790  2 F  px         
+
+ Vector   17  Occ=0.000000D+00  E= 1.757137D-01
+              MO Center= -2.6D-15,  1.7D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.520995  1 Li px                11     -1.342457  1 Li px         
+     8     -0.892035  1 Li py                12      0.787326  1 Li py         
+    15      0.423278  1 Li px                38     -0.267340  2 F  px         
+    16     -0.248244  1 Li py                39      0.156790  2 F  py         
+
+ Vector   18  Occ=0.000000D+00  E= 2.184657D-01
+              MO Center=  9.8D-16,  3.4D-16, -6.1D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.385797  1 Li s                 37     -3.280145  2 F  s          
+     9      3.212886  1 Li pz                10     -1.741300  1 Li s          
+    13     -1.579165  1 Li pz                40      1.073830  2 F  pz         
+    17      0.401919  1 Li pz                14      0.395679  1 Li s          
+    33      0.225052  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.107865D-01
+              MO Center= -1.6D-14,  3.4D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.621138  2 F  px                34     -0.637284  2 F  px         
+     7     -0.602948  1 Li px                39     -0.372452  2 F  py         
+
+ Vector   20  Occ=0.000000D+00  E= 4.107865D-01
+              MO Center=  1.2D-15,  1.5D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39      1.621138  2 F  py                35     -0.637284  2 F  py         
+     8     -0.602948  1 Li py                38      0.372452  2 F  px         
+
+ Vector   21  Occ=0.000000D+00  E= 4.187491D-01
+              MO Center=  1.6D-14, -5.0D-15,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37      1.337435  2 F  s                 40      1.320654  2 F  pz         
+    10     -0.895548  1 Li s                 33     -0.694476  2 F  s          
+     6      0.656894  1 Li s                 36     -0.550387  2 F  pz         
+    13     -0.531432  1 Li pz                14      0.162086  1 Li s          
+
+ Vector   22  Occ=0.000000D+00  E= 5.775840D-01
+              MO Center= -1.0D-15,  3.1D-17, -6.8D-01, r^2= 6.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37     -5.414661  2 F  s                  6      5.196946  1 Li s          
+     9      3.099813  1 Li pz                40      2.225869  2 F  pz         
+    10     -1.211927  1 Li s                 13     -0.992665  1 Li pz         
+    33      0.976436  2 F  s                 23      0.566030  1 Li dzz        
+    18     -0.476372  1 Li dxx               21     -0.476372  1 Li dyy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.02287417
+
+ moments of inertia (a.u.)
+ ------------------
+          45.431141473240           0.000000000000           0.000000000000
+           0.000000000000          45.431141473240           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.31   1.20  0.79  0.14  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.69   1.08  0.92  1.14  1.07  2.40  0.97  2.02 -0.08  0.20 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000     12.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -2.616988      0.000000      0.429322
+
+     2   2 0 0     -5.242405      0.000000      0.000000
+     2   1 1 0     -0.000000      0.000000      0.000000
+     2   1 0 1      0.000000      0.000000      0.000000
+     2   0 2 0     -5.242405      0.000000      0.000000
+     2   0 1 1      0.000000      0.000000      0.000000
+     2   0 0 2     -0.732411      0.000000     19.965382
+
+
+ Parallel integral file used       6 records with       0 large values
+
+ Line search: 
+     step= 1.00 grad=-5.3D-12 hess=-6.2D-12 energy=   -106.975284 mode=accept  
+ new step= 1.00                   predicted energy=   -106.975284
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+  no constraints, skipping    0.0000000000000000     
+
+          --------
+          Step   4
+          --------
+
+
+                         Geometry "geometry" -> "geometry"
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Li                   3.0000     0.00000000     0.00000000    -1.16286462
+    2 F                    9.0000     0.00000000     0.00000000     0.41286462
+
+      Atomic Mass 
+      ----------- 
+
+      Li                 7.016000
+      F                 18.998400
+
+
+ Effective nuclear repulsion energy (a.u.)       9.0674117352
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000     0.4293224892
+
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+  The SCF is already converged 
+
+         Total SCF energy =   -106.975284429792
+
+                              NWChem Gradients Module
+                              -----------------------
+
+
+                                optimization of LiF
+
+
+  wavefunction    =   RHF     
+
+
+
+                         RHF ENERGY GRADIENTS
+
+    atom               coordinates                        gradient
+                 x          y          z           x          y          z
+   1 Li      0.000000   0.000000  -2.197495    0.000000  -0.000000   0.000000
+   2 F       0.000000   0.000000   0.780201   -0.000000   0.000000  -0.000000
+
+                 ----------------------------------------
+                 |  Time  |  1-e(secs)   |  2-e(secs)   |
+                 ----------------------------------------
+                 |  CPU   |       0.00   |       0.15   |
+                 ----------------------------------------
+                 |  WALL  |       0.00   |       0.15   |
+                 ----------------------------------------
+  no constraints, skipping    0.0000000000000000     
+
+  Step       Energy      Delta E   Gmax     Grms     Xrms     Xmax   Walltime
+  ---- ---------------- -------- -------- -------- -------- -------- --------
+@    4    -106.97528443 -1.1D-11  0.00000  0.00000  0.00000  0.00000      3.3
+                                     ok       ok       ok       ok  
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value     Gradient
+      ----------- --------  ----- ----- ----- ----- ----- ---------- ----------
+    1 Stretch                  1     2                       1.57573   -0.00000
+
+
+      ----------------------
+      Optimization converged
+      ----------------------
+
+
+  Step       Energy      Delta E   Gmax     Grms     Xrms     Xmax   Walltime
+  ---- ---------------- -------- -------- -------- -------- -------- --------
+@    4    -106.97528443 -1.1D-11  0.00000  0.00000  0.00000  0.00000      3.3
+                                     ok       ok       ok       ok  
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value     Gradient
+      ----------- --------  ----- ----- ----- ----- ----- ---------- ----------
+    1 Stretch                  1     2                       1.57573   -0.00000
+
+
+
+                         Geometry "geometry" -> "geometry"
+                         ---------------------------------
+
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Li                   3.0000     0.00000000     0.00000000    -1.16286462
+    2 F                    9.0000     0.00000000     0.00000000     0.41286462
+
+      Atomic Mass 
+      ----------- 
+
+      Li                 7.016000
+      F                 18.998400
+
+
+ Effective nuclear repulsion energy (a.u.)       9.0674117352
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000     0.4293224892
+
+
+                Final and change from initial internal coordinates
+                --------------------------------------------------
+
+
+
+                                Z-matrix (autoz)
+                                -------- 
+
+ Units are Angstrom for bonds and degrees for angles
+
+      Type          Name      I     J     K     L     M      Value       Change
+      ----------- --------  ----- ----- ----- ----- ----- ---------- ----------
+    1 Stretch                  1     2                       1.57573    0.07573
+
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    2 F                |   1 Li               |     2.97770  |     1.57573
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:          1
+ ==============================================================================
+
+
+
+
+ Task  times  cpu:        3.0s     wall:        3.0s
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+
+
+                   NWChem Nuclear Hessian and Frequency Analysis
+                   ---------------------------------------------
+
+
+
+                              NWChem Analytic Hessian
+                              -----------------------
+
+                                 NWChem SCF Module
+                                 -----------------
+
+
+                                optimization of LiF
+
+
+
+  ao basis        = "ao basis"
+  functions       =    46
+  atoms           =     2
+  closed shells   =     6
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = ./LiF.movecs
+  output vectors  = ./LiF.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Li                        6-311++G**               10       23   5s4p1d
+ F                         6-311++G**               10       23   5s4p1d
+
+
+
+ Forming initial guess at       3.3s
+
+
+ Loading old vectors from job with title :
+
+optimization of LiF
+
+
+ Starting SCF solution at       3.3s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-08
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1     -106.9752844298  3.30D-10  1.40D-10      3.4
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =   -106.975284429792
+      One-electron energy =   -169.313201375250
+      Two-electron energy =     53.270505210209
+ Nuclear repulsion energy =      9.067411735248
+
+        Time for solution =      0.1s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1  -26.1130
+    2   -2.4443
+    3   -1.3787
+    4   -0.4988
+    5   -0.4757
+    6   -0.4757
+    7   -0.0111
+    8    0.0155
+    9    0.0155
+   10    0.0202
+   11    0.0284
+   12    0.0619
+   13    0.0619
+   14    0.0921
+   15    0.1406
+   16    0.1757
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    2  Occ=2.000000D+00  E=-2.444333D+00
+              MO Center=  3.7D-18, -3.7D-19, -1.2D+00, r^2= 1.3D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.615984  1 Li s                  2      0.426083  1 Li s          
+
+ Vector    3  Occ=2.000000D+00  E=-1.378681D+00
+              MO Center= -2.2D-17,  2.5D-17,  3.8D-01, r^2= 3.7D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    29      0.611152  2 F  s                 33      0.529816  2 F  s          
+    25     -0.210114  2 F  s          
+
+ Vector    4  Occ=2.000000D+00  E=-4.987795D-01
+              MO Center=  3.4D-17,  1.0D-17,  4.2D-01, r^2= 5.5D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    32      0.443812  2 F  pz                36      0.405903  2 F  pz         
+    28      0.294194  2 F  pz                 6     -0.163200  1 Li s          
+
+ Vector    5  Occ=2.000000D+00  E=-4.756627D-01
+              MO Center=  2.0D-16, -5.0D-17,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    30      0.400859  2 F  px                34      0.373246  2 F  px         
+    26      0.265805  2 F  px                31     -0.183899  2 F  py         
+    35     -0.171231  2 F  py         
+
+ Vector    6  Occ=2.000000D+00  E=-4.756627D-01
+              MO Center=  7.6D-18,  1.5D-16,  3.8D-01, r^2= 5.9D-01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    31      0.400859  2 F  py                35      0.373246  2 F  py         
+    27      0.265805  2 F  py                30      0.183899  2 F  px         
+    34      0.171231  2 F  px         
+
+ Vector    7  Occ=0.000000D+00  E=-1.110246D-02
+              MO Center= -7.0D-16, -4.8D-16, -3.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    14      0.569023  1 Li s                 10      0.264498  1 Li s          
+    17     -0.254584  1 Li pz                13     -0.222182  1 Li pz         
+     9     -0.166463  1 Li pz         
+
+ Vector    8  Occ=0.000000D+00  E= 1.545894D-02
+              MO Center= -8.6D-14,  9.1D-14, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    16     -0.811529  1 Li py                15      0.770321  1 Li px         
+    12      0.172089  1 Li py                11     -0.163350  1 Li px         
+
+ Vector    9  Occ=0.000000D+00  E= 1.545894D-02
+              MO Center= -1.6D-14, -1.5D-14, -1.2D+00, r^2= 5.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    15      0.811529  1 Li px                16      0.770321  1 Li py         
+    11     -0.172089  1 Li px                12     -0.163350  1 Li py         
+
+ Vector   10  Occ=0.000000D+00  E= 2.023919D-02
+              MO Center=  1.6D-13, -1.3D-13, -3.9D+00, r^2= 4.1D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.098432  1 Li s                 17      1.052050  1 Li pz         
+    14     -0.758275  1 Li s                 13     -0.595086  1 Li pz         
+     6     -0.183131  1 Li s          
+
+ Vector   11  Occ=0.000000D+00  E= 2.837928D-02
+              MO Center= -9.3D-15,  5.3D-14,  2.2D+00, r^2= 3.8D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      1.424041  1 Li s                 14     -1.418630  1 Li s          
+     6     -0.663765  1 Li s                 17     -0.642128  1 Li pz         
+     9     -0.377306  1 Li pz                37      0.302388  2 F  s          
+    13      0.229592  1 Li pz         
+
+ Vector   12  Occ=0.000000D+00  E= 6.194821D-02
+              MO Center= -7.3D-16,  4.8D-15, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    12      1.411325  1 Li py                16     -0.783913  1 Li py         
+    11     -0.343310  1 Li px                15      0.190690  1 Li px         
+    39     -0.183964  2 F  py         
+
+ Vector   13  Occ=0.000000D+00  E= 6.194821D-02
+              MO Center= -3.5D-14, -8.6D-15, -1.3D+00, r^2= 2.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    11      1.411325  1 Li px                15     -0.783913  1 Li px         
+    12      0.343310  1 Li py                16     -0.190690  1 Li py         
+    38     -0.183964  2 F  px         
+
+ Vector   14  Occ=0.000000D+00  E= 9.205737D-02
+              MO Center= -4.2D-15,  1.3D-15,  7.6D-02, r^2= 2.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    13      1.801648  1 Li pz                10      1.057136  1 Li s          
+    17     -0.720070  1 Li pz                 9     -0.684526  1 Li pz         
+     6     -0.534660  1 Li s                 40     -0.359089  2 F  pz         
+    14     -0.328414  1 Li s          
+
+ Vector   15  Occ=0.000000D+00  E= 1.405675D-01
+              MO Center= -2.5D-15, -1.9D-15, -2.3D+00, r^2= 1.5D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10     -2.775589  1 Li s                  6      2.596927  1 Li s          
+    14      0.905607  1 Li s                  9     -0.813170  1 Li pz         
+    13      0.636660  1 Li pz                 2     -0.247767  1 Li s          
+    40      0.206461  2 F  pz                17     -0.204291  1 Li pz         
+
+ Vector   16  Occ=0.000000D+00  E= 1.757137D-01
+              MO Center= -1.3D-14,  1.3D-15, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      1.557718  1 Li px                11     -1.374869  1 Li px         
+     8     -0.826237  1 Li py                12      0.729252  1 Li py         
+    15      0.433497  1 Li px                38     -0.273794  2 F  px         
+    16     -0.229934  1 Li py         
+
+ Vector   17  Occ=0.000000D+00  E= 1.757137D-01
+              MO Center= -7.6D-16, -7.7D-16, -1.3D+00, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     8      1.557718  1 Li py                12     -1.374869  1 Li py         
+     7      0.826237  1 Li px                11     -0.729252  1 Li px         
+    16      0.433497  1 Li py                39     -0.273794  2 F  py         
+    15      0.229934  1 Li px         
+
+ Vector   18  Occ=0.000000D+00  E= 2.184657D-01
+              MO Center=  9.9D-15, -4.9D-15, -6.1D-01, r^2= 1.3D+01
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      4.385797  1 Li s                 37     -3.280145  2 F  s          
+     9      3.212886  1 Li pz                10     -1.741300  1 Li s          
+    13     -1.579165  1 Li pz                40      1.073830  2 F  pz         
+    17      0.401919  1 Li pz                14      0.395679  1 Li s          
+    33      0.225052  2 F  s          
+
+ Vector   19  Occ=0.000000D+00  E= 4.107865D-01
+              MO Center=  3.2D-15, -6.2D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    39      1.459448  2 F  py                38     -0.798011  2 F  px         
+    35     -0.573722  2 F  py                 8     -0.542811  1 Li py         
+    34      0.313705  2 F  px                 7      0.296804  1 Li px         
+
+ Vector   20  Occ=0.000000D+00  E= 4.107865D-01
+              MO Center=  9.1D-15,  6.1D-15,  4.5D-01, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    38      1.459448  2 F  px                39      0.798011  2 F  py         
+    34     -0.573722  2 F  px                 7     -0.542811  1 Li px         
+    35     -0.313705  2 F  py                 8     -0.296804  1 Li py         
+
+ Vector   21  Occ=0.000000D+00  E= 4.187491D-01
+              MO Center= -1.4D-14,  8.8D-16,  1.3D+00, r^2= 4.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37      1.337435  2 F  s                 40      1.320654  2 F  pz         
+    10     -0.895548  1 Li s                 33     -0.694476  2 F  s          
+     6      0.656894  1 Li s                 36     -0.550387  2 F  pz         
+    13     -0.531432  1 Li pz                14      0.162086  1 Li s          
+
+ Vector   22  Occ=0.000000D+00  E= 5.775840D-01
+              MO Center=  3.8D-15,  1.0D-14, -6.8D-01, r^2= 6.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    37     -5.414661  2 F  s                  6      5.196946  1 Li s          
+     9      3.099813  1 Li pz                40      2.225869  2 F  pz         
+    10     -1.211927  1 Li s                 13     -0.992665  1 Li pz         
+    33      0.976436  2 F  s                 23      0.566030  1 Li dzz        
+    18     -0.476372  1 Li dxx               21     -0.476372  1 Li dyy        
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.02287417
+
+ moments of inertia (a.u.)
+ ------------------
+          45.431141473240           0.000000000000           0.000000000000
+           0.000000000000          45.431141473240           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 Li   3     2.31   1.20  0.79  0.14  0.08  0.06 -0.01 -0.00  0.00  0.00  0.05
+    2 F    9     9.69   1.08  0.92  1.14  1.07  2.40  0.97  2.02 -0.08  0.20 -0.02
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000     12.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -2.616988      0.000000      0.429322
+
+     2   2 0 0     -5.242405      0.000000      0.000000
+     2   1 1 0     -0.000000      0.000000      0.000000
+     2   1 0 1      0.000000      0.000000      0.000000
+     2   0 2 0     -5.242405      0.000000      0.000000
+     2   0 1 1      0.000000      0.000000      0.000000
+     2   0 0 2     -0.732411      0.000000     19.965382
+
+
+ Parallel integral file used       6 records with       0 large values
+
+
+ HESSIAN: the one electron contributions are done in       0.0s
+
+
+ HESSIAN: 2-el 1st deriv. term done in                     0.2s
+
+
+ HESSIAN: 2-el 2nd deriv. term done in                     0.5s
+
+  stpr_wrt_fd_from_sq: overwrite of existing file:./LiF.hess
+ stpr_wrt_fd_dipole: overwrite of existing file./LiF.fd_ddipole
+
+ HESSIAN: the two electron contributions are done in       0.7s
+
+                                NWChem CPHF Module
+                                ------------------
+
+
+  scftype          =     RHF 
+  nclosed          =        6
+  nopen            =        0
+  variables        =      240
+  # of vectors     =        6
+  tolerance        = 0.10D-03
+  level shift      = 0.00D+00
+  max iterations   =       50
+  max subspace     =       60
+
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+  avail0,avail1,avail0-avail1                210023               210023                    0
+
+ Integral file          = ./LiF.aoints.0
+ Record size in doubles =  65536        No. of integs per rec  =  43688
+ Max. records in memory =      9        Max. records in file   =  14777
+ No. of bits per label  =      8        No. of bits per value  =     64
+
+
+ #quartets = 2.216D+04 #integrals = 1.674D+05 #direct =  0.0% #cached =100.0%
+
+
+File balance: exchanges=     0  moved=     0  time=   0.0
+
+ SCF residual:    3.2999034267444494E-010
+
+
+Iterative solution of linear equations
+  No. of variables      240
+  No. of equations        6
+  Maximum subspace       60
+        Iterations       50
+       Convergence  1.0D-04
+        Start time      4.4
+
+
+   iter   nsub   residual    time
+   ----  ------  --------  ---------
+     1      6    4.33D-02       4.6
+     2     12    4.57D-02       4.7
+     3     18    5.58D-03       4.8
+     4     24    1.29D-03       5.0
+     5     30    2.09D-04       5.1
+     6     36    3.23D-05       5.3
+
+ Parallel integral file used       6 records with       0 large values
+
+ HESSIAN: the CPHF contributions are done
+  stpr_wrt_fd_from_sq: overwrite of existing file:./LiF.hess
+ stpr_wrt_fd_dipole: overwrite of existing file./LiF.fd_ddipole
+
+ Derivative Dipole
+
+  
+  
+ X vector of derivative dipole (au) [debye/angstrom]
+ d_dipole_x/<atom=   1,x> =     0.8789     [    4.2213]
+ d_dipole_x/<atom=   1,y> =    -0.0000     [   -0.0000]
+ d_dipole_x/<atom=   1,z> =    -0.0000     [   -0.0000]
+ d_dipole_x/<atom=   2,x> =    -0.8789     [   -4.2213]
+ d_dipole_x/<atom=   2,y> =     0.0000     [    0.0000]
+ d_dipole_x/<atom=   2,z> =     0.0000     [    0.0000]
+  
+ Y vector of derivative dipole (au) [debye/angstrom]
+ d_dipole_y/<atom=   1,x> =     0.0000     [    0.0000]
+ d_dipole_y/<atom=   1,y> =     0.8789     [    4.2213]
+ d_dipole_y/<atom=   1,z> =     0.0000     [    0.0000]
+ d_dipole_y/<atom=   2,x> =    -0.0000     [   -0.0000]
+ d_dipole_y/<atom=   2,y> =    -0.8789     [   -4.2213]
+ d_dipole_y/<atom=   2,z> =    -0.0000     [   -0.0000]
+  
+ Z vector of derivative dipole (au) [debye/angstrom]
+ d_dipole_z/<atom=   1,x> =    -0.0000     [   -0.0000]
+ d_dipole_z/<atom=   1,y> =     0.0000     [    0.0000]
+ d_dipole_z/<atom=   1,z> =     0.9509     [    4.5673]
+ d_dipole_z/<atom=   2,x> =     0.0000     [    0.0000]
+ d_dipole_z/<atom=   2,y> =    -0.0000     [   -0.0000]
+ d_dipole_z/<atom=   2,z> =    -0.9509     [   -4.5673]
+  
+  
+ HESSIAN: the Hessian is done
+
+
+  Vibrational analysis via the FX method 
+
+  See chapter 2 in "Molecular Vibrations" by Wilson, Decius and Cross
+
+  Vib: Default input used 
+
+  Nuclear Hessian passed symmetry test 
+
+
+
+ ---------------------------- Atom information ----------------------------
+     atom    #        X              Y              Z            mass
+ --------------------------------------------------------------------------
+    Li       1  0.0000000D+00  0.0000000D+00 -2.1974955D+00  7.0160000D+00
+    F        2  0.0000000D+00  0.0000000D+00  7.8020099D-01  1.8998400D+01
+ --------------------------------------------------------------------------
+
+
+
+
+          ----------------------------------------------------
+          MASS-WEIGHTED NUCLEAR HESSIAN (Hartree/Bohr/Bohr/Kamu)
+          ----------------------------------------------------
+
+
+               1            2            3            4            5            6
+   ----- ----- ----- ----- -----
+    1   -2.01658D-05
+    2    3.99763D-16 -2.01658D-05
+    3    2.87505D-15 -4.90637D-14  2.37724D+01
+    4    1.22547D-05  2.31741D-15  1.40189D-13 -7.44583D-06
+    5   -5.72469D-16  1.22547D-05 -5.20672D-13  1.24614D-16 -7.44583D-06
+    6   -1.74715D-15  2.98158D-14 -1.44464D+01  1.13765D-15 -1.78383D-14  8.77900D+00
+
+
+
+          -------------------------------------------------
+          NORMAL MODE EIGENVECTORS IN CARTESIAN COORDINATES
+          -------------------------------------------------
+                 (Frequencies expressed in cm-1)
+
+                    1           2           3           4           5           6
+ 
+ Frequency         -0.85       -0.85        0.00        0.01        0.01      927.45
+ 
+           1     0.00000     0.32264     0.00000     0.00000     0.19606     0.00000
+           2     0.32264     0.00000    -0.00025     0.19606     0.00000     0.00000
+           3    -0.00000     0.00000    -0.19606    -0.00025     0.00000    -0.32263
+           4     0.00000    -0.11914     0.00000     0.00000     0.19606     0.00000
+           5    -0.11914     0.00000    -0.00025     0.19606     0.00000     0.00000
+           6    -0.00000     0.00000    -0.19606    -0.00025     0.00000     0.11915
+
+
+
+ ----------------------------------------------------------------------------
+ Normal Eigenvalue ||         Derivative Dipole Moments (debye/angs)
+  Mode   [cm**-1]  ||      [d/dqX]             [d/dqY]           [d/dqZ]
+ ------ ---------- || ------------------ ------------------ -----------------
+    1       -0.854 ||      -0.000               1.865             0.000
+    2       -0.854 ||       1.865               0.000            -0.000
+    3        0.005 ||      -0.000              -0.000             0.000
+    4        0.005 ||      -0.000              -0.000             0.000
+    5        0.005 ||      -0.000              -0.000            -0.000
+    6      927.446 ||       0.000              -0.000            -2.018
+ ----------------------------------------------------------------------------
+
+
+
+  
+  
+ ----------------------------------------------------------------------------
+ Normal Eigenvalue ||                 Infra Red Intensities
+  Mode   [cm**-1]  || [atomic units] [(debye/angs)**2] [(KM/mol)] [arbitrary]
+ ------ ---------- || -------------- ----------------- ---------- -----------
+    1       -0.854 ||    0.150744           3.478       146.953      18.924
+    2       -0.854 ||    0.150744           3.478       146.953      18.924
+    3        0.005 ||    0.000000           0.000         0.000       0.000
+    4        0.005 ||    0.000000           0.000         0.000       0.000
+    5        0.005 ||    0.000000           0.000         0.000       0.000
+    6      927.446 ||    0.176468           4.071       172.030      22.153
+ ----------------------------------------------------------------------------
+
+
+
+
+
+        Vibrational analysis via the FX method 
+  --- with translations and rotations projected out ---
+  --- via the Eckart algorithm                      ---
+ Dependent rotation vector no.                    3
+  found in ECKART; assuming linear geometry
+ Projected Nuclear Hessian trans-rot subspace norm:5.2740D-62
+                         (should be close to zero!) 
+
+          --------------------------------------------------------
+          MASS-WEIGHTED PROJECTED HESSIAN (Hartree/Bohr/Bohr/Kamu)
+          --------------------------------------------------------
+
+
+               1            2            3            4            5            6
+   ----- ----- ----- ----- -----
+    1    0.00000D+00
+    2   -5.49011D-32  0.00000D+00
+    3    2.02036D-29  0.00000D+00  2.37724D+01
+    4    0.00000D+00  0.00000D+00  0.00000D+00  0.00000D+00
+    5    6.67263D-32  0.00000D+00  1.36656D-28  0.00000D+00  0.00000D+00
+    6   -1.20107D-29  0.00000D+00 -1.44464D+01 -9.24524D-30 -7.52595D-29  8.77900D+00
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =  -0.02287417
+
+ moments of inertia (a.u.)
+ ------------------
+          45.431141473240           0.000000000000           0.000000000000
+           0.000000000000          45.431141473240           0.000000000000
+           0.000000000000           0.000000000000           0.000000000000
+
+ Rotational Constants
+ --------------------
+ A=   0.000000 cm-1  (  0.000000 K)
+ B=   1.325086 cm-1  (  1.906461 K)
+ C=   1.325086 cm-1  (  1.906461 K)
+
+
+ Temperature                      =   298.15K
+ frequency scaling parameter      =   1.0000
+
+
+ Linear Molecule                   
+
+ Zero-Point correction to Energy  =    1.325 kcal/mol  (  0.002112 au)
+ Thermal correction to Energy     =    2.836 kcal/mol  (  0.004520 au)
+ Thermal correction to Enthalpy   =    3.428 kcal/mol  (  0.005464 au)
+
+ Total Entropy                    =   47.835 cal/mol-K
+   - Translational                =   35.688 cal/mol-K (mol. weight =  26.0144)
+   - Rotational                   =   12.022 cal/mol-K (symmetry #  =        1)
+   - Vibrational                  =    0.125 cal/mol-K
+
+ Cv (constant volume heat capacity) =    5.429 cal/mol-K
+   - Translational                  =    2.979 cal/mol-K
+   - Rotational                     =    1.986 cal/mol-K
+   - Vibrational                    =    0.463 cal/mol-K
+
+
+
+          -------------------------------------------------
+          NORMAL MODE EIGENVECTORS IN CARTESIAN COORDINATES
+          -------------------------------------------------
+             (Projected Frequencies expressed in cm-1)
+
+                    1           2           3           4           5           6
+ 
+ P.Frequency        0.00        0.00        0.00        0.00        0.00      927.45
+ 
+           1     0.37753     0.00000     0.00000     0.00000     0.00000     0.00000
+           2     0.00000     0.37753     0.00000     0.00000     0.00000     0.00000
+           3     0.00000     0.00000     0.00000     0.00000    -0.19606    -0.32263
+           4     0.00000     0.00000     0.22943     0.00000     0.00000     0.00000
+           5     0.00000     0.00000     0.00000     0.22943     0.00000     0.00000
+           6     0.00000     0.00000     0.00000     0.00000    -0.19606     0.11915
+
+
+
+ ----------------------------------------------------------------------------
+ Normal Eigenvalue ||    Projected Derivative Dipole Moments (debye/angs)
+  Mode   [cm**-1]  ||      [d/dqX]             [d/dqY]           [d/dqZ]
+ ------ ---------- || ------------------ ------------------ -----------------
+    1        0.000 ||       1.594               0.000            -0.000
+    2        0.000 ||      -0.000               1.594             0.000
+    3        0.000 ||      -0.968              -0.000             0.000
+    4        0.000 ||       0.000              -0.968            -0.000
+    5        0.000 ||       0.000               0.000             0.000
+    6      927.446 ||       0.000              -0.000            -2.018
+ ----------------------------------------------------------------------------
+
+
+
+  
+  
+ ----------------------------------------------------------------------------
+ Normal Eigenvalue ||           Projected Infra Red Intensities
+  Mode   [cm**-1]  || [atomic units] [(debye/angs)**2] [(KM/mol)] [arbitrary]
+ ------ ---------- || -------------- ----------------- ---------- -----------
+    1        0.000 ||    0.110089           2.540       107.320      13.820
+    2        0.000 ||    0.110089           2.540       107.320      13.820
+    3        0.000 ||    0.040655           0.938        39.633       5.104
+    4        0.000 ||    0.040655           0.938        39.633       5.104
+    5        0.000 ||    0.000000           0.000         0.000       0.000
+    6      927.446 ||    0.176468           4.071       172.030      22.153
+ ----------------------------------------------------------------------------
+
+
+
+ vib:animation  T
+
+ Task  times  cpu:        2.6s     wall:        2.6s
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+ Summary of allocated global arrays
+-----------------------------------
+  No active global arrays
+
+
+MA_summarize_allocated_blocks: starting scan ...
+MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
+MA usage statistics:
+
+	allocation statistics:
+					      heap	     stack
+					      ----	     -----
+	current number of blocks	         0	         0
+	maximum number of blocks	        25	        36
+	current total bytes		         0	         0
+	maximum total bytes		   4736872	  82962904
+	maximum total K-bytes		      4737	     82963
+	maximum total M-bytes		         5	        83
+
+
+                                     CITATION
+                                     --------
+                Please cite the following reference when publishing
+                           results obtained with NWChem:
+
+          E. Apra, E. J. Bylaska, W. A. de Jong, N. Govind, K. Kowalski,
+       T. P. Straatsma, M. Valiev, H. J. J. van Dam, Y. Alexeev, J. Anchell,
+       V. Anisimov, F. W. Aquino, R. Atta-Fynn, J. Autschbach, N. P. Bauman,
+     J. C. Becca, D. E. Bernholdt, K. Bhaskaran-Nair, S. Bogatko, P. Borowski,
+         J. Boschen, J. Brabec, A. Bruner, E. Cauet, Y. Chen, G. N. Chuev,
+      C. J. Cramer, J. Daily, M. J. O. Deegan, T. H. Dunning Jr., M. Dupuis,
+   K. G. Dyall, G. I. Fann, S. A. Fischer, A. Fonari, H. Fruchtl, L. Gagliardi,
+      J. Garza, N. Gawande, S. Ghosh, K. Glaesemann, A. W. Gotz, J. Hammond,
+       V. Helms, E. D. Hermes, K. Hirao, S. Hirata, M. Jacquelin, L. Jensen,
+   B. G. Johnson, H. Jonsson, R. A. Kendall, M. Klemm, R. Kobayashi, V. Konkov,
+      S. Krishnamoorthy, M. Krishnan, Z. Lin, R. D. Lins, R. J. Littlefield,
+      A. J. Logsdail, K. Lopata, W. Ma, A. V. Marenich, J. Martin del Campo,
+   D. Mejia-Rodriguez, J. E. Moore, J. M. Mullin, T. Nakajima, D. R. Nascimento,
+    J. A. Nichols, P. J. Nichols, J. Nieplocha, A. Otero-de-la-Roza, B. Palmer,
+    A. Panyala, T. Pirojsirikul, B. Peng, R. Peverati, J. Pittner, L. Pollack,
+   R. M. Richard, P. Sadayappan, G. C. Schatz, W. A. Shelton, D. W. Silverstein,
+   D. M. A. Smith, T. A. Soares, D. Song, M. Swart, H. L. Taylor, G. S. Thomas,
+            V. Tipparaju, D. G. Truhlar, K. Tsemekhman, T. Van Voorhis,
+      A. Vazquez-Mayagoitia, P. Verma, O. Villa, A. Vishnu, K. D. Vogiatzis,
+        D. Wang, J. H. Weare, M. J. Williamson, T. L. Windus, K. Wolinski,
+        A. T. Wong, Q. Wu, C. Yang, Q. Yu, M. Zacharias, Z. Zhang, Y. Zhao,
+                                and R. J. Harrison
+                        "NWChem: Past, present, and future
+                         J. Chem. Phys. 152, 184102 (2020)
+                               doi:10.1063/5.0004997
+
+                                      AUTHORS
+                                      -------
+  E. Apra, E. J. Bylaska, N. Govind, K. Kowalski, M. Valiev, D. Mejia-Rodriguez,
+       A. Kunitsa, N. P. Bauman, A. Panyala, W. A. de Jong, T. P. Straatsma,
+   H. J. J. van Dam, D. Wang, T. L. Windus, J. Hammond, J. Autschbach, A. Woods,
+    K. Bhaskaran-Nair, J. Brabec, K. Lopata, S. A. Fischer, S. Krishnamoorthy,
+     M. Jacquelin, W. Ma, M. Klemm, O. Villa, Y. Chen, V. Anisimov, F. Aquino,
+     S. Hirata, M. T. Hackler, E. Hermes, L. Jensen, J. E. Moore, J. C. Becca,
+      V. Konjkov, T. Risthaus, M. Malagoli, A. Marenich, A. Otero-de-la-Roza,
+        J. Mullin, P. Nichols, R. Peverati, J. Pittner, Y. Zhao, P.-D. Fan,
+        A. Fonari, M. J. Williamson, R. J. Harrison, J. R. Rehr, M. Dupuis,
+     D. Silverstein, D. M. A. Smith, J. Nieplocha, V. Tipparaju, M. Krishnan,
+     B. E. Van Kuiken, A. Vazquez-Mayagoitia, M. Swart, Q. Wu, T. Van Voorhis,
+     A. A. Auer, M. Nooijen, L. D. Crosby, E. Brown, G. Cisneros, G. I. Fann,
+   H. Fruchtl, J. Garza, K. Hirao, R. A. Kendall, J. A. Nichols, K. Tsemekhman,
+    K. Wolinski, J. Anchell, D. E. Bernholdt, P. Borowski, T. Clark, D. Clerc,
+   H. Dachsel, M. J. O. Deegan, K. Dyall, D. Elwood, E. Glendening, M. Gutowski,
+   A. C. Hess, J. Jaffe, B. G. Johnson, J. Ju, R. Kobayashi, R. Kutteh, Z. Lin,
+   R. Littlefield, X. Long, B. Meng, T. Nakajima, S. Niu, L. Pollack, M. Rosing,
+   K. Glaesemann, G. Sandrone, M. Stave, H. Taylor, G. Thomas, J. H. van Lenthe,
+                               A. T. Wong, Z. Zhang.
+
+ Total times  cpu:        6.7s     wall:        6.7s
