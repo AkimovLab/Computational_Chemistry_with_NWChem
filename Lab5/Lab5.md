@@ -91,7 +91,47 @@ Once your frequency calculations are complete, look for the corresponding freque
 **Figure 5.** An example of the frequency output. The “Eigenvalue” is the actual value of the frequency. Note there are 5 trivial modes for the diatomic molecule, which can be excluded. 
 
 
+## 4. Results and Discussions
 
+1. Conduct the calculations and fill in Tables 1 and 2.
+
+   
+2.	Visualize the normal modes of each system (computed at the CCSD level) using VMD and describe the type of motion observed in plain English.
+
+
+3. Discuss the accuracy of all tested methods as far as the description of equilibrium geometry and frequencies prediction are concerned.
+   In your observations, is it possible to obtain reasonable frequencies if the geometric parameters are not accurate enough or is it important to have the accurate
+   geometric parameters before one can hope to obtain reasonable frequencies? 
+
+
+**Table 1.** Geometrical parameters of the optimized molecules.
+
+| Method  |   LiF, Li-F distance |   LiF-LiF, Li-F distance, Li-F-Li angle | Your brief comments on the method’s accuracy to represent the equilibrium geometry  |
+| ---     | ---                  | ---                                     | --- |
+| Reference[1] |  1.582 Angstrom |  1.736 Angstrom, 80.31 deg |              |
+| xTB |     |       |      |
+| HF |     |       |      |
+| B3LYP |     |       |      |
+| MP2 |     |       |      |
+| CCSD |     |       |      |
+
+
+
+**Table 2.**  Harmonic frequencies of LiF and $(LiF)_2$ complex.
+
+| Method  |  LiF, cm^-1 |  LiF-LiF, cm^-1 |   Your brief comments on the method’s accuracy to represent the harmonic frequencies |
+| ---     | ---         | ---             | ---       |
+| Reference[1]  |   870   |   289, 360, 566, 567, 657, 662  |         |
+| xTB |     |       |      |
+| HF |     |       |      |
+| B3LYP |     |       |      |
+| MP2 |     |       |      |
+| CCSD |     |       |      |
+
+
+## 5. References
+
+[1] Grein, F. Complexes of LiF and LiCl with LiF, LiCl, LiH, HF, HCl, H2, Li2, F2, Cl2, FCl, H2O and NH3. Structures, Energies and Vibrational Frequencies. Mol. Phys. 2023, 121 (4), e2181647. https://doi.org/10.1080/00268976.2023.2181647 
 
 
 
