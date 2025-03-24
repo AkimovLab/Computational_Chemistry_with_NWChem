@@ -87,6 +87,7 @@ The following references may be useful for this lab:
 
 - [DFT](https://nwchemgit.github.io/Density-Functional-Theory-for-Molecules.html)
 - [CIS, TD-HF, TD-DFT](https://nwchemgit.github.io/Excited-State-Calculations.html#sample-input)
+- [More on TD-DFT in NWChem](https://compchem-cybertraining.github.io/Cyber_Training_Workshop_2023/files/NWChem/3_NWChem-TDDFT-2023.pdf)
 - [Some theoretical background and examples](https://web.archive.org/web/20221103195703/https://events.prace-ri.eu/event/786/attachments/840/1256/QC-workshop-advanced.pdf)
 
 
