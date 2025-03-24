@@ -65,143 +65,89 @@ $$I(E) ~  \sum_i \frac{1}{ (E-E_i)^2 + \gamma^2},									(4b)$$
 Finally, another useful tool to analyze the nature of excited states are the transition densities, which can roughly be understood as a difference of 
 electronic density in excited states compared to that in the ground state. Thus, it shows how the electronic density redistributes upon the excitation to a certain state. 
 
-
-<img src="Slide1.PNG" width="80%"/>
-
-**Figure 1.** Reaction energy profile for $Br^{-} + CH_3 Cl ↔ CH_3 Br + Cl^{-}$ reaction computed at the B3LYP/LANL2DZ level of theory. The 45 beads are used in this 
-calculation, but it is not yet fully converged (although pretty close to it). Note that this picture is given only for your reference. 
-
 ## 2. Objectives and Tasks
 
-For the reaction we are going to explore, the endpoints correspond to the geometries where either $Cl^-$ or $Br^-$ ions are sufficiently distant from 
-the central carbon atom and can be regarded as dissociated. The path connecting these points will go through the barrier. The configuration with the 
-highest energy is the transition state (TS) (topologically, it is called a **saddle point**). If you run the normal modes calculations, you would get 
-one of the frequencies being imaginary ($ω^2<0$). This mode corresponds to passing the TS along the reaction coordinate. In fact, the reaction coordinate 
-will correspond to a concerted motion of halogens, where the $Cl^-$ ion is incoming toward the carbon atom, and $Br^-$ is leaving at the same time. 
+The goals of this Lab will be:
 
-Our goals in this Lab will be:
-1. 	to compute the energy profiles and energy barriers for the forward and backward reactions (these terms are relative to how to write down the reaction,
-    $Cl^-+CH_3 Br↔CH_3 Cl+Br^-$ or $Br^-+CH_3 Br↔CH_3 Cl+Cl^-$ ) using several methods: xTB, HF, B3LYP, and CAM-B3LYP.
-   	For HF, B3LYP, and CAM-B3LYP we will be using the LANL2DZ with the **effective core potential (ECP)**. For simplicity, we will disregard the ZPE
-   	contributions to such quantities; 
-2. find and characterize the structure and vibrations of the transition state for every level of theory.
+1)	To compute the absorption spectra, Eq. 4a, densities of excited states, Eq. 4b, and the transition density of the first excited state of the adamantane molecule.
+    Use the 6-31G basis. It is a rather small one, but should suffice for our goal. 
+2)	To conduct the above types of excited states calculations with the following methods: TD-HF, TD-PBE, TD-B3LYP, TD-B3LYP with the Casida-Salahub correction, and TD-CAM-B3LYP.
+    For each method, consider the CIS and RPA options. The results should be organized as 2 figures: each as a 5x2 grid – each row corresponds to the method (in the same order as above), each
+    column corresponds to CIS or RPA option. One figure should summarize the spectra and density of excited states plots (see below). The other figure should summarize the transition density
+  	plots. 
+3)	To discuss the qualitative trends observed in such calculations. Also discuss the difference of your results with the computational study of Rander[1]
+
 
 ## 3. Methodology and Tools
 
 ### 3.1. Useful resources
 The following references may be useful for this lab:
-- [Frequencies/Normal modes calculations](https://nwchemgit.github.io/Hessians-and-Vibrational-Frequencies.html)
-- [xTB](https://nwchemgit.github.io/XTB.html)
-- [HF](https://nwchemgit.github.io/Hartree-Fock-Theory-for-Molecules.html)
+
 - [DFT](https://nwchemgit.github.io/Density-Functional-Theory-for-Molecules.html)
+- [CIS, TD-HF, TD-DFT](https://nwchemgit.github.io/Excited-State-Calculations.html#sample-input)
+- [Some theoretical background and examples](https://web.archive.org/web/20221103195703/https://events.prace-ri.eu/event/786/attachments/840/1256/QC-workshop-advanced.pdf)
 
 
 ### 3.2. Execution steps
 
-**Setting up the basis with ECP**
+**Geometry and basis**
 
-In this Lab, the system that we will be studying contains heavy element bromine. Although more common basis sets such as 6-311G** are still available 
-for this element, they would include a bit of extra electrons from Br atom in the calculations and will make our calculations slow. 
-Instead, we can use the **effective core potential (ECP)** that treats the core electrons implicitly so the Br atom will not include 
-as many electrons in the calculations as in the 6-311G** basis. In addition, the LANL2DZ basis is known to be quite a good quality basis. 
-To get the basis and the ECP for all elements that we have in the system (Figure 2):
+Generate the adamantane, $C_{10}H_{16}$, geometry using the iQmol program - use their database of molecules (Figure 1a, button highlighted by the red box) 
+and just insert it there. You should not need to do any manual creation of the molecule. If you do – make sure you conduct a force field optimization of the molecule 
+before you move on to other steps. Save the geometry as the xyz file and use the coordinates in your NWChem input (Figure 1b). Make sure to disable symmetries and auto-options 
+as shown in the example. 
 
-1)	go to the basis set exchange webpage [https://www.basissetexchange.org/](https://www.basissetexchange.org/)
-2)	select H, C, Cl and Br atoms;
-3)	select “Orbital with ECP”;
-4)	select the “LANL2DZ” basis set;
-5)	in the bottom, select the NWChem format and download click “Get Basis Set” button;
-6)	copy and paste the content of the opened window/document into your input file;
+<img src="Slide1.PNG" width="80%"/>
+**Figure 1.** Creation of the adamantane molecule in iQmol program and the example of the geometry setup in the NWChem input file.  
+
+
+Although it is desirable to use larger basis sets, such as 6-311++G**,1 for the purpose of this Lab, we will use a significantly reduced basis set: 6-31G (Figure 2).
 
 <img src="Slide2.PNG" width="80%"/>
+**Figure 2.** Definition of the 6-31G basis set in the NWChem input file. 
 
-**Figure 2**. How to get the LANL2DZ basis function with ECP for H, C, Cl and Br atoms. 
 
+**Setting up the density functional and conucting excited states calculations**
 
-**Setting up the geometries**
-
-Use [this page](https://nwchemgit.github.io/Nudged-Elastic-Band-and-Zero-Temperature-String-Methods.html) for the NEB reference.
-
-The NEB calculations require two geometries – the starting and the end geometries. For simplicity, I provide you with the two reasonable 
-end points – the files “Br-CClH3.xyz” and “Cl-CBrH3.xyz” files, although these points may be improved. These geometries correspond to having 
-one of the halogen atoms separated from the rest of the system by a longer distance (not infinity, to avoid the problems with convergence) and being on the Cl-C-Br line, 
-while having the rest of the system optimized with the UFF force field. You can input these coordinates in the NWChem input file as shown in Figure 3. 
+The examples of setting up XC for TD-DFT/TD-HF calculations are shown in Figure 3a. Just uncomment the corresponding non-comment lines and comment all other in the `dft … end` 
+block of the input file. In the `tddft … end` block (Figure 3b), you can request either CIS (currently uncommented) or RPA (currently commended) types of calculations. 
+To compute the spectrum, we need many excited states. In this case, we request 40 excited states (nroots 40). We are also interested only in the singlet excited states 
+and no triplets. With the “civecs” keyword we request storing the corresponding files with the CI coefficients. Such files are needed for producing the transition density 
+cube files in the next step. Finally, we request the excited states calculations with the `task tddft energy` line (Figure 3b). 
 
 <img src="Slide3.PNG" width="80%"/>
-
-**Figure 3**. The portion of the input file that describes the start (Br + CH3Cl) and end (Cl + CH3Br) geometries. 
-If you want consider the opposite reaction (Cl attack) as the forward, just put the `endgeom` keyword in the first block. 
+**Figure 3.** Definition of the functionals and methods to request excited state calculations. 
 
 
-**Setting up the calculations**
+**Computing the transition densities**
 
-First of all, although we describe the reaction as having the charge localized either on Cl or Br anions, in quantum mechanical calculations 
-we only need to define the overall charge of the system (which is -1, as you can also see in the portion of the input file shown in Figure 3) and hope that the quantum mechanical 
-method would be able to correctly describe the charge redistribution as the reaction goes. 
-
-The NEB calculations are requested by the `task dft neb` with the `neb` block defining the key parameters of the `neb` calculations (Figure 4)
+Such calculations are requested by the block in Figure 4a. In the `dplot … end` block, we tell the program which file contains the needed CI coefficients: `civecs adamant.civecs_singlet`. 
+Note, the prefix of such files is defined by the `start` keyword in Figure 1b. We define the box and the granulation of the cube file. In this case, it will be a 10 x 10 x 10 Angstrom 
+box with 50 grid points in each direction. With the `root 1` keyword, we request the transition density calculation that corresponds to the excitation from the ground state to the 
+first excited state $0→1$. Following our procedures with VMD, you should be able to obtain something like Figure 4b.
 
 <img src="Slide4.PNG" width="80%"/>
-
-**Figure 4**. Setting up the NEB calculations with the DFT. a) NEB calculations requesting calculations with 45 beads, 50 maximal NEB cycles, 
-loose convergence criterion; b) the dft block that sets up B3LYP (commented line) or CAM-B3LYP (uncommented lines) calculations.
-
-In your calculations, I recommend using about **30 beads** (not 45 as in the example), unless you have difficulties with the convergence. 
+**Figure 4.** Computing transition densities: (a) input block for such calculations; (b) visualization in VMD. 
 
 
-**Outputs of the NEB calculations**
+**Computing the spectra**
+You are provided with three Python files needed to compute and plot the spectra and densities of excited states. The are `spectrum.py`, `spectrum2.py`, and `plot_spectra.py` files. 
+The first two are based on the script provided on the NWChem manual website. Assuming that you saved all results of your NWChem calculations in the file called `out`, to produce 
+the spectra, you simply need to run the following 3 commands (Figure 5a, make sure you first copy all 3 Python files in the same directory with the `out` file). The script will 
+generate the `spectra.png` file, which should look like the one in Figure 5b. 
 
-The NEB calculations will produce a lot of files (Figure 5a). There will be `nbeads` files with the MO vectors (left of Figure 5a) – because the NEB will 
-be doing that many single point calculations at every NEB iteration. Also, there will be `maxiter` (or less if converged earlier) files `<prefix>.nebpath_0000*.xyz`. 
-The `<prefix>` refers to the how you call the job in the input file (“SN2” for me) and `*` means "anything" (any numbers in my case). The larger the number of in the `nebpath` file, 
-the later the iteration of the calculations is, the closer the corresponding path is to the converged one. In the example Figure 5a, the convergence might have been achieved at the NEB iteration 24. 
-
-Every “nebpath” file is an xyz file that contains the geometry snapshots of every bead of the “rope”, with the corresponding energies (Figure 5b). 
-You can use these energies to estimate the energy barriers. Also, there will be your typical output file. In my case, it is called “out_neb”. 
-It contains a lot of information, so using `grep` command on it is not that straightforward. However, you can use `grep @ out_neb` (change the `out_neb` part according to how your file is 
-actually called) to check the convergence of the NEB calculations (Figure 5c). As a bonus, it will also print a very primitive plot of the reaction energy profile, 
-just to give you an idea of how it may look like (compare to what you see in Figure 1). 
 
 <img src="Slide5.PNG" width="80%"/>
-
-**Figure 5**. Outputs of the NEB calculation. a) some of the files produced; b) the content (part of) of the “nebpath” files; c) output of the `grep @ out_neb` command. 
-
-
-**Setting saddle point search and vibrational analysis calculations**
-
-Once the NEB calculations are complete, you can search for the TS structure and compute the reactive coordinate. The relevant input snippets are shown in Figure 6. 
-The setup is similar to the optimization procedure, but you just use `saddle` instead of `optimize` in the corresponding `task` line. Make sure to set the initial 
-geometry close to the TS point found in the NEB calculation (based on the analysis of the energy in the “nebpath” file).
-
-<img src="Slide6.PNG" width="80%"/>
-
-**Figure 6**. Input snippet for setting up the TS search followed by the frequency calculations.
-
-The output for such calculations will be as that in Lab 5, but there should be one mode with a negative frequency 
-(in fact, this is an imaginary frequency, but in the output, it is just made negative to mark the difference). Load the corresponding mode visualization 
-into VMD and characterize what kind of motion it is. Document the found frequencies.
-
+**Figure 5.** Computing the spectra and densities of excited states: (a) the commands to do this; (b) the example of the produced plot. 
 
 
 ## 4. Results and Discussions
 
-The main results of the Lab would be summarized in Table 1:
-
-
-**Table 1.** Reaction energy profile for the $Cl^-+CH_3 Br→CH_3 Cl+Br^-$ reaction.
-
-| Method  |  ΔE_forward, kcal/mol  | ΔE_backward, kcal/mol | Imaginary frequency, cm^-1  |
-| ---     | ---                    | ---                   | ---                         |
-| Reference[1], CCSD(T)/aug-cc-pVTZ | 9.6 kcal/mol |  14.4 kcal/mol	N/A |      N/A        |
-| xTB |     |       |      |
-| HF |     |       |      |
-| B3LYP |     |       |      |
-| CAM-B3LYP |     |       |      |
-
+The main results of the Lab would be summarized in Figures 1 and 2 as explained in the Objectives section.
 
 ## 5. References
 
-[1] Valverde, D.; Georg, H. C.; Canuto, S. Free-Energy Landscape of the SN2 Reaction CH3Br + Cl- → CH3Cl + Br- in Different Liquid Environments. J. Phys. Chem. B 2022, 126 (20), 3685–3692. https://doi.org/10.1021/acs.jpcb.1c10282.
+[1] Rander, T.; Bischoff, T.; Knecht, A.; Wolter, D.; Richter, R.; Merli, A.; Möller, T. Electronic and Optical Properties of Methylated Adamantanes. J. Am. Chem. Soc. 2017, 139 (32), 11132–11137. https://doi.org/10.1021/jacs.7b05150.
 
 
 
