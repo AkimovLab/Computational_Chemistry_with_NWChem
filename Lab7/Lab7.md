@@ -106,7 +106,7 @@ as shown in the example.
 
 Although it is desirable to use larger basis sets, such as 6-311++G**,1 for the purpose of this Lab, we will use a significantly reduced basis set: 6-31G (Figure 2).
 
-<img src="Slide2.PNG" width="80%"/>
+<img src="Slide2.PNG" width="40%"/>
 
 **Figure 2.** Definition of the 6-31G basis set in the NWChem input file. 
 
