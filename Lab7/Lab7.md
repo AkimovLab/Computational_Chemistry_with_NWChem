@@ -17,7 +17,7 @@ essentially the exact result, but as you can imagine the number of such N-electr
 most but the simplest systems. 
 
 Note that although each excited state $\Psi_\alpha$ is given in terms of the same set of Slater determinants (ground, singly excited, 
-doubly excited, etc), the coefficients of such expansion are different for each state, $c_{*,\alpha}$.
+doubly excited, etc), the coefficients of such expansion are different for each state, $c_{ _ ,\alpha}$.
 
 As the simplest approach to account for only single (don’t confuse with singlet!) excitation, the expansion Eq. 1 can be truncated as:
 
