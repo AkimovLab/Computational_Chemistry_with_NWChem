@@ -31,6 +31,57 @@ compute the force from the acceleration. However, it won't be useful in this way
 we need the accelerations at different geometries of molecular system, which can be determined from the forces. It is the force that NWChem would 
 compute first based on the quantum calculations.  
 
+Now, let’s talk about how the forces are computed. In brief – they are the derivatives of the potential energy $E_{pot}$ (corresponding to a particular electronic state of interest, 
+most commonly the electronic ground state) with respect to the corresponding nuclear coordinates, e.g.:
+$$F_{i,\alpha} = -\frac{\partial E_{pot}}{\partial r_{i,\alpha} }.										Eq. 3$$
+Since the potential energy in general represents a many-body interactions, it is a function of all coordinates of all atoms. 
+This is why force is also a function of all coordinates of all atoms. 
+
+
+### 1.2. Global minima search with MD (simulated annealing).
+
+Now that we know the general idea of the MD method, let's talk about the following: one of the correctness criteria for the MD is the conservation of the so-called 
+**integrals/invariants of motion** – quantities that do not change no matter how the atomic coordinates and momenta change. There are three main invariants: 
+
+- 1. the total energy, $E_{tot} = E_{kin} + E_{pot} = const$  Here,  $E_{kin}$ – kinetic energy, $E_{pot}$ – potential energy;
+- 2. the total linear momentum, $P_{\alpha} = \sum_i p_{i,\alpha} = const, \forall \alpha = x,y,z$;
+- 3. the total angular momentum, $L_{\alpha} = \sum_i r_{i,\alpha} \times p_{i,\alpha} = const, \forall \alpha = x,y,z$
+  
+  In fact, these are not just 3, but 7 integrals of motion. **Do you see why? Ask me if you don't**. Because the total energy is conserved
+  (so as the volume of the system and the number of particles), the MD is a way to generate (sample) molecular geometries from the **microcanonical (NVE) ensemble** (
+  recall the statistical mechanics part of the PChem course). 
+
+<img src="Slide1.PNG" width="80%"/>
+
+**Figure 1.** The idea of the simulated annealing strategy – having extra temperature is needed to escape the local minima, but the gradual 
+removal of the excess of kinetic energy is needed to converge to the global energy minimum.   
+
+Okay, out of these 7, we just need the first one for now – the total energy. Its conservation means that as the potential energy of the system goes down, 
+the kinetic energy should go up. From the PChem course, you should know that the kinetic energy is also proportional to the microscopic (instantaneous) temperature, T. 
+That is in the NVE MD simulations, as the system finds more stable configuration (geometry with more negative $E_{pot}$), the system also heats up. 
+If one does not do anything about it, the thermal energy will take the system out of the more stable configuration. However, if one gradually lowers the kinetic energy 
+of the system, one can eventually favor the system to stay in more stable configurations. The rate of removal of the kinetic energy excess is an important factor that 
+affects the type of optimization one can conduct. If all the kinetic energy is removed instantaneously, the procedure is equivalent to the standard geometry optimization procedure. 
+In this case, the resulting geometry is the local minimum geometry closest to the starting geometry. However, if the excess of kinetic energy is removed slowly, 
+the system has greater chances of visiting other possible minima and eventually finding the deeper one (Figure 1). The slower the energy is removed, the higher the chances 
+of finding the **global minimum** – the deepest point on the potential energy surface - although the search is also slower. Again, in the limit of no energy removal, 
+one doesn't find any minimum. Usually, one also starts with the initial velocities that correspond to high temperature. The gradual "cooling" of the system is a way to 
+find the global minimum. This process is called **simulated annealing (SA)**, in analogy to the annealing in materials growth.
+
+If you ever tried growing crystals, you know that one starts with a hot overconcentrated solution of salt and lets the crystals grow from the initial seed. 
+It is important to let the solution cool down slowly – then one gets larger crystals. If the solution is cooled down too fast, you’ll only get small crystals. 
+Well, you also have to coordinate this cooling process with the evaporation of the solvent. Since water doesn’t evaporate too fast (but it cools down much faster), 
+usually you’d get only very small crystals. 
+
+In this Lab, we'll be using the simulated annealing approach combined with the **Car-Parrinello (CP) MD** (I’m not going into details of this method, just consider it a faster 
+version of MD) to find global minima of the $B_8Si$ and $B_9^-$ clusters. The global minima of these clusters have been discussed in the review of Zhao et al[1]. 
+They take the pyramidal and planar structures respectively (Figure 2). We will start with a rather random guess of initial geometry and will hopefully find the correct 
+structures. Our main exploratory task will be to find the proper optimization protocol and electronic structure method to get something close to the target geometries. 
+
+<img src="Slide2.PNG" width="80%"/>
+
+**Figure 2.** Target systems for global optimization: (a) neutral $B_8Si$ cluster; (b) negatively charged $B_9$ cluster. Figures are adapted from Zhao et al. [1]
+
 ## 2. Objectives and Tasks
 
 The goals of this Lab will be:
@@ -52,8 +103,7 @@ The following references may be useful for this lab:
 **Geometry and basis**
 
 
-<img src="Slide1.PNG" width="80%"/>
-**Figure 1.** Creation of the adamantane molecule in iQmol program and the example of the geometry setup in the NWChem input file.  
+
 
 
 
