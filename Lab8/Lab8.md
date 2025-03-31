@@ -115,28 +115,80 @@ The goals of this Lab will be:
 ### 3.1. Useful resources
 The following references may be useful for this lab:
 
-- [DFT](https://nwchemgit.github.io/Density-Functional-Theory-for-Molecules.html)
-- [CIS, TD-HF, TD-DFT](https://nwchemgit.github.io/Excited-State-Calculations.html#sample-input)
-- [Some theoretical background and examples](https://web.archive.org/web/20221103195703/https://events.prace-ri.eu/event/786/attachments/840/1256/QC-workshop-advanced.pdf)
+- [MD](https://nwchemgit.github.io/Plane-Wave-Density-Functional-Theory.html#car-parrinello)  - this is the section that explains the inputs to the NWPW
+  calculations and the Car-Parrinello inputs in particular.
+- [Tutorial2](https://nwchemgit.github.io/Plane-Wave-Density-Functional-Theory.html#nwpw-tutorial-2-using-pspw-car-parrinello-simulated-annealing-simulations-to-optimize-structures) -
+  We will be closely following it. It won't hurt to read the general section of this tutorial, but we'll be doing the constant temperature calculations from the example b;
+- [example b](https://nwchemgit.github.io/Plane-Wave-Density-Functional-Theory.html#simulated-annealing-using-constant-temperature-simulation) 
+  The section contains the example input and output files (Figure 4a).
 
+<img src="Slide4.PNG" width="80%"/>
+
+**Figure 4.** (a) Example of where to get the input file templates; (b) Example input script for simulated annealing calculations of $B_9^-$ molecule. 
+This example highlights some points of special attention: prefixes, charge, initial geometry, exchange-correlation functional. 
 
 ### 3.2. Execution steps
 
-**Geometry and basis**
+The easiest way to start is to download the input file from the example. Delete the `scratch_dir` and `permanent_dir` lines – they are not really needed. 
+Change the prefixes in different places of the input (e.g. to b9 instead of b12) – there are several places to edit for this. 
+Make sure to use the correct charge: -1 for $B_9^-$ and 0 for $B_8Si$ (Figure 4b). **Very important**: to create the guess geometry, you can use iQmol or simply delete any 3 lines 
+of the initial example (since it is for the B12 structure). The remaining 9 atoms of B should be a reasonable guess – since we’ll be doing the global optimization, the starting 
+geometry may be pretty ugly, that’s okay (as long as it is not something too dissociated in which case you may run into problems with the convergence of electronic structure 
+calculations). For the $B_8Si$, you can just change “B” in one of the remaining 9 lines to “Si”. Finally, make sure you define the exchange-correlation functional of interest. 
+
+The simulation in the example script is conducted in two steps: first - the regular NVT simulation – to heat up and equilibrate the system (Figure 5a), 
+second - the NVT simulation with the simulated annealing (Figure 5b).
+
+<img src="Slide5.PNG" width="80%"/>
+
+**Figure 5.** Two-step procedure for global optimization: (a) thermalization and equilibration of the system; (b) simulated annealing step.
+
+Note that the initial temperature is set up to some sufficiently high value (3500 K, red box in Figure 5a) to enable some “crazy” conformational changes to happen. 
+The corresponding Nose-Hoover thermostat parameters for electrons and ions are underlined in green in Figure 5a. You may want to experiment with the temperature and 
+the relaxation parameters. The length of this simulation is controlled with the `loop` variable (purple, Figure 5a). 
+
+In the second step, you activate the simulated annealing and can control the rate of energy removal (blue in Figure 5b) as well as the length of such simulations. 
+You may want to choose the length of this simulation to be sufficiently large to get a good degree of relaxation of the total energy (see the plotting section).
+
+The information on energies is stored in the files `.emotion` – `b9.10.emotion` – for the thermalization step and `b9.11.emotion` – for the annealing step. 
+The trajectories are saved in the “.xyz” files – likewise, `b9.10.xyz` for the thermalization step and `b9.11.xyz` for the annealing step. The last snapshot 
+in this file is your “global minimum” structure. 
+
+You can plot the evolution of total and potential energy, as well as temperature over the course of the simulation, using the provided “plot.py” script. 
+Make sure you select the appropriate input `.emotion` file (Figure 6, underlined in red). 
+
+<img src="Slide6.PNG" width="80%"/>
+
+**Figure 6.** Example of the script to plot the history of simulation.
+
+Exemplary plots for the two steps of the annealing process are shown in Figure 7. First, you can see that the total energy in the first step is 
+nearly constant (Figure 7a) and that temperature reaches a steady value of 3500 K (Figure 7b) – the target for our thermostat. In the second step, 
+the total energy and temperature both decrease over time (Figure 7, c and d). You can see that the potential energy fluctuations decay and the value 
+of this function converges to the value that corresponds to the global minimum. This should be a good indication that further optimization won't have a lot of 
+effect on the resulting structure. 
 
 
+<img src="Slide7.PNG" width="80%"/>
 
+**Figure 7.** Evolution of (a, c) total and potential energies, and (b, d) temperature in simulated annealing steps: (a, b) – thermalization; (c, d) - annealing
 
+Finally, using VMD, you can visualize the trajectories from the SA calculations, and take a snapshot of the last geometry – show it in your report 
+(e.g. in my example, it is shown in Figure 8). If you use "cpk” rendering – don’t get scared by the “bonds” that VMD draws – they are not really physical. 
+
+<img src="Slide8.PNG" width="80%"/>
+
+**Figure 8.** Example of the global minimum structure found by the simulated annealing procedure
 
 
 ## 4. Results and Discussions
 
-The main results of the Lab would be summarized in Figures 1 and 2 as explained in the Objectives section.
+The main results of the Lab would be summarized in a figure organized as an N x 2 grid. The first column should show the evolution of the potential and total energy 
+during the simulated annealing step (something like in Figure 7c). The second column should be showing the final structure, like in Figure 8. Make sure you explain 
+to which methods these results correspond. If convenient, you can break down the figure into multiple ones, according to various parameters you vary. 
 
 ## 5. References
 
-[1] Rander, T.; Bischoff, T.; Knecht, A.; Wolter, D.; Richter, R.; Merli, A.; Möller, T. Electronic and Optical Properties of Methylated Adamantanes. J. Am. Chem. Soc. 2017, 139 (32), 11132–11137. https://doi.org/10.1021/jacs.7b05150.
-
+[1]	Zhao, J.; Du, Q.; Zhou, S.; Kumar, V. Endohedrally Doped Cage Clusters. Chem. Rev. 2020, 120 (17), 9021–9163. https://doi.org/10.1021/acs.chemrev.9b00651
 
 
 
