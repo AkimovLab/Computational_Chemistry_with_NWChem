@@ -5,7 +5,7 @@
 ### 1.1. Basic theory of MD.
 
 In this Lab, we will conduct classical **molecular dynamics (MD)** simulations of some molecular systems. 
-The goal of the MD simulations is obtaining **"molecular movies"**, also known as **trajectories** – the sequence of geometries reflecting 
+The goal of the MD simulations is obtaining **"molecular movies"**, also known as **trajectories** â€“ the sequence of geometries reflecting 
 how the atoms evolve according to Newtonian dynamics. The key equations here are:
 
 $$ r\dot_{i,\alpha} = \frac{ p_{i,\alpha} }{ m_i} $$
@@ -46,7 +46,7 @@ The main results of the Lab would be summarized in Figures 1 and 2 as explained 
 
 ## 5. References
 
-[1] Rander, T.; Bischoff, T.; Knecht, A.; Wolter, D.; Richter, R.; Merli, A.; Möller, T. Electronic and Optical Properties of Methylated Adamantanes. J. Am. Chem. Soc. 2017, 139 (32), 11132–11137. https://doi.org/10.1021/jacs.7b05150.
+[1] Rander, T.; Bischoff, T.; Knecht, A.; Wolter, D.; Richter, R.; Merli, A.; MÃ¶ller, T. Electronic and Optical Properties of Methylated Adamantanes. J. Am. Chem. Soc. 2017, 139 (32), 11132â€“11137. https://doi.org/10.1021/jacs.7b05150.
 
 
 
