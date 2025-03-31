@@ -14,7 +14,9 @@ B3LYP, xTB, and other methods. The determinant $\Phi_i^a$ corresponds to the exc
 to one of the unoccupied (virtual) orbitals a, $i→a$. Likewise, the determinant $\Phi_{ij}^{ab}$ corresponds to a double excitation $i→a,j→b$. In principle, 
 the CI expansion, Eq. 1, can keep going until N-electron excitations. In the limit of excitation of all electrons in the system, it is the **full CI (FCI)** – 
 essentially the exact result, but as you can imagine the number of such N-electron excitations grows combinatorially, so the approach is not viable for 
-most but the simplest systems. Note that although each excited state $\Psi_\alpha$ is given in terms of the same set of Slater determinants (ground, singly excited, 
+most but the simplest systems. 
+
+Note that although each excited state $\Psi_\alpha$ is given in terms of the same set of Slater determinants (ground, singly excited, 
 doubly excited, etc), the coefficients of such expansion are different for each state, $c_{*,\alpha}$.
 
 As the simplest approach to account for only single (don’t confuse with singlet!) excitation, the expansion Eq. 1 can be truncated as:
@@ -26,32 +28,32 @@ This is CI with single excitations, **CI singles (CIS)**.
 Depending on how orbitals are obtained, one can distinguish two groups of methods: the **time-dependent Hartree-Fock (TD-HF)** and the **time-dependent density 
 functional theory (TD-DFT)**. The TD-HF is also called **random phase approximation, RPA**. In this case, the orbitals are obtained using HF exchange (no correlation). 
 If one uses DFT (and hence the Kohn-Sham orbitals), we are talking about TD-DFT (now it has exchange and correlation terms in the 1-electron Hamiltonian). 
-Keep in mind that even though we say TD (time-dependent), there is no real-time dynamics involved in these methods. In fact, the name comes from the real-time formalism 
+Keep in mind that even though we say TD (time-dependent), there is **no real-time dynamics involved** in these methods. In fact, the name comes from the real-time formalism 
 applied to DFT, where time-dependent electric field perturbation is included explicitly and the charge density is let evolve in response to this pertutbation. One can then
 compute various autocorrelation functions (e.g. of the dipole moment) and applying the Fourier transform to it, the absorption spectra. In this way, there is an 
 explicit time-dependence present, hence the name. This name then propagated to other variants of calculations, even though they may not include such time-dependence (as in 
 the linear response approach we will be using). To avoid the confusion, sometimes one can expicitly refer to methods as real-time TD-DFT (rt-TD-DFT) or linear-response TD-DFT
 (LR-TD-DFT). 
 
-In this lab, all the TD-DFT calculations are based on the linear response theory. Starting from the equations of motion for electron density and making the response of the charge 
+In this lab, all the TD-DFT calculations are based on the **linear response theory**. Starting from the equations of motion for electron density and making the response of the charge 
 density being linear in applied perturbation, one can arrive at the eigenvalue problem similar to that one obtained in TD-HF theory. To cut the long story short, for the
-sake of this Lab, it is easier to think in terms of an eigenvalue problem to solve for the CI coefficients, $c_{ia,\alpha}$ (NWChem stores them in the “civecs” files). 
+sake of this Lab, it is easier to think in terms of an eigenvalue problem to solve for the CI coefficients, $c_{ia,\alpha}$ (NWChem stores them in the `civecs` files). 
 Furthermore, in addition to different ways of obtaining orbitals, there can be additional approximations in the CI Hamiltonian (eventually in the equations to obtain the CI coefficients). 
 The less-approximate approach is the RPA (it is TD-HF if the XC is taken as “hfexch” and TD-DFT if any other functional is used). The more approximate approach is the CIS 
-in the NWChem nomenclature (for the TD-DFT case, it is also called Tamm-Dancoff approximation, TDA and it is a simplified set of equations for computing the CI amplitudes). 
+in the NWChem nomenclature (for the TD-DFT case, it is also called **Tamm-Dancoff approximation, TDA** and it is a simplified set of equations for computing the CI amplitudes). 
 Essentially, in the TDA (CIS) approach, the de-excitation channels are neglected, while in the RPA they are still present. 
 
 As a rule of thumb, you can expect the following trends in rigor/accuracy: RPA > CIS/TDA (because RPA is less approximate), TD-DFT > TD-HF (because dynamic correlation is included 
 in DFT and it is not in HF). However, for Rydberg excitations (high-energy, very diffuse), the TD-HF is known to work better than TD-DFT. Furthermore, one can expect 
 the following trends in the TD-DFT calculations: range-separated hybrid functionals (e.g. CAM-B3LYP) > hybrid functionals (e.g. B3LYP) > pure functionals (e.g. PBE). 
 
-Next, to determine the probability of certain excitation $\Psi_0 → \Psi_i$, one uses the oscillator strength, $f_i$ for given state index i:
+Next, to determine the probability of certain excitation $\Psi_0 → \Psi_i$, one uses the **oscillator strength**, $f_i$ for given state index i:
 
 $$f_i = \frac{3}{2} \frac{m_e}{\hbar^2} (E_i - E_0) \sum_{\alpha \in x, y, z} |(⟨\Psi_i |r_\alpha | \Psi_0⟩)|^2							(3)$$
 
-Here, $E_i$ is the energy of the state $\Psi_i$, $\mu_{i,0,\alpha}=⟨\Psi_i |r_\alpha | \Psi_0 ⟩$ is the α-th component of the transition dipole moment $μ_{i0,α}$, 
+Here, $E_i$ is the energy of the state $\Psi_i$, $\mu_{i,0,\alpha}=⟨\Psi_i |r_\alpha | \Psi_0 ⟩$ is the α-th component of the **transition dipole moment** $\mu_{i0,α}$, 
 $m_e$ is the mass of electron, $\hbar = \frac{h}{2\pi}$ is the reduced Planck’s constant. If $f_i=0$, there is no probability that the ground state can be excited 
-to state i upon a photon absorption. Such states are called the dark states as opposed to the bright states, for which $f_i \neq 0$.
+to state i upon a photon absorption. Such states are called the **dark states** as opposed to the **bright states**, for which $f_i \neq 0$.
 
 Once the excited state energies and oscillator strengths are computed, one can compute the absorption spectrum:
 
@@ -85,6 +87,7 @@ The following references may be useful for this lab:
 
 - [DFT](https://nwchemgit.github.io/Density-Functional-Theory-for-Molecules.html)
 - [CIS, TD-HF, TD-DFT](https://nwchemgit.github.io/Excited-State-Calculations.html#sample-input)
+- [More on TD-DFT in NWChem](https://compchem-cybertraining.github.io/Cyber_Training_Workshop_2023/files/NWChem/3_NWChem-TDDFT-2023.pdf)
 - [Some theoretical background and examples](https://web.archive.org/web/20221103195703/https://events.prace-ri.eu/event/786/attachments/840/1256/QC-workshop-advanced.pdf)
 
 
@@ -98,12 +101,14 @@ before you move on to other steps. Save the geometry as the xyz file and use the
 as shown in the example. 
 
 <img src="Slide1.PNG" width="80%"/>
+
 **Figure 1.** Creation of the adamantane molecule in iQmol program and the example of the geometry setup in the NWChem input file.  
 
 
 Although it is desirable to use larger basis sets, such as 6-311++G**,1 for the purpose of this Lab, we will use a significantly reduced basis set: 6-31G (Figure 2).
 
-<img src="Slide2.PNG" width="80%"/>
+<img src="Slide2.PNG" width="40%"/>
+
 **Figure 2.** Definition of the 6-31G basis set in the NWChem input file. 
 
 
@@ -116,6 +121,7 @@ and no triplets. With the “civecs” keyword we request storing the correspond
 cube files in the next step. Finally, we request the excited states calculations with the `task tddft energy` line (Figure 3b). 
 
 <img src="Slide3.PNG" width="80%"/>
+
 **Figure 3.** Definition of the functionals and methods to request excited state calculations. 
 
 
@@ -127,6 +133,7 @@ box with 50 grid points in each direction. With the `root 1` keyword, we request
 first excited state $0→1$. Following our procedures with VMD, you should be able to obtain something like Figure 4b.
 
 <img src="Slide4.PNG" width="80%"/>
+
 **Figure 4.** Computing transition densities: (a) input block for such calculations; (b) visualization in VMD. 
 
 
@@ -138,6 +145,7 @@ generate the `spectra.png` file, which should look like the one in Figure 5b.
 
 
 <img src="Slide5.PNG" width="80%"/>
+
 **Figure 5.** Computing the spectra and densities of excited states: (a) the commands to do this; (b) the example of the produced plot. 
 
 
