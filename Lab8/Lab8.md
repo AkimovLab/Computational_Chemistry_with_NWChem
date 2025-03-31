@@ -33,7 +33,9 @@ compute first based on the quantum calculations.
 
 Now, let’s talk about how the forces are computed. In brief – they are the derivatives of the potential energy $E_{pot}$ (corresponding to a particular electronic state of interest, 
 most commonly the electronic ground state) with respect to the corresponding nuclear coordinates, e.g.:
+
 $$F_{i,\alpha} = -\frac{\partial E_{pot}}{\partial r_{i,\alpha} }.										Eq. 3$$
+
 Since the potential energy in general represents a many-body interactions, it is a function of all coordinates of all atoms. 
 This is why force is also a function of all coordinates of all atoms. 
 
