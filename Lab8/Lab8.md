@@ -86,6 +86,28 @@ structures. Our main exploratory task will be to find the proper optimization pr
 
 The goals of this Lab will be:
 
+1)	To find the best methodology/recipe for finding global minima of the two molecules shown in Figure 2 but starting from a distant guess geometry. 
+2)	To meet the goal 1, on the practical side, you’ll be doing:
+   a)	setup and conduct the simulated annealing MD calculations;
+   b)	visualize the molecular movies (show the final geometries in your report, do this for every method/protocol you try);
+   c)	plot the useful descriptors from the `.emotion` file, such as total or potential energy, to monitor the progress and completeness of the optimization;
+  	Also, pay attention to the value of the final potential energy – but keep in mind that you may not be able to compare the energies from different functionals,
+  	but can compare the energies from different recipes
+3)	To find the best approach, vary the following conditions:
+   
+   * a)	Exchange-correlation functional: pick several variants (on your choice) from the options available for the Car-Parrinello dynamics (Figure 3a);
+   
+   * b)	Basis size – since these are the plane-wave calculations, the basis set size is defined by the energy and wavefunction cutoff values (Figure 3b);
+   
+   * c)	Parameters of the thermostat: period of the thermostat, temperature, etc. We will be using the so-called **Nose-Hoover thermostat** (Figure 3c);
+   
+   * d)	Perhaps even more important parameter is the rate of decay - the rate of the thermal energy excess removal (Figure 3d);
+   
+   * e)	The most straightforward parameter – the number of iterations: there should be enough steps for the simulation to converge to the correct result (Figure 3e);
+
+<img src="Slide3.PNG" width="80%"/>
+
+**Figure 3.** Variation of simulation parameters in this study: (a) density functional; (b) basis set size; (c) thermostat parameters; (d) rate of annealing; (e) simulation length.
 
 
 ## 3. Methodology and Tools
