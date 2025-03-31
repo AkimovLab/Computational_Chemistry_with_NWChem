@@ -1,0 +1,13 @@
+module use /projects/academic/cyberwksp21/MODULES
+module load gompi/2021b
+module load nwchem/gnu/7.2.2
+
+
+Currently Loaded Modules:
+  1) gompi/2021b               4) ccrsoft/2023.01 (S)      7) gcc/11.2.0  (t)  10) libevent/2.1.12  (H)  13) pmix/4.1.0
+  2) ccrenv         (H)        5) imkl/2022.0.1   (math)   8) zlib/1.2.11 (H)  11) ucx/1.11.2       (H)  14) openmpi/4.1.1    (m)
+  3) gentoo/2023.01 (H,S,os)   6) gcccore/11.2.0  (H,t)    9) hwloc/2.5.0 (H)  12) libfabric/1.13.2 (H)  15) nwchem/gnu/7.2.2 (chem)
+
+
+Problem:
+https://www.nwchem-sw.org/index-php/Special_AWCforum/st/id2702/QMD_analysis_code.html

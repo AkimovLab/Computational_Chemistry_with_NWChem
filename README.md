@@ -12,4 +12,5 @@ The Physical Chemistry Lab (CHE 330) course, or at least some of the related mat
 - [Lab 6: Reaction Coordinate Profiles: $S_N2$ Reaction Barrier](Lab6/Lab6.md)
 - [Lab 7: Calculation of Excited States: Electronic Absorption Spectra](Lab7/Lab7.md)
 - [Lab 8: Molecular Dynamics and Global Minima Search](Lab8/Lab8.md)
+- [Lab 9: Molecular Dynamics: Infrared Spectra and Vibrational Densities of States. Molecular Dynamics in the Excited States](Lab9/Lab9.md)
 
