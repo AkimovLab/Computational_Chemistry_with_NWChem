@@ -26,7 +26,7 @@ stored in the xyz trajectory files, although NWChem also stores the momenta. Thi
 So, in essence MD is a scientific cinematography of molecules. 
 
 Another observation here is that Eqs. 1-2 are nothing but the second Newton's law, $a_{i,\alpha} = F_{i,\alpha}/m_i$  (a – is the acceleration) and the definition of 
-momentum (Eq. 1). Note that the second Newton’s law is often written in the form $F_{i,\alpha} = m_i a_{i,\alpha}, which is a bit confusing because it suggests that you 
+momentum (Eq. 1). Note that the second Newton’s law is often written in the form $F_{i,\alpha} = m_i a_{i,\alpha}$, which is a bit confusing because it suggests that you 
 compute the force from the acceleration. However, it won't be useful in this way. In fact, since we are interested in solving the equations of motion (e.g. Eqs. 1-2), 
 we need the accelerations at different geometries of molecular system, which can be determined from the forces. It is the force that NWChem would 
 compute first based on the quantum calculations.  
