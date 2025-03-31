@@ -95,13 +95,47 @@ The execution of the `qmd_analysis` tool will generate new files “LiF_IR.dat�
 script by running the `python plot.py`. This script will generate the “LiF_IR.png” and “LiF_VDOS.png” files. 
 
 
+**Task 2: Varying the electronic structure methodology.**
+
+Things are rather trivial here. Just as a repetition of what is mentioned above, you’ll focus on the $(LiF)_2$ molecule studied in Lab 5. You can start with one of 
+the optimized geometries from that lab. Setup the NVE simulation with the initial temperature of 300.0 K, 1 fs integration timestep. Conduct the MD calculations at 
+the following levels of theory: `xTB`, `HF/6-311++G**`, `PBE/6-311++G**` and `B3LYP/6-311++G**`. When computing spectra (Figure 2c), use the `-align` flag, skip zero steps, 
+and use all the MD steps in the analysis. Summarize the IR peak positions (frequencies) in a Table 1.
+
+**Task 3: IR and VDOS for ground and excited states**
+
+In this part of the assignment, we’ll be doing pretty much the same calculations as in the Task 2, just use the Tamm-Dancoff `TD-DFT` with the `B3LYP/6-31G` for the dynamics 
+on the first excited state. The system of interest will be $TiO_2$ molecule. It has a bent structure similar to that of water molecule. You’ll need to come up with a reasonable 
+starting geometry for the MD simulations. You may want to generate a pre-optimized (with a force field) structure using iQmol – just make sure you don’t end up with a linear molecule. Alternatively (this is what I did), you can draft a slightly bent structure via xyz coordinates, using some symmetry considerations, e.g.:
+
+    Ti    0.00     0.00     0.0  
+    O    0.00       x           z
+    O    0.00       x          -z
+
+where x and z are some reasonable values. Note that if you set x value to zero, this would be a linear molecule. If you start the optimization from such a guess, it may or may 
+not converge. That’s why I suggest breaking the linear symmetry by adding a small x displacement to oxygen atoms. Starting from such a guess, you can run `task xtb optimize` – to 
+first pre-optimize the structure with the cheap xTB method. Then you can run `task dft optimize` – to fine-tune the structure with the density functional of interest 
+(e.g. B3LYP in our case). 
+
+<img src="Slide3.PNG" width="80%"/>
+
+**Figure 3.** The key setups for the excited state MD.   
+
+Some keywords for this task are shown in Figure 3. For the ground state, use the `B3LYP/6-31G` method. Note that for the ground state MD you would be using `task dft qmd`, 
+but for the excited state MD, `task tddft qmd` (Figure 3, purple line). For the ground state MD, you only need to define the `dft ... end` block, while for the excited state MD, 
+you also need to define the `tddft ... end` block. To constrain the dynamics to be on a particular electronic state, use the `target` and `root` keywords with the integer corresponding 
+to the index of the excited state of interest (Figure 3, red lines). To request the Tamm-Dancoff approximation to be used, use the `cis` keyword in the `tddft ... end` block 
+(Figure 3, green line). 
+
+It is usually needed to request more excited states to be computed than you think you actually need: in this example, 5 excited states are computed (Figure 3, blue line) 
+even though we only evolve on the first excited state. This is because electronic excited states may change their character and cross with each states other depending on molecular geometry. Thus, the excited state $i$ for one geometry may become the excited state $j$ for another geometry. Not having enough states computed would result in the effective PES being sharp (discontinuous forces) leading to poor energy conservation and qualitatively incorrect dynamics. 
 
 ## 4. Results and Discussions
 
+The main results of the Lab would be summarized in Figures 1-3 (not counting the figures shown in the instructions) and Table 1 as discussed above.
 
 ## 5. References
 
-[1]	Zhao, J.; Du, Q.; Zhou, S.; Kumar, V. Endohedrally Doped Cage Clusters. Chem. Rev. 2020, 120 (17), 9021–9163. https://doi.org/10.1021/acs.chemrev.9b00651
 
 
 
